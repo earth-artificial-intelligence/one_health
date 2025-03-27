@@ -1,0 +1,251 @@
+[{
+  "history_id" : "l1lr9v6pmbr",
+  "history_input" : "import pandas as pd\nimport os\n\n# Define the directory where the radon dataset is stored\nTARGET_DIRECTORY = \"/media/volume1\"\n\n# Define file paths\nRAW_RADON_FILE_PATH = os.path.join(TARGET_DIRECTORY, \"radon_zones.csv\")\nCLEANED_RADON_FILE_PATH = os.path.join(TARGET_DIRECTORY, \"cleaned_radon_zones.csv\")\n\n# Dictionary to map state abbreviations to full names\nSTATE_ABBREVIATIONS = {\n    \"AL\": \"Alabama\", \"AK\": \"Alaska\", \"AZ\": \"Arizona\", \"AR\": \"Arkansas\", \"CA\": \"California\",\n    \"CO\": \"Colorado\", \"CT\": \"Connecticut\", \"DE\": \"Delaware\", \"FL\": \"Florida\", \"GA\": \"Georgia\",\n    \"HI\": \"Hawaii\", \"ID\": \"Idaho\", \"IL\": \"Illinois\", \"IN\": \"Indiana\", \"IA\": \"Iowa\",\n    \"KS\": \"Kansas\", \"KY\": \"Kentucky\", \"LA\": \"Louisiana\", \"ME\": \"Maine\", \"MD\": \"Maryland\",\n    \"MA\": \"Massachusetts\", \"MI\": \"Michigan\", \"MN\": \"Minnesota\", \"MS\": \"Mississippi\", \"MO\": \"Missouri\",\n    \"MT\": \"Montana\", \"NE\": \"Nebraska\", \"NV\": \"Nevada\", \"NH\": \"New Hampshire\", \"NJ\": \"New Jersey\",\n    \"NM\": \"New Mexico\", \"NY\": \"New York\", \"NC\": \"North Carolina\", \"ND\": \"North Dakota\", \"OH\": \"Ohio\",\n    \"OK\": \"Oklahoma\", \"OR\": \"Oregon\", \"PA\": \"Pennsylvania\", \"RI\": \"Rhode Island\", \"SC\": \"South Carolina\",\n    \"SD\": \"South Dakota\", \"TN\": \"Tennessee\", \"TX\": \"Texas\", \"UT\": \"Utah\", \"VT\": \"Vermont\",\n    \"VA\": \"Virginia\", \"WA\": \"Washington\", \"WV\": \"West Virginia\", \"WI\": \"Wisconsin\", \"WY\": \"Wyoming\"\n}\n\ndef clean_radon_data():\n    \"\"\"\n    Cleans the Radon dataset by:\n    1. Extracting 'State' and 'County' from 'County,State' column.\n    2. Keeping only the 'State', 'County', 'Region', and 'Zone' columns.\n    3. Converting state abbreviations to full names.\n    4. Removing the 2nd and 3rd rows.\n    5. Printing the cleaned columns and first 5 rows.\n    \"\"\"\n    if not os.path.exists(RAW_RADON_FILE_PATH):\n        print(f\"Error: Radon file '{RAW_RADON_FILE_PATH}' not found.\")\n        return None\n\n    try:\n        # Load the dataset\n        df = pd.read_csv(RAW_RADON_FILE_PATH)\n\n        print(\"Initial Radon dataset loaded.\")\n\n        # Step 1: Extract 'State' and 'County' from 'County,State'\n        df[['County', 'State']] = df['County,State'].str.split(',', expand=True)\n\n        # Trim whitespace in 'State' and 'County'\n        df['State'] = df['State'].str.strip()\n        df['County'] = df['County'].str.strip()\n\n        # Step 2: Remove the 2nd and 3rd rows explicitly\n        df.drop(index=[0, 1], inplace=True)\n        df.reset_index(drop=True, inplace=True)  # Reset index after row removal\n        print(\"Removed 2nd and 3rd rows from the dataset.\")\n\n        # Step 3: Convert State abbreviations to full names\n        df['State'] = df['State'].map(STATE_ABBREVIATIONS).fillna(df['State'])\n        print(\"State abbreviations converted to full state names.\")\n\n        # Step 4: Keep only relevant columns\n        df = df[['State', 'County', 'Region', 'Zone']]\n        print(\"Kept only required columns: State, County, Region, and Zone.\")\n\n        # Save the cleaned dataset\n        df.to_csv(CLEANED_RADON_FILE_PATH, index=False)\n        print(f\"\\nCleaned Radon dataset saved as: {CLEANED_RADON_FILE_PATH}\")\n\n        # Print all columns and first 5 rows\n        print(\"\\nCleaned Data Columns:\")\n        print(df.columns.tolist())\n        print(\"\\nCleaned Data Preview:\")\n        print(df.head())\n\n        return CLEANED_RADON_FILE_PATH\n\n    except Exception as e:\n        print(f\"Error during data cleaning: {e}\")\n        return None\n\nif __name__ == \"__main__\":\n    clean_radon_data()\n",
+  "history_output" : "Initial Radon dataset loaded.\nRemoved 2nd and 3rd rows from the dataset.\nState abbreviations converted to full state names.\nKept only required columns: State, County, Region, and Zone.\nCleaned Radon dataset saved as: /media/volume1/cleaned_radon_zones.csv\nCleaned Data Columns:\n['State', 'County', 'Region', 'Zone']\nCleaned Data Preview:\n     State   County Region Zone\n0  Alabama  Autauga      4    2\n1  Alabama  Baldwin      4    3\n2  Alabama  Barbour      4    2\n3  Alabama     Bibb      4    2\n4  Alabama   Blount      4    2\n",
+  "history_begin_time" : 1741882818147,
+  "history_end_time" : 1741882818778,
+  "history_notes" : null,
+  "history_process" : "ug081o",
+  "host_id" : "100001",
+  "indicator" : "Done"
+},{
+  "history_id" : "FSOn8z96jane",
+  "history_input" : "import pandas as pd\nimport os\n\n# Define the directory where the radon dataset is stored\nTARGET_DIRECTORY = \"/media/volume1\"\n\n# Define file paths\nRAW_RADON_FILE_PATH = os.path.join(TARGET_DIRECTORY, \"radon_zones.csv\")\nCLEANED_RADON_FILE_PATH = os.path.join(TARGET_DIRECTORY, \"cleaned_radon_zones.csv\")\n\n# Dictionary to map state abbreviations to full names\nSTATE_ABBREVIATIONS = {\n    \"AL\": \"Alabama\", \"AK\": \"Alaska\", \"AZ\": \"Arizona\", \"AR\": \"Arkansas\", \"CA\": \"California\",\n    \"CO\": \"Colorado\", \"CT\": \"Connecticut\", \"DE\": \"Delaware\", \"FL\": \"Florida\", \"GA\": \"Georgia\",\n    \"HI\": \"Hawaii\", \"ID\": \"Idaho\", \"IL\": \"Illinois\", \"IN\": \"Indiana\", \"IA\": \"Iowa\",\n    \"KS\": \"Kansas\", \"KY\": \"Kentucky\", \"LA\": \"Louisiana\", \"ME\": \"Maine\", \"MD\": \"Maryland\",\n    \"MA\": \"Massachusetts\", \"MI\": \"Michigan\", \"MN\": \"Minnesota\", \"MS\": \"Mississippi\", \"MO\": \"Missouri\",\n    \"MT\": \"Montana\", \"NE\": \"Nebraska\", \"NV\": \"Nevada\", \"NH\": \"New Hampshire\", \"NJ\": \"New Jersey\",\n    \"NM\": \"New Mexico\", \"NY\": \"New York\", \"NC\": \"North Carolina\", \"ND\": \"North Dakota\", \"OH\": \"Ohio\",\n    \"OK\": \"Oklahoma\", \"OR\": \"Oregon\", \"PA\": \"Pennsylvania\", \"RI\": \"Rhode Island\", \"SC\": \"South Carolina\",\n    \"SD\": \"South Dakota\", \"TN\": \"Tennessee\", \"TX\": \"Texas\", \"UT\": \"Utah\", \"VT\": \"Vermont\",\n    \"VA\": \"Virginia\", \"WA\": \"Washington\", \"WV\": \"West Virginia\", \"WI\": \"Wisconsin\", \"WY\": \"Wyoming\"\n}\n\ndef clean_radon_data():\n    \"\"\"\n    Cleans the Radon dataset by:\n    1. Extracting 'State' and 'County' from 'County,State' column.\n    2. Keeping only the 'State', 'County', 'Region', and 'Zone' columns.\n    3. Converting state abbreviations to full names.\n    4. Removing the 2nd and 3rd rows.\n    5. Printing the cleaned columns and first 5 rows.\n    \"\"\"\n    if not os.path.exists(RAW_RADON_FILE_PATH):\n        print(f\"Error: Radon file '{RAW_RADON_FILE_PATH}' not found.\")\n        return None\n\n    try:\n        # Load the dataset\n        df = pd.read_csv(RAW_RADON_FILE_PATH)\n\n        print(\"Initial Radon dataset loaded.\")\n\n        # Step 1: Extract 'State' and 'County' from 'County,State'\n        df[['County', 'State']] = df['County,State'].str.split(',', expand=True)\n\n        # Trim whitespace in 'State' and 'County'\n        df['State'] = df['State'].str.strip()\n        df['County'] = df['County'].str.strip()\n\n        # Step 2: Remove the 2nd and 3rd rows explicitly\n        df.drop(index=[0, 1], inplace=True)\n        df.reset_index(drop=True, inplace=True)  # Reset index after row removal\n        print(\"Removed 2nd and 3rd rows from the dataset.\")\n\n        # Step 3: Convert State abbreviations to full names\n        df['State'] = df['State'].map(STATE_ABBREVIATIONS).fillna(df['State'])\n        print(\"State abbreviations converted to full state names.\")\n\n        # Step 4: Keep only relevant columns\n        df = df[['State', 'County', 'Region', 'Zone']]\n        print(\"Kept only required columns: State, County, Region, and Zone.\")\n\n        # Save the cleaned dataset\n        df.to_csv(CLEANED_RADON_FILE_PATH, index=False)\n        print(f\"\\nCleaned Radon dataset saved as: {CLEANED_RADON_FILE_PATH}\")\n\n        # Print all columns and first 5 rows\n        print(\"\\nCleaned Data Columns:\")\n        print(df.columns.tolist())\n        print(\"\\nCleaned Data Preview:\")\n        print(df.head())\n\n        return CLEANED_RADON_FILE_PATH\n\n    except Exception as e:\n        print(f\"Error during data cleaning: {e}\")\n        return None\n\nif __name__ == \"__main__\":\n    clean_radon_data()\n",
+  "history_output" : "Initial Radon dataset loaded.\nRemoved 2nd and 3rd rows from the dataset.\nState abbreviations converted to full state names.\nKept only required columns: State, County, Region, and Zone.\nCleaned Radon dataset saved as: /media/volume1/cleaned_radon_zones.csv\nCleaned Data Columns:\n['State', 'County', 'Region', 'Zone']\nCleaned Data Preview:\n     State   County Region Zone\n0  Alabama  Autauga      4    2\n1  Alabama  Baldwin      4    3\n2  Alabama  Barbour      4    2\n3  Alabama     Bibb      4    2\n4  Alabama   Blount      4    2\n",
+  "history_begin_time" : 1741876218768,
+  "history_end_time" : 1741876219408,
+  "history_notes" : null,
+  "history_process" : "ug081o",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "svAtWnmBL5uC",
+  "history_input" : "import pandas as pd\nimport os\n\n# Define the directory where the radon dataset is stored\nTARGET_DIRECTORY = \"/media/volume1\"\n\n# Define file paths\nRAW_RADON_FILE_PATH = os.path.join(TARGET_DIRECTORY, \"radon_zones.csv\")\nCLEANED_RADON_FILE_PATH = os.path.join(TARGET_DIRECTORY, \"cleaned_radon_zones.csv\")\n\ndef clean_radon_data():\n    \"\"\"\n    Cleans the Radon dataset by:\n    1. Extracting 'State' and 'County' from 'County,State' column.\n    2. Keeping only the 'State', 'County', 'Region', and 'Zone' columns.\n    3. Removing the 2nd and 3rd rows from the dataset.\n    4. Replacing the incorrect 'State' column with the correct one.\n    5. Printing the cleaned columns and first 5 rows.\n    \"\"\"\n    if not os.path.exists(RAW_RADON_FILE_PATH):\n        print(f\"❌ Error: Radon file '{RAW_RADON_FILE_PATH}' not found.\")\n        return None\n\n    try:\n        # Load the dataset\n        df = pd.read_csv(RAW_RADON_FILE_PATH)\n\n        print(\"✅ Initial Radon dataset loaded.\")\n\n        # Step 1: Extract 'State' and 'County' from 'County,State'\n        df[['County', 'Corrected_State']] = df['County,State'].str.split(',', expand=True)\n\n        # Trim whitespace in 'State' and 'County'\n        df['Corrected_State'] = df['Corrected_State'].str.strip()\n        df['County'] = df['County'].str.strip()\n\n        # Step 2: Remove the 2nd and 3rd rows explicitly\n        df.drop(index=[0, 1], inplace=True)\n        df.reset_index(drop=True, inplace=True)  # Reset index after row removal\n        print(\"✅ Removed 2nd and 3rd rows from the dataset.\")\n\n        # Step 3: Replace the incorrect 'State' column with 'Corrected_State'\n        df.drop(columns=['State'], inplace=True)\n        df.rename(columns={'Corrected_State': 'State'}, inplace=True)\n        print(\"✅ Replaced incorrect 'State' column with the correct one.\")\n\n        # Step 4: Keep only relevant columns\n        df = df[['State', 'County', 'Region', 'Zone']]\n        print(\"✅ Kept only required columns: State, County, Region, and Zone.\")\n\n        # Save the cleaned dataset\n        df.to_csv(CLEANED_RADON_FILE_PATH, index=False)\n        print(f\"\\n✅ Cleaned Radon dataset saved as: {CLEANED_RADON_FILE_PATH}\")\n\n        # Print all columns and first 5 rows\n        print(\"\\n🔍 Cleaned Data Columns:\")\n        print(df.columns.tolist())\n        print(\"\\n🔍 Cleaned Data Preview:\")\n        print(df.head())\n\n        return CLEANED_RADON_FILE_PATH\n\n    except Exception as e:\n        print(f\"❌ Error during data cleaning: {e}\")\n        return None\n\nif __name__ == \"__main__\":\n    clean_radon_data()\n",
+  "history_output" : "✅ Initial Radon dataset loaded.\n✅ Removed 2nd and 3rd rows from the dataset.\n❌ Error during data cleaning: \"['State'] not found in axis\"\n",
+  "history_begin_time" : 1741876063458,
+  "history_end_time" : 1741876064017,
+  "history_notes" : null,
+  "history_process" : "ug081o",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "xy6DOReKh5Ft",
+  "history_input" : "import pandas as pd\nimport os\n\n# Define the directory where the radon dataset is stored\nTARGET_DIRECTORY = \"/media/volume1\"\n\n# Define file paths\nRAW_RADON_FILE_PATH = os.path.join(TARGET_DIRECTORY, \"radon_zones.csv\")\nCLEANED_RADON_FILE_PATH = os.path.join(TARGET_DIRECTORY, \"cleaned_radon_zones.csv\")\n\ndef clean_radon_data():\n    \"\"\"\n    Cleans the Radon dataset by:\n    1. Extracting 'State' and 'County' from 'County,State' column.\n    2. Keeping only the 'State', 'County', 'Region', and 'Zone' columns.\n    3. Removing the 2nd and 3rd rows from the dataset.\n    4. Printing the cleaned columns and first 5 rows.\n    \"\"\"\n    if not os.path.exists(RAW_RADON_FILE_PATH):\n        print(f\"❌ Error: Radon file '{RAW_RADON_FILE_PATH}' not found.\")\n        return None\n\n    try:\n        # Load the dataset\n        df = pd.read_csv(RAW_RADON_FILE_PATH)\n\n        print(\"✅ Initial Radon dataset loaded.\")\n\n        # Step 1: Extract 'State' and 'County' from 'County,State'\n        df[['County', 'State']] = df['County,State'].str.split(',', expand=True)\n\n        # Trim whitespace in 'State' and 'County'\n        df['State'] = df['State'].str.strip()\n        df['County'] = df['County'].str.strip()\n\n        # Step 2: Remove the 2nd and 3rd rows explicitly\n        df.drop(index=[0, 1], inplace=True)\n        df.reset_index(drop=True, inplace=True)  # Reset index after row removal\n        print(\"✅ Removed 2nd and 3rd rows from the dataset.\")\n\n        # Step 3: Keep only relevant columns\n        df = df[['State', 'County', 'Region', 'Zone']]\n        print(\"✅ Kept only required columns: State, County, Region, and Zone.\")\n\n        # Save the cleaned dataset\n        df.to_csv(CLEANED_RADON_FILE_PATH, index=False)\n        print(f\"\\n✅ Cleaned Radon dataset saved as: {CLEANED_RADON_FILE_PATH}\")\n\n        # Print all columns and first 5 rows\n        print(\"\\n🔍 Cleaned Data Columns:\")\n        print(df.columns.tolist())\n        print(\"\\n🔍 Cleaned Data Preview:\")\n        print(df.head())\n\n        return CLEANED_RADON_FILE_PATH\n\n    except Exception as e:\n        print(f\"❌ Error during data cleaning: {e}\")\n        return None\n\nif __name__ == \"__main__\":\n    clean_radon_data()\n",
+  "history_output" : "✅ Initial Radon dataset loaded.\n✅ Removed 2nd and 3rd rows from the dataset.\n✅ Kept only required columns: State, County, Region, and Zone.\n✅ Cleaned Radon dataset saved as: /media/volume1/cleaned_radon_zones.csv\n🔍 Cleaned Data Columns:\n['State', 'County', 'Region', 'Zone']\n🔍 Cleaned Data Preview:\n  State   County Region Zone\n0    AL  Autauga      4    2\n1    AL  Baldwin      4    3\n2    AL  Barbour      4    2\n3    AL     Bibb      4    2\n4    AL   Blount      4    2\n",
+  "history_begin_time" : 1741875922534,
+  "history_end_time" : 1741875923198,
+  "history_notes" : null,
+  "history_process" : "ug081o",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "NbZyFbcqUuVZ",
+  "history_input" : "import pandas as pd\nimport os\n\n# Define the directory where the radon dataset is stored\nTARGET_DIRECTORY = \"/media/volume1\"\n\n# Define file paths\nRAW_RADON_FILE_PATH = os.path.join(TARGET_DIRECTORY, \"radon_zones.csv\")\nCLEANED_RADON_FILE_PATH = os.path.join(TARGET_DIRECTORY, \"cleaned_radon_zones.csv\")\n\ndef clean_radon_data():\n    \"\"\"\n    Cleans the Radon dataset by:\n    1. Extracting 'State' and 'County' from 'County,State' column.\n    2. Keeping only the 'State', 'County', 'Region', and 'Zone' columns.\n    3. Removing the 2nd and 3rd rows from the dataset.\n    4. Printing the cleaned columns and first 5 rows.\n    \"\"\"\n    if not os.path.exists(RAW_RADON_FILE_PATH):\n        print(f\"❌ Error: Radon file '{RAW_RADON_FILE_PATH}' not found.\")\n        return None\n\n    try:\n        # Load the dataset\n        df = pd.read_csv(RAW_RADON_FILE_PATH)\n\n        print(\"✅ Initial Radon dataset loaded.\")\n\n        # Step 1: Extract 'State' and 'County' from 'County,State'\n        df[['County', 'State']] = df['County,State'].str.split(',', expand=True)\n\n        # Trim whitespace in 'State' and 'County'\n        df['State'] = df['State'].str.strip()\n        df['County'] = df['County'].str.strip()\n\n        # Step 2: Remove the 2nd and 3rd rows explicitly\n        df.drop(index=[0, 1], inplace=True)\n        df.reset_index(drop=True, inplace=True)  # Reset index after row removal\n        print(\"✅ Removed 2nd and 3rd rows from the dataset.\")\n\n        # Step 3: Keep only relevant columns\n        df = df[['State', 'County', 'Region', 'Zone']]\n        print(\"✅ Kept only required columns: State, County, Region, and Zone.\")\n\n        # Save the cleaned dataset\n        df.to_csv(CLEANED_RADON_FILE_PATH, index=False)\n        print(f\"\\n✅ Cleaned Radon dataset saved as: {CLEANED_RADON_FILE_PATH}\")\n\n        # Print all columns and first 5 rows\n        print(\"\\n🔍 Cleaned Data Columns:\")\n        print(df.columns.tolist())\n        print(\"\\n🔍 Cleaned Data Preview:\")\n        print(df.head())\n\n        return CLEANED_RADON_FILE_PATH\n\n    except Exception as e:\n        print(f\"❌ Error during data cleaning: {e}\")\n        return None\n\nif __name__ == \"__main__\":\n    clean_radon_data()\n",
+  "history_output" : "✅ Initial Radon dataset loaded.\n✅ Removed 2nd and 3rd rows from the dataset.\n✅ Kept only required columns: State, County, Region, and Zone.\n✅ Cleaned Radon dataset saved as: /media/volume1/cleaned_radon_zones.csv\n🔍 Cleaned Data Columns:\n['State', 'County', 'Region', 'Zone']\n🔍 Cleaned Data Preview:\n  State   County Region Zone\n0    AL  Autauga      4    2\n1    AL  Baldwin      4    3\n2    AL  Barbour      4    2\n3    AL     Bibb      4    2\n4    AL   Blount      4    2\n",
+  "history_begin_time" : 1741875880354,
+  "history_end_time" : 1741875880957,
+  "history_notes" : null,
+  "history_process" : "ug081o",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "qn78KcZYyKJl",
+  "history_input" : "import pandas as pd\nimport os\n\n# Define the path to the Downloads folder (update if needed)\ndownloads_path = os.path.expanduser(\"~/Downloads\")\nradon_file_path = os.path.join(downloads_path, \"radonzones.csv\")\noutput_file_path = os.path.join(downloads_path, \"updated_radon_dataset.csv\")\n\n# Load the radon dataset\nradon_df = pd.read_csv(radon_file_path)\n\n# Extracting 'State' and 'County' from the 'County,State' column\nradon_df[['County', 'State']] = radon_df['County,State'].str.extract(r'^(.*),\\s*(.*)$')\n\n# Selecting relevant columns\nradon_df = radon_df[['State', 'County', 'Region', 'Zone']]\n\n# Save the modified dataset\nradon_df.to_csv(output_file_path, index=False)\n\nprint(f\"Updated radon dataset saved as '{output_file_path}'.\")\n",
+  "history_output" : "Updated radon dataset saved as '/Users/jyoshmithareddypaturi/Downloads/updated_radon_dataset.csv'.\n",
+  "history_begin_time" : 1741275027252,
+  "history_end_time" : 1741275028449,
+  "history_notes" : null,
+  "history_process" : "ug081o",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "LJ5Sllq2sFIM",
+  "history_input" : "import pandas as pd\nimport os\n\n# Define the Downloads folder path\ndownloads_path = os.path.expanduser(\"~/Downloads\")\n\n# Load radon data from Downloads\nradon_file = os.path.join(downloads_path, \"radonzones.csv\")\nradon_data = pd.read_csv(radon_file)\n\n# Extract County and State\nradon_data[['County', 'State']] = radon_data['County,State'].str.extract(r'([a-zA-Z\\s]+),\\s*([A-Z]+)')\n\n# Mapping state abbreviations to full names\nstate_abbrev_to_full = {\n    'AL': 'Alabama', 'AK': 'Alaska', 'AZ': 'Arizona', 'AR': 'Arkansas', 'CA': 'California',\n    'CO': 'Colorado', 'CT': 'Connecticut', 'DE': 'Delaware', 'FL': 'Florida', 'GA': 'Georgia',\n    'HI': 'Hawaii', 'ID': 'Idaho', 'IL': 'Illinois', 'IN': 'Indiana', 'IA': 'Iowa',\n    'KS': 'Kansas', 'KY': 'Kentucky', 'LA': 'Louisiana', 'ME': 'Maine', 'MD': 'Maryland',\n    'MA': 'Massachusetts', 'MI': 'Michigan', 'MN': 'Minnesota', 'MS': 'Mississippi',\n    'MO': 'Missouri', 'MT': 'Montana', 'NE': 'Nebraska', 'NV': 'Nevada', 'NH': 'New Hampshire',\n    'NJ': 'New Jersey', 'NM': 'New Mexico', 'NY': 'New York', 'NC': 'North Carolina',\n    'ND': 'North Dakota', 'OH': 'Ohio', 'OK': 'Oklahoma', 'OR': 'Oregon', 'PA': 'Pennsylvania',\n    'RI': 'Rhode Island', 'SC': 'South Carolina', 'SD': 'South Dakota', 'TN': 'Tennessee',\n    'TX': 'Texas', 'UT': 'Utah', 'VT': 'Vermont', 'VA': 'Virginia', 'WA': 'Washington',\n    'WV': 'West Virginia', 'WI': 'Wisconsin', 'WY': 'Wyoming'\n}\nradon_data['State'] = radon_data['State'].map(state_abbrev_to_full)\n\n# Save cleaned radon data to Downloads\ncleaned_radon_file = os.path.join(downloads_path, \"cleaned_radon_data.csv\")\nradon_data.to_csv(cleaned_radon_file, index=False)\n\nprint(f\"Cleaned radon data saved to {cleaned_radon_file}\")\n",
+  "history_output" : "Cleaned radon data saved to /Users/jyoshmithareddypaturi/Downloads/cleaned_radon_data.csv\n",
+  "history_begin_time" : 1740628574237,
+  "history_end_time" : 1740628575097,
+  "history_notes" : null,
+  "history_process" : "ug081o",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "R1hxER0ThqFH",
+  "history_input" : "import pandas as pd\nimport os\n\n# Define the Downloads folder path\ndownloads_path = os.path.expanduser(\"~/Downloads\")\n\n# Load radon data from Downloads\nradon_file = os.path.join(downloads_path, \"radonzones.csv\")\nradon_data = pd.read_csv(radon_file)\n\n# Extract County and State\nradon_data[['County', 'State']] = radon_data['County,State'].str.extract(r'([a-zA-Z\\s]+),\\s*([A-Z]+)')\n\n# Mapping state abbreviations to full names\nstate_abbrev_to_full = {\n    'AL': 'Alabama', 'AK': 'Alaska', 'AZ': 'Arizona', 'AR': 'Arkansas', 'CA': 'California',\n    'CO': 'Colorado', 'CT': 'Connecticut', 'DE': 'Delaware', 'FL': 'Florida', 'GA': 'Georgia',\n    'HI': 'Hawaii', 'ID': 'Idaho', 'IL': 'Illinois', 'IN': 'Indiana', 'IA': 'Iowa',\n    'KS': 'Kansas', 'KY': 'Kentucky', 'LA': 'Louisiana', 'ME': 'Maine', 'MD': 'Maryland',\n    'MA': 'Massachusetts', 'MI': 'Michigan', 'MN': 'Minnesota', 'MS': 'Mississippi',\n    'MO': 'Missouri', 'MT': 'Montana', 'NE': 'Nebraska', 'NV': 'Nevada', 'NH': 'New Hampshire',\n    'NJ': 'New Jersey', 'NM': 'New Mexico', 'NY': 'New York', 'NC': 'North Carolina',\n    'ND': 'North Dakota', 'OH': 'Ohio', 'OK': 'Oklahoma', 'OR': 'Oregon', 'PA': 'Pennsylvania',\n    'RI': 'Rhode Island', 'SC': 'South Carolina', 'SD': 'South Dakota', 'TN': 'Tennessee',\n    'TX': 'Texas', 'UT': 'Utah', 'VT': 'Vermont', 'VA': 'Virginia', 'WA': 'Washington',\n    'WV': 'West Virginia', 'WI': 'Wisconsin', 'WY': 'Wyoming'\n}\nradon_data['State'] = radon_data['State'].map(state_abbrev_to_full)\n\n# Save cleaned radon data to Downloads\ncleaned_radon_file = os.path.join(downloads_path, \"cleaned_radon_data.csv\")\nradon_data.to_csv(cleaned_radon_file, index=False)\n\nprint(f\"Cleaned radon data saved to {cleaned_radon_file}\")\n",
+  "history_output" : "Cleaned radon data saved to /Users/jyoshmithareddypaturi/Downloads/cleaned_radon_data.csv\n",
+  "history_begin_time" : 1740628549928,
+  "history_end_time" : 1740628550700,
+  "history_notes" : null,
+  "history_process" : "ug081o",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "psf48aiu6jb",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740629008019,
+  "history_notes" : null,
+  "history_process" : "ug081o",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "03qsk4asl4d",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741274063407,
+  "history_notes" : null,
+  "history_process" : "ug081o",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "hgm02ouhj4d",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740629860964,
+  "history_notes" : null,
+  "history_process" : "ug081o",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "psybbhtnetk",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275207426,
+  "history_notes" : null,
+  "history_process" : "ug081o",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "q5rvsc109k4",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275476075,
+  "history_notes" : null,
+  "history_process" : "ug081o",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "em8l2686djw",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740628647101,
+  "history_notes" : null,
+  "history_process" : "ug081o",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "sih5r4b8zw2",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740629989083,
+  "history_notes" : null,
+  "history_process" : "ug081o",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "5xwoeuta2zd",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740630100158,
+  "history_notes" : null,
+  "history_process" : "ug081o",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "m2v7xklo8gf",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275389079,
+  "history_notes" : null,
+  "history_process" : "ug081o",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "m0vc1eyfegk",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741870314747,
+  "history_notes" : null,
+  "history_process" : "ug081o",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "wsv396hujx4",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741873525524,
+  "history_notes" : null,
+  "history_process" : "ug081o",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "i9bw312xcr7",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741873559806,
+  "history_notes" : null,
+  "history_process" : "ug081o",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "kquuig9elga",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741876725051,
+  "history_notes" : null,
+  "history_process" : "ug081o",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "qib80hb2pjb",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742429005649,
+  "history_notes" : null,
+  "history_process" : "ug081o",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "ieyiih6relc",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742429862384,
+  "history_notes" : null,
+  "history_process" : "ug081o",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "4n4zxjexqxb",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742429900033,
+  "history_notes" : null,
+  "history_process" : "ug081o",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "tlwekh8ksua",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742475919561,
+  "history_notes" : null,
+  "history_process" : "ug081o",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},]

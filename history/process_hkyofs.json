@@ -1,0 +1,91 @@
+[{
+  "history_id" : "6dc0nycjm7i",
+  "history_input" : "import pandas as pd\nimport os\n\n# Define the path to the Downloads folder (update if needed)\ndownloads_path = os.path.expanduser(\"~/Downloads\")\n\n# Define file paths\nfile_path = os.path.join(downloads_path, \"birds_merged_dataset.csv\")\ncleaned_file_path = os.path.join(downloads_path, \"birds_merged_dataset_cleaned.csv\")\n\n# Load the dataset\ndf = pd.read_csv(file_path)\n\n# Drop unnecessary columns\ndf = df.drop(columns=['State_y', 'State_x'], errors='ignore')\n\n# Rename 'State_x' to 'State'\n# df = df.rename(columns={'': 'State'})\n\n# Save the cleaned dataset\ndf.to_csv(cleaned_file_path, index=False)\n\nprint(f\"Dataset cleaned and saved successfully as '{cleaned_file_path}'.\")\n",
+  "history_output" : "Running",
+  "history_begin_time" : 1742429861986,
+  "history_end_time" : 1742429862402,
+  "history_notes" : null,
+  "history_process" : "hkyofs",
+  "host_id" : "100001",
+  "indicator" : "Done"
+},{
+  "history_id" : "7BBCoVXT5yRx",
+  "history_input" : "import pandas as pd\nimport os\n\n# Define the path to the Downloads folder (update if needed)\ndownloads_path = os.path.expanduser(\"~/Downloads\")\n\n# Define file paths\nfile_path = os.path.join(downloads_path, \"birds_merged_dataset.csv\")\ncleaned_file_path = os.path.join(downloads_path, \"birds_merged_dataset_cleaned.csv\")\n\n# Load the dataset\ndf = pd.read_csv(file_path)\n\n# Drop unnecessary columns\ndf = df.drop(columns=['State_y', 'State'], errors='ignore')\n\n# Rename 'State_x' to 'State'\ndf = df.rename(columns={'State_x': 'State'})\n\n# Save the cleaned dataset\ndf.to_csv(cleaned_file_path, index=False)\n\nprint(f\"Dataset cleaned and saved successfully as '{cleaned_file_path}'.\")\n",
+  "history_output" : "Dataset cleaned and saved successfully as '/Users/jyoshmithareddypaturi/Downloads/birds_merged_dataset_cleaned.csv'.\n",
+  "history_begin_time" : 1741275441810,
+  "history_end_time" : 1741275442797,
+  "history_notes" : null,
+  "history_process" : "hkyofs",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "ovk4g909utu",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275476094,
+  "history_notes" : null,
+  "history_process" : "hkyofs",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "623sc2wopiu",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741870314765,
+  "history_notes" : null,
+  "history_process" : "hkyofs",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "6a3w8lw0cxp",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741873525580,
+  "history_notes" : null,
+  "history_process" : "hkyofs",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "6bacqheqgcq",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741873559819,
+  "history_notes" : null,
+  "history_process" : "hkyofs",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "hjhvnmnv0kt",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741876725063,
+  "history_notes" : null,
+  "history_process" : "hkyofs",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "jlo790lwokq",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741882825276,
+  "history_notes" : null,
+  "history_process" : "hkyofs",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "15741qg91k4",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742429005661,
+  "history_notes" : null,
+  "history_process" : "hkyofs",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},]

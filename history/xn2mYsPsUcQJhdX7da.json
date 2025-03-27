@@ -1,0 +1,31 @@
+[{
+  "history_id" : "77tlxykyjvg",
+  "history_input" : "#!/bin/bash\n\n#install require libaries\nimport pandas as pd",
+  "history_output" : "/Users/jyoshmithareddypaturi/gw-workspace/77tlxykyjvg/gw-YsOYtCkvBf6xo4h7GeSduOttSE-77tlxykyjvg.sh: line 4: import: command not found\n",
+  "history_begin_time" : 1739426198262,
+  "history_end_time" : 1739426200365,
+  "history_notes" : null,
+  "history_process" : "wkkj41",
+  "host_id" : "100001",
+  "indicator" : "Failed"
+},{
+  "history_id" : "n0u1txcwpk0",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1739426200361,
+  "history_notes" : null,
+  "history_process" : "zmh4at",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "i918k0t3u9j",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1739426200358,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+}]

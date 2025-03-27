@@ -1,0 +1,321 @@
+[{
+  "history_id" : "ztvshk0qsia",
+  "history_input" : "import pandas as pd\nimport os\n\n# Define the directory where the cancer data file is stored\nTARGET_DIRECTORY = \"/media/volume1\"  \n\n# File paths\nRAW_FILE_PATH = os.path.join(TARGET_DIRECTORY, \"incd.csv\")\nCLEANED_FILE_PATH = os.path.join(TARGET_DIRECTORY, \"cleaned_cancer_data.csv\")\nFINAL_CLEANED_FILE_PATH = os.path.join(TARGET_DIRECTORY, \"updated_cleaned_cancer.csv\")\n\ndef clean_cancer_data():\n    \"\"\"\n    Cleans the cancer incidence dataset by:\n    1. Removing the first 8 blank rows.\n    2. Removing unnecessary columns.\n    3. Splitting 'County' column into 'County Name' and 'State Name'.\n    4. Reordering columns for clarity.\n    5. Printing the first few rows for verification.\n    \"\"\"\n    if not os.path.exists(RAW_FILE_PATH):\n        print(f\" Error: {RAW_FILE_PATH} does not exist.\")\n        return None\n\n    try:\n        # Step 1: Read the data while skipping the first 8 rows\n        df = pd.read_csv(RAW_FILE_PATH, skiprows=8, skip_blank_lines=True)\n        print(\" Initial dataset loaded with first 8 rows removed.\")\n\n        # Step 2: Drop unnecessary columns\n        columns_to_drop = [\n            \"FIPS\", \n            \"CI*Rank([rank note])\", \n            \"Lower CI (CI*Rank)\", \n            \"Upper CI (CI*Rank)\"\n        ]\n        df.drop(columns=[col for col in columns_to_drop if col in df.columns], inplace=True)\n        print(\" Unnecessary columns removed.\")\n\n        # Save intermediate cleaned dataset\n        df.to_csv(CLEANED_FILE_PATH, index=False)\n        print(f\" Cleaned dataset saved to: {CLEANED_FILE_PATH}\")\n\n        # Step 3: Further cleaning - Split 'County' into 'County Name' and 'State Name'\n        if \"County\" in df.columns:\n            df[['County Name', 'State Name']] = df['County'].str.extract(r'^(.*) County, (.*)\\(\\d+\\)$')\n            df.drop(columns=['County'], inplace=True)\n            print(\" 'County' column split into 'County Name' and 'State Name'.\")\n\n        # Step 4: Reorder columns for better readability\n        if \"State Name\" in df.columns and \"County Name\" in df.columns:\n            columns_order = [\"State Name\", \"County Name\"] + [col for col in df.columns if col not in [\"State Name\", \"County Name\"]]\n            df = df[columns_order]\n            print(\" Columns reordered.\")\n\n        # Save final cleaned dataset\n        df.to_csv(FINAL_CLEANED_FILE_PATH, index=False)\n        print(f\"\\n Final cleaned dataset saved as: {FINAL_CLEANED_FILE_PATH}\")\n\n        # Print first few rows of the cleaned dataset\n        print(\"\\n Cleaned Data Preview:\")\n        print(df.head())  # Prints the first 5 rows\n\n        return FINAL_CLEANED_FILE_PATH\n\n    except Exception as e:\n        print(f\" Error during data cleaning: {e}\")\n        return None\n\nif __name__ == \"__main__\":\n    clean_cancer_data()\n",
+  "history_output" : " Initial dataset loaded with first 8 rows removed.\n Unnecessary columns removed.\n Cleaned dataset saved to: /media/volume1/cleaned_cancer_data.csv\n 'County' column split into 'County Name' and 'State Name'.\n Columns reordered.\n Final cleaned dataset saved as: /media/volume1/updated_cleaned_cancer.csv\n Cleaned Data Preview:\n  State Name  ... Upper 95% Confidence Interval.1\n0        NaN  ...                            -2.9\n1    Florida  ...                            -0.7\n2   Kentucky  ...                             4.3\n3   Illinois  ...                             2.1\n4   Kentucky  ...                             2.6\n[5 rows x 11 columns]\n",
+  "history_begin_time" : 1741882817449,
+  "history_end_time" : 1741882818061,
+  "history_notes" : null,
+  "history_process" : "zmh4at",
+  "host_id" : "100001",
+  "indicator" : "Done"
+},{
+  "history_id" : "HoW4j16wN7E2",
+  "history_input" : "import pandas as pd\nimport os\n\n# Define the directory where the cancer data file is stored\nTARGET_DIRECTORY = \"/media/volume1\"  \n\n# File paths\nRAW_FILE_PATH = os.path.join(TARGET_DIRECTORY, \"incd.csv\")\nCLEANED_FILE_PATH = os.path.join(TARGET_DIRECTORY, \"cleaned_cancer_data.csv\")\nFINAL_CLEANED_FILE_PATH = os.path.join(TARGET_DIRECTORY, \"updated_cleaned_cancer.csv\")\n\ndef clean_cancer_data():\n    \"\"\"\n    Cleans the cancer incidence dataset by:\n    1. Removing the first 8 blank rows.\n    2. Removing unnecessary columns.\n    3. Splitting 'County' column into 'County Name' and 'State Name'.\n    4. Reordering columns for clarity.\n    5. Printing the first few rows for verification.\n    \"\"\"\n    if not os.path.exists(RAW_FILE_PATH):\n        print(f\" Error: {RAW_FILE_PATH} does not exist.\")\n        return None\n\n    try:\n        # Step 1: Read the data while skipping the first 8 rows\n        df = pd.read_csv(RAW_FILE_PATH, skiprows=8, skip_blank_lines=True)\n        print(\" Initial dataset loaded with first 8 rows removed.\")\n\n        # Step 2: Drop unnecessary columns\n        columns_to_drop = [\n            \"FIPS\", \n            \"CI*Rank([rank note])\", \n            \"Lower CI (CI*Rank)\", \n            \"Upper CI (CI*Rank)\"\n        ]\n        df.drop(columns=[col for col in columns_to_drop if col in df.columns], inplace=True)\n        print(\" Unnecessary columns removed.\")\n\n        # Save intermediate cleaned dataset\n        df.to_csv(CLEANED_FILE_PATH, index=False)\n        print(f\" Cleaned dataset saved to: {CLEANED_FILE_PATH}\")\n\n        # Step 3: Further cleaning - Split 'County' into 'County Name' and 'State Name'\n        if \"County\" in df.columns:\n            df[['County Name', 'State Name']] = df['County'].str.extract(r'^(.*) County, (.*)\\(\\d+\\)$')\n            df.drop(columns=['County'], inplace=True)\n            print(\" 'County' column split into 'County Name' and 'State Name'.\")\n\n        # Step 4: Reorder columns for better readability\n        if \"State Name\" in df.columns and \"County Name\" in df.columns:\n            columns_order = [\"State Name\", \"County Name\"] + [col for col in df.columns if col not in [\"State Name\", \"County Name\"]]\n            df = df[columns_order]\n            print(\" Columns reordered.\")\n\n        # Save final cleaned dataset\n        df.to_csv(FINAL_CLEANED_FILE_PATH, index=False)\n        print(f\"\\n Final cleaned dataset saved as: {FINAL_CLEANED_FILE_PATH}\")\n\n        # Print first few rows of the cleaned dataset\n        print(\"\\n Cleaned Data Preview:\")\n        print(df.head())  # Prints the first 5 rows\n\n        return FINAL_CLEANED_FILE_PATH\n\n    except Exception as e:\n        print(f\" Error during data cleaning: {e}\")\n        return None\n\nif __name__ == \"__main__\":\n    clean_cancer_data()\n",
+  "history_output" : " Initial dataset loaded with first 8 rows removed.\n Unnecessary columns removed.\n Cleaned dataset saved to: /media/volume1/cleaned_cancer_data.csv\n 'County' column split into 'County Name' and 'State Name'.\n Columns reordered.\n Final cleaned dataset saved as: /media/volume1/updated_cleaned_cancer.csv\n Cleaned Data Preview:\n  State Name  ... Upper 95% Confidence Interval.1\n0        NaN  ...                            -2.9\n1    Florida  ...                            -0.7\n2   Kentucky  ...                             4.3\n3   Illinois  ...                             2.1\n4   Kentucky  ...                             2.6\n[5 rows x 11 columns]\n",
+  "history_begin_time" : 1741873469734,
+  "history_end_time" : 1741873470413,
+  "history_notes" : null,
+  "history_process" : "zmh4at",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "8hcKQwKQfU4J",
+  "history_input" : "import pandas as pd\nimport os\n\n# Define the directory where the cancer data file is stored\nTARGET_DIRECTORY = \"/media/volume1\"  # Change this if needed\n\n# File paths\nRAW_FILE_PATH = os.path.join(TARGET_DIRECTORY, \"incd.csv\")\nCLEANED_FILE_PATH = os.path.join(TARGET_DIRECTORY, \"cleaned_cancer_data.csv\")\nFINAL_CLEANED_FILE_PATH = os.path.join(TARGET_DIRECTORY, \"updated_cleaned_cancer.csv\")\n\ndef clean_cancer_data():\n    \"\"\"\n    Cleans the cancer incidence dataset by:\n    1. Removing the first 8 blank rows.\n    2. Removing unnecessary columns.\n    3. Splitting 'County' column into 'County Name' and 'State Name'.\n    4. Reordering columns for clarity.\n    5. Printing the first few rows for verification.\n    \"\"\"\n    if not os.path.exists(RAW_FILE_PATH):\n        print(f\"❌ Error: {RAW_FILE_PATH} does not exist.\")\n        return None\n\n    try:\n        # Step 1: Read the data while skipping the first 8 rows\n        df = pd.read_csv(RAW_FILE_PATH, skiprows=8, skip_blank_lines=True)\n        print(\"✅ Initial dataset loaded with first 8 rows removed.\")\n\n        # Step 2: Drop unnecessary columns\n        columns_to_drop = [\n            \"FIPS\", \n            \"CI*Rank([rank note])\", \n            \"Lower CI (CI*Rank)\", \n            \"Upper CI (CI*Rank)\"\n        ]\n        df.drop(columns=[col for col in columns_to_drop if col in df.columns], inplace=True)\n        print(\"✅ Unnecessary columns removed.\")\n\n        # Save intermediate cleaned dataset\n        df.to_csv(CLEANED_FILE_PATH, index=False)\n        print(f\"✅ Cleaned dataset saved to: {CLEANED_FILE_PATH}\")\n\n        # Step 3: Further cleaning - Split 'County' into 'County Name' and 'State Name'\n        if \"County\" in df.columns:\n            df[['County Name', 'State Name']] = df['County'].str.extract(r'^(.*) County, (.*)\\(\\d+\\)$')\n            df.drop(columns=['County'], inplace=True)\n            print(\"✅ 'County' column split into 'County Name' and 'State Name'.\")\n\n        # Step 4: Reorder columns for better readability\n        if \"State Name\" in df.columns and \"County Name\" in df.columns:\n            columns_order = [\"State Name\", \"County Name\"] + [col for col in df.columns if col not in [\"State Name\", \"County Name\"]]\n            df = df[columns_order]\n            print(\"✅ Columns reordered.\")\n\n        # Save final cleaned dataset\n        df.to_csv(FINAL_CLEANED_FILE_PATH, index=False)\n        print(f\"\\n✅ Final cleaned dataset saved as: {FINAL_CLEANED_FILE_PATH}\")\n\n        # Print first few rows of the cleaned dataset\n        print(\"\\n🔍 Cleaned Data Preview:\")\n        print(df.head())  # Prints the first 5 rows\n\n        return FINAL_CLEANED_FILE_PATH\n\n    except Exception as e:\n        print(f\"❌ Error during data cleaning: {e}\")\n        return None\n\nif __name__ == \"__main__\":\n    clean_cancer_data()\n",
+  "history_output" : "✅ Initial dataset loaded with first 8 rows removed.\n✅ Unnecessary columns removed.\n✅ Cleaned dataset saved to: /media/volume1/cleaned_cancer_data.csv\n✅ 'County' column split into 'County Name' and 'State Name'.\n✅ Columns reordered.\n✅ Final cleaned dataset saved as: /media/volume1/updated_cleaned_cancer.csv\n🔍 Cleaned Data Preview:\n  State Name  ... Upper 95% Confidence Interval.1\n0        NaN  ...                            -2.9\n1    Florida  ...                            -0.7\n2   Kentucky  ...                             4.3\n3   Illinois  ...                             2.1\n4   Kentucky  ...                             2.6\n[5 rows x 11 columns]\n",
+  "history_begin_time" : 1741873387314,
+  "history_end_time" : 1741873387960,
+  "history_notes" : null,
+  "history_process" : "zmh4at",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "IDzZ5Wjy6DTm",
+  "history_input" : "import pandas as pd\nimport os\n\ndef fetch_and_clean_data():\n    # Get the path to the Downloads folder\n    downloads_folder = os.path.expanduser('~') + '/Downloads'\n    \n    # Path to the CSV file in Downloads folder\n    file_path = os.path.join(downloads_folder, 'incd.csv')\n    \n    if os.path.exists(file_path):\n        try:\n            # Read the data while skipping metadata rows\n            data = pd.read_csv(file_path, skiprows=8)\n            print(\"Initial Dataset:\")\n            print(data.head())  # Display the first few rows\n\n            # Define columns to drop based on the structure of your dataset\n            columns_to_drop = [\n                \"FIPS\", \n                \"CI*Rank([rank note])\", \n                \"Lower CI (CI*Rank)\", \n                \"Upper CI (CI*Rank)\"\n            ]\n            \n            # Clean the data by dropping specified columns\n            data_cleaned = data.drop(columns=columns_to_drop)\n            print(\"\\nCleaned Dataset:\")\n            print(data_cleaned.head())  # Display cleaned data\n\n            # Define the output file path to save the cleaned data in Downloads folder\n            output_file_path = os.path.join(downloads_folder, 'cleaned_dataset.csv')\n\n            # Save the cleaned dataset to a new CSV file\n            data_cleaned.to_csv(output_file_path, index=False)\n            print(f\"\\nCleaned dataset saved to {output_file_path}\")\n\n            return output_file_path  # Return the output file path for further use\n\n        except Exception as e:\n            print(f\"Error: {e}\")\n            return None\n    else:\n        print(f\"Error: {file_path} does not exist.\")\n        return None\n\n# Run the function to clean the data\noutput_file = fetch_and_clean_data()\n",
+  "history_output" : "Initial Dataset:\n                          County  ...  Upper 95% Confidence Interval.1\n0              US (SEER+NPCR)(1)  ...                             -2.9\n1       Union County, Florida(6)  ...                             -0.7\n2     Owsley County, Kentucky(7)  ...                              4.3\n3  Alexander County, Illinois(7)  ...                              2.1\n4    Carroll County, Kentucky(7)  ...                              2.6\n[5 rows x 14 columns]\nCleaned Dataset:\n                          County  ... Upper 95% Confidence Interval.1\n0              US (SEER+NPCR)(1)  ...                            -2.9\n1       Union County, Florida(6)  ...                            -0.7\n2     Owsley County, Kentucky(7)  ...                             4.3\n3  Alexander County, Illinois(7)  ...                             2.1\n4    Carroll County, Kentucky(7)  ...                             2.6\n[5 rows x 10 columns]\nCleaned dataset saved to /Users/jyoshmithareddypaturi/Downloads/cleaned_dataset.csv\n",
+  "history_begin_time" : 1739425963438,
+  "history_end_time" : 1739425964339,
+  "history_notes" : null,
+  "history_process" : "zmh4at",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "v2GhPV9ySIAJ",
+  "history_input" : "import pandas as pd\nimport os\n\ndef fetch_and_clean_data():\n    # Get the path to the Downloads folder\n    downloads_folder = os.path.expanduser('~') + '/Downloads'\n    \n    # Path to the CSV file in Downloads folder\n    file_path = os.path.join(downloads_folder, 'incd.csv')\n    \n    if os.path.exists(file_path):\n        try:\n            # Read the data while skipping metadata rows\n            data = pd.read_csv(file_path, skiprows=8)\n            print(\"Initial Dataset:\")\n            print(data.head())  # Display the first few rows\n\n            # Define columns to drop based on the structure of your dataset\n            columns_to_drop = [\n                \"FIPS\", \n                \"CI*Rank([rank note])\", \n                \"Lower CI (CI*Rank)\", \n                \"Upper CI (CI*Rank)\"\n            ]\n            \n            # Clean the data by dropping specified columns\n            data_cleaned = data.drop(columns=columns_to_drop)\n            print(\"\\nCleaned Dataset:\")\n            print(data_cleaned.head())  # Display cleaned data\n\n            # Define the output file path to save the cleaned data in Downloads folder\n            output_file_path = os.path.join(downloads_folder, 'cleaned_dataset*.csv')\n\n            # Save the cleaned dataset to a new CSV file\n            data_cleaned.to_csv(output_file_path, index=False)\n            print(f\"\\nCleaned dataset saved to {output_file_path}\")\n\n            return output_file_path  # Return the output file path for further use\n\n        except Exception as e:\n            print(f\"Error: {e}\")\n            return None\n    else:\n        print(f\"Error: {file_path} does not exist.\")\n        return None\n\n# Run the function to clean the data\noutput_file = fetch_and_clean_data()\n",
+  "history_output" : "Initial Dataset:\n                          County  ...  Upper 95% Confidence Interval.1\n0              US (SEER+NPCR)(1)  ...                             -2.9\n1       Union County, Florida(6)  ...                             -0.7\n2     Owsley County, Kentucky(7)  ...                              4.3\n3  Alexander County, Illinois(7)  ...                              2.1\n4    Carroll County, Kentucky(7)  ...                              2.6\n[5 rows x 14 columns]\nCleaned Dataset:\n                          County  ... Upper 95% Confidence Interval.1\n0              US (SEER+NPCR)(1)  ...                            -2.9\n1       Union County, Florida(6)  ...                            -0.7\n2     Owsley County, Kentucky(7)  ...                             4.3\n3  Alexander County, Illinois(7)  ...                             2.1\n4    Carroll County, Kentucky(7)  ...                             2.6\n[5 rows x 10 columns]\nError: [Errno 21] Is a directory: '/Users/jyoshmithareddypaturi/Downloads/cleaned_dataset*.csv'\n",
+  "history_begin_time" : 1739425870944,
+  "history_end_time" : 1739425871940,
+  "history_notes" : null,
+  "history_process" : "zmh4at",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "hSC66M6wIGxs",
+  "history_input" : "import pandas as pd\nimport os\n\ndef fetch_and_clean_data():\n    # Define the file path (assuming file is uploaded in the working directory)\n    file_path = '/mnt/data/incd.csv'  # Adjust this path based on your system\n\n    try:\n        # Read the data while skipping metadata rows\n        data = pd.read_csv(file_path, skiprows=8)\n        print(\"Initial Dataset:\")\n        print(data.head())  # Display the first few rows\n\n        # Define columns to drop based on the structure of your dataset\n        columns_to_drop = [\n            \"FIPS\", \n            \"CI*Rank([rank note])\", \n            \"Lower CI (CI*Rank)\", \n            \"Upper CI (CI*Rank)\"\n        ]\n        \n        # Clean the data by dropping specified columns\n        data_cleaned = data.drop(columns=columns_to_drop)\n        print(\"\\nCleaned Dataset:\")\n        print(data_cleaned.head())  # Display cleaned data\n\n        # Define the output file path for saving the cleaned data\n        output_file_path = '/mnt/data/cleaned_dataset.csv'\n\n        # Save the cleaned dataset to a new CSV file\n        data_cleaned.to_csv(output_file_path, index=False)\n        print(f\"\\nCleaned dataset saved to {output_file_path}\")\n\n        return output_file_path  # Return the output file path for further use in GeoWeaver\n\n    except Exception as e:\n        print(f\"Error: {e}\")\n        return None\n\n# Run the function to clean the data\noutput_file = fetch_and_clean_data()\n",
+  "history_output" : "Error: [Errno 2] No such file or directory: '/mnt/data/incd.csv'\n",
+  "history_begin_time" : 1739425234894,
+  "history_end_time" : 1739425235847,
+  "history_notes" : null,
+  "history_process" : "zmh4at",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "qvgkb22vjc6",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740625254809,
+  "history_notes" : null,
+  "history_process" : "zmh4at",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "i8rblusua5s",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1739427450820,
+  "history_notes" : null,
+  "history_process" : "zmh4at",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "hqq4ikfcaf1",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740629008014,
+  "history_notes" : null,
+  "history_process" : "zmh4at",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "8ngxl12bdiz",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741274063388,
+  "history_notes" : null,
+  "history_process" : "zmh4at",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "wuiz5rg1e8v",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1739426135914,
+  "history_notes" : null,
+  "history_process" : "zmh4at",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "3deua7vvmyh",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740629860957,
+  "history_notes" : null,
+  "history_process" : "zmh4at",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "h4wea5alncu",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1739427569848,
+  "history_notes" : null,
+  "history_process" : "zmh4at",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "xuyx4cqdoft",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275207413,
+  "history_notes" : null,
+  "history_process" : "zmh4at",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "dm515pm1iki",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275476068,
+  "history_notes" : null,
+  "history_process" : "zmh4at",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "2wl7ugcbqe5",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1739427390943,
+  "history_notes" : null,
+  "history_process" : "zmh4at",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "8v3qpnxlqbm",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1739426114224,
+  "history_notes" : null,
+  "history_process" : "zmh4at",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "n0u1txcwpk0",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1739426200361,
+  "history_notes" : null,
+  "history_process" : "zmh4at",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "olg6hl69uvo",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1739427177615,
+  "history_notes" : null,
+  "history_process" : "zmh4at",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "pjzn7qiheph",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740625279525,
+  "history_notes" : null,
+  "history_process" : "zmh4at",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "mdw2ok7lged",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740628647098,
+  "history_notes" : null,
+  "history_process" : "zmh4at",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "5268a1u1ak6",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740629989077,
+  "history_notes" : null,
+  "history_process" : "zmh4at",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "m46hucreb2i",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740630100143,
+  "history_notes" : null,
+  "history_process" : "zmh4at",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "c66ptrjo1qu",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275389013,
+  "history_notes" : null,
+  "history_process" : "zmh4at",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "6oeqrh99p7c",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741870314745,
+  "history_notes" : null,
+  "history_process" : "zmh4at",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "7gtiurq9o0d",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741873525522,
+  "history_notes" : null,
+  "history_process" : "zmh4at",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "0ppepvwutq0",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741873559805,
+  "history_notes" : null,
+  "history_process" : "zmh4at",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "yrc7039nnox",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741876725049,
+  "history_notes" : null,
+  "history_process" : "zmh4at",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "9kwhjhkwhjh",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742429005647,
+  "history_notes" : null,
+  "history_process" : "zmh4at",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "06rvz3bjv5a",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742429862382,
+  "history_notes" : null,
+  "history_process" : "zmh4at",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "0e3vrx2ai95",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742429900031,
+  "history_notes" : null,
+  "history_process" : "zmh4at",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "olb7bq8huri",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742475919558,
+  "history_notes" : null,
+  "history_process" : "zmh4at",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},]

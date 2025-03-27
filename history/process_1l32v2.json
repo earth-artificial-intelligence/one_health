@@ -1,0 +1,201 @@
+[{
+  "history_id" : "6mkObQ86rIn8",
+  "history_input" : "import pandas as pd\nimport os\n\ndef fetch_data():\n    # Get the path to the Downloads folder\n    downloads_folder = os.path.expanduser('~') + '/Downloads'\n    \n    # Path to the CSV file in Downloads folder\n    file_path = os.path.join(downloads_folder, 'data_222235.csv')\n    \n    if os.path.exists(file_path):\n        try:\n            # Attempt to read the CSV file with a different encoding (ISO-8859-1)\n            data = pd.read_csv(file_path, encoding='ISO-8859-1')\n            print(\"Dataset fetched successfully!\")\n            print(data.head())  # Display the first few rows of the data\n            return data\n        except Exception as e:\n            print(f\"Error reading the CSV file: {e}\")\n            return None\n    else:\n        print(f\"Error: {file_path} does not exist.\")\n        return None\n\n# Run the function to fetch the data\ndata = fetch_data()\n",
+  "history_output" : "Dataset fetched successfully!\n   StateFIPS    State  CountyFIPS  ... Value  Data Comment  Unnamed: 7\n0          1  Alabama        1001  ...  40.0           NaN         NaN\n1          1  Alabama        1001  ...  30.0           NaN         NaN\n2          1  Alabama        1001  ...  40.0           NaN         NaN\n3          1  Alabama        1003  ...  30.0           NaN         NaN\n4          1  Alabama        1003  ...  20.0           NaN         NaN\n[5 rows x 8 columns]\n",
+  "history_begin_time" : 1740625334104,
+  "history_end_time" : 1740625337541,
+  "history_notes" : null,
+  "history_process" : "1l32v2",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "bQ5YX3MvDUlv",
+  "history_input" : "import pandas as pd\nimport os\n\ndef fetch_data():\n    # Get the path to the Downloads folder\n    downloads_folder = os.path.expanduser('~') + '/Downloads'\n    \n    # Path to the CSV file in Downloads folder\n    file_path = os.path.join(downloads_folder, 'data_222235.csv')\n    \n    if os.path.exists(file_path):\n        try:\n            # Attempt to read the CSV file with a different encoding (ISO-8859-1)\n            data = pd.read_csv(file_path, encoding='ISO-8859-1')\n            print(\"Dataset fetched successfully!\")\n            print(data.head())  # Display the first few rows of the data\n            return data\n        except Exception as e:\n            print(f\"Error reading the CSV file: {e}\")\n            return None\n    else:\n        print(f\"Error: {file_path} does not exist.\")\n        return None\n\n# Run the function to fetch the data\ndata = fetch_data()\n",
+  "history_output" : "Dataset fetched successfully!\n   StateFIPS    State  CountyFIPS  ... Value  Data Comment  Unnamed: 7\n0          1  Alabama        1001  ...  40.0           NaN         NaN\n1          1  Alabama        1001  ...  30.0           NaN         NaN\n2          1  Alabama        1001  ...  40.0           NaN         NaN\n3          1  Alabama        1003  ...  30.0           NaN         NaN\n4          1  Alabama        1003  ...  20.0           NaN         NaN\n[5 rows x 8 columns]\n",
+  "history_begin_time" : 1739426900441,
+  "history_end_time" : 1739426901239,
+  "history_notes" : null,
+  "history_process" : "1l32v2",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "VJBqWhG0aEQA",
+  "history_input" : "import pandas as pd\nimport os\n\ndef fetch_data():\n    # Get the path to the Downloads folder\n    downloads_folder = os.path.expanduser('~') + '/Downloads'\n    \n    # Path to the CSV file in Downloads folder\n    file_path = os.path.join(downloads_folder, 'data_222235.csv')\n    \n    if os.path.exists(file_path):\n        try:\n            # Read the data from the CSV file\n            data = pd.read_csv(file_path)\n            print(\"Dataset fetched successfully!\")\n            print(data.head())  # Display the first few rows of the data\n            return data\n        except Exception as e:\n            print(f\"Error reading the CSV file: {e}\")\n            return None\n    else:\n        print(f\"Error: {file_path} does not exist.\")\n        return None\n\n# Run the function to fetch the data\ndata = fetch_data()\n",
+  "history_output" : "Error reading the CSV file: 'utf-8' codec can't decode byte 0xf1 in position 239629: invalid continuation byte\n",
+  "history_begin_time" : 1739426824422,
+  "history_end_time" : 1739426825208,
+  "history_notes" : null,
+  "history_process" : "1l32v2",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "a74pXCnQ1w8x",
+  "history_input" : "import pandas as pd\nimport os\n\ndef fetch_data():\n    # Get the path to the Downloads folder\n    downloads_folder = os.path.expanduser('~') + '/Downloads'\n    \n    # Path to the CSV file in Downloads folder\n    file_path = os.path.join(downloads_folder, 'data_222235.csv')\n    \n    if os.path.exists(file_path):\n        try:\n            # Read the data from the CSV file\n            data = pd.read_csv(file_path)\n            print(\"Dataset fetched successfully!\")\n            print(data.head())  # Display the first few rows of the data\n            return data\n        except Exception as e:\n            print(f\"Error reading the CSV file: {e}\")\n            return None\n    else:\n        print(f\"Error: {file_path} does not exist.\")\n        return None\n\n# Run the function to fetch the data\ndata = fetch_data()\n",
+  "history_output" : "Error: /Users/jyoshmithareddypaturi/Downloads/data_222235.csv does not exist.\n",
+  "history_begin_time" : 1739426746444,
+  "history_end_time" : 1739426747202,
+  "history_notes" : null,
+  "history_process" : "1l32v2",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "6sJvbLzd6x6O",
+  "history_input" : "import pandas as pd\nimport os\n\ndef fetch_data():\n    # Get the path to the Downloads folder\n    downloads_folder = os.path.expanduser('~') + '/Downloads'\n    \n    # Path to the CSV file in Downloads folder\n    file_path = os.path.join(downloads_folder, 'data_222235.csv')\n    \n    if os.path.exists(file_path):\n        try:\n            # Read the data from the CSV file\n            data = pd.read_csv(file_path)\n            print(\"Dataset fetched successfully!\")\n            print(data.head())  # Display the first few rows of the data\n            return data\n        except Exception as e:\n            print(f\"Error reading the CSV file: {e}\")\n            return None\n    else:\n        print(f\"Error: {file_path} does not exist.\")\n        return None\n\n# Run the function to fetch the data\ndata = fetch_data()\n",
+  "history_output" : "Error: /Users/jyoshmithareddypaturi/Downloads/data_222235.csv does not exist.\n",
+  "history_begin_time" : 1739426541105,
+  "history_end_time" : 1739426541974,
+  "history_notes" : null,
+  "history_process" : "1l32v2",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "rkhikz4j735",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740625254791,
+  "history_notes" : null,
+  "history_process" : "1l32v2",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "r0niylz5es2",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1739427450824,
+  "history_notes" : null,
+  "history_process" : "1l32v2",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "sp00cao5ntd",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740629008004,
+  "history_notes" : null,
+  "history_process" : "1l32v2",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "zqeqxi2ewnz",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741274063371,
+  "history_notes" : null,
+  "history_process" : "1l32v2",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "7ubvo1h44ik",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740629860948,
+  "history_notes" : null,
+  "history_process" : "1l32v2",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "og76ftbozh7",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1739427569851,
+  "history_notes" : null,
+  "history_process" : "1l32v2",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "6vman819sk0",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275207280,
+  "history_notes" : null,
+  "history_process" : "1l32v2",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "f922cah3xb3",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275476057,
+  "history_notes" : null,
+  "history_process" : "1l32v2",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "6fjfzwu32vo",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1739427390944,
+  "history_notes" : null,
+  "history_process" : "1l32v2",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "w26ebvr3pci",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1739427177617,
+  "history_notes" : null,
+  "history_process" : "1l32v2",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "ev9kgnu6udd",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740628647093,
+  "history_notes" : null,
+  "history_process" : "1l32v2",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "ccsackgsxis",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740630100132,
+  "history_notes" : null,
+  "history_process" : "1l32v2",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "cpuvbpeh2ys",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275388790,
+  "history_notes" : null,
+  "history_process" : "1l32v2",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "54qa9uuv5ym",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740625279511,
+  "history_notes" : null,
+  "history_process" : "1l32v2",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "62rjea7xbc3",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740629989072,
+  "history_notes" : null,
+  "history_process" : "1l32v2",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},]

@@ -1,0 +1,161 @@
+[{
+  "history_id" : "hQab7Wid2RMU",
+  "history_input" : "import os\nimport pandas as pd\n\n# Define the directory where the dataset is stored\nTARGET_DIRECTORY = \"/media/volume1\"\n\n# Define file paths\nBIRDS_DATA_FILE_PATH = os.path.join(TARGET_DIRECTORY, \"hpai-wild-birds.csv\")\nCLEANED_BIRDS_FILE_PATH = os.path.join(TARGET_DIRECTORY, \"hpai-wild-birds-2022.csv\")\n\ndef load_dataset(file_path):\n    \"\"\"\n    Loads the dataset from the given file path.\n\n    Args:\n        file_path (str): Path to the dataset.\n\n    Returns:\n        pd.DataFrame: Loaded pandas DataFrame.\n    \"\"\"\n    if not os.path.exists(file_path):\n        print(f\"Error: File '{file_path}' not found.\")\n        return None\n\n    try:\n        df = pd.read_csv(file_path)\n        print(\"Dataset loaded successfully.\")\n        return df\n    except Exception as e:\n        print(f\"Error loading dataset: {e}\")\n        return None\n\ndef filter_by_year(df, year=2022):\n    \"\"\"\n    Filters the dataset to keep only rows where 'Date Detected' is in the specified year.\n\n    Args:\n        df (pd.DataFrame): The dataset to filter.\n        year (int): The year to keep.\n\n    Returns:\n        pd.DataFrame: Filtered dataset.\n    \"\"\"\n    try:\n        # Ensure 'Date Detected' column exists\n        if \"Date Detected\" not in df.columns:\n            print(\"Error: 'Date Detected' column not found in dataset.\")\n            return None\n\n        # Convert 'Date Detected' column to datetime format\n        df[\"Date Detected\"] = pd.to_datetime(df[\"Date Detected\"], errors=\"coerce\")\n\n        # Filter only rows where the year is 2022\n        df_filtered = df[df[\"Date Detected\"].dt.year == year]\n\n        print(f\"Dataset filtered to keep only rows from {year}.\")\n        return df_filtered\n    except Exception as e:\n        print(f\"Error during filtering: {e}\")\n        return None\n\ndef save_filtered_dataset(df, file_path):\n    \"\"\"\n    Saves the filtered dataset to the specified file path.\n\n    Args:\n        df (pd.DataFrame): The filtered dataset.\n        file_path (str): Path to save the dataset.\n    \"\"\"\n    try:\n        df.to_csv(file_path, index=False)\n        print(f\"Filtered dataset saved successfully as '{file_path}'.\")\n    except Exception as e:\n        print(f\"Error saving dataset: {e}\")\n\ndef print_dataset_info(df):\n    \"\"\"\n    Prints the dataset's column names, first 10 rows, and total number of rows and columns.\n\n    Args:\n        df (pd.DataFrame): The dataset to print.\n    \"\"\"\n    num_rows, num_columns = df.shape\n    print(f\"\\nTotal Rows: {num_rows}, Total Columns: {num_columns}\")\n\n    print(\"\\nAll Columns in Filtered Dataset:\")\n    print(list(df.columns))\n\n    print(\"\\nFirst 10 Rows of Filtered Dataset:\")\n    print(df.head(10))\n\ndef main():\n    \"\"\"\n    Main function to load, filter, save, and print dataset information.\n    \"\"\"\n    df = load_dataset(BIRDS_DATA_FILE_PATH)\n    if df is not None:\n        filtered_df = filter_by_year(df, 2022)\n        if filtered_df is not None:\n            save_filtered_dataset(filtered_df, CLEANED_BIRDS_FILE_PATH)\n            print_dataset_info(filtered_df)  # Print columns, first 10 rows, and dataset size\n\nif __name__ == \"__main__\":\n    main()\n",
+  "history_output" : "Dataset loaded successfully.\nDataset filtered to keep only rows from 2022.\nFiltered dataset saved successfully as '/media/volume1/hpai-wild-birds-2022.csv'.\nTotal Rows: 5921, Total Columns: 9\nAll Columns in Filtered Dataset:\n['State', 'County', 'Collection Date', 'Date Detected', 'HPAI Strain', 'Bird Species', 'WOAH Classification', 'Sampling Method', 'Submitting Agency']\nFirst 10 Rows of Filtered Dataset:\n            State    County  ... Sampling Method Submitting Agency\n0  South Carolina  Colleton  ...  Hunter harvest              NWDP\n1  South Carolina  Colleton  ...  Hunter harvest              NWDP\n2  North Carolina      Hyde  ...  Hunter harvest              NWDP\n3  North Carolina      Hyde  ...  Hunter harvest              NWDP\n4  North Carolina      Hyde  ...  Hunter harvest              NWDP\n5  North Carolina      Hyde  ...  Hunter harvest              NWDP\n6  North Carolina   Pamlico  ...  Hunter harvest              NWDP\n7  North Carolina   Pamlico  ...  Hunter harvest              NWDP\n8  North Carolina   Pamlico  ...  Hunter harvest              NWDP\n9  North Carolina   Pamlico  ...  Hunter harvest              NWDP\n[10 rows x 9 columns]\n",
+  "history_begin_time" : 1742429772366,
+  "history_end_time" : 1742429772959,
+  "history_notes" : null,
+  "history_process" : "kth1gk",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "3iq6gQJebKNQ",
+  "history_input" : "import os\nimport pandas as pd\n\n# Define the directory where the dataset is stored\nTARGET_DIRECTORY = \"/media/volume1\"\n\n# Define file paths\nBIRDS_DATA_FILE_PATH = os.path.join(TARGET_DIRECTORY, \"hpai-wild-birds.csv\")\nCLEANED_BIRDS_FILE_PATH = os.path.join(TARGET_DIRECTORY, \"hpai-wild-birds-2022.csv\")\n\ndef load_dataset(file_path):\n    \"\"\"\n    Loads the dataset from the given file path.\n\n    Args:\n        file_path (str): Path to the dataset.\n\n    Returns:\n        pd.DataFrame: Loaded pandas DataFrame.\n    \"\"\"\n    if not os.path.exists(file_path):\n        print(f\"Error: File '{file_path}' not found.\")\n        return None\n\n    try:\n        df = pd.read_csv(file_path)\n        print(\"Dataset loaded successfully.\")\n        return df\n    except Exception as e:\n        print(f\"Error loading dataset: {e}\")\n        return None\n\ndef filter_by_year(df, year=2022):\n    \"\"\"\n    Filters the dataset to keep only rows where 'Date Detected' is in the specified year.\n\n    Args:\n        df (pd.DataFrame): The dataset to filter.\n        year (int): The year to keep.\n\n    Returns:\n        pd.DataFrame: Filtered dataset.\n    \"\"\"\n    try:\n        # Ensure 'Date Detected' column exists\n        if \"Date Detected\" not in df.columns:\n            print(\"Error: 'Date Detected' column not found in dataset.\")\n            return None\n\n        # Convert 'Date Detected' column to datetime format\n        df[\"Date Detected\"] = pd.to_datetime(df[\"Date Detected\"], errors=\"coerce\")\n\n        # Filter only rows where the year is 2022\n        df_filtered = df[df[\"Date Detected\"].dt.year == year]\n\n        print(f\"Dataset filtered to keep only rows from {year}.\")\n        return df_filtered\n    except Exception as e:\n        print(f\"Error during filtering: {e}\")\n        return None\n\ndef save_filtered_dataset(df, file_path):\n    \"\"\"\n    Saves the filtered dataset to the specified file path.\n\n    Args:\n        df (pd.DataFrame): The filtered dataset.\n        file_path (str): Path to save the dataset.\n    \"\"\"\n    try:\n        df.to_csv(file_path, index=False)\n        print(f\"Filtered dataset saved successfully as '{file_path}'.\")\n    except Exception as e:\n        print(f\"Error saving dataset: {e}\")\n\ndef print_dataset_info(df):\n    \"\"\"\n    Prints the dataset's total number of columns, column names, and first 10 rows.\n\n    Args:\n        df (pd.DataFrame): The dataset to print.\n    \"\"\"\n    num_columns = len(df.columns)\n\n    print(f\"\\nTotal Number of Columns: {num_columns}\")\n    print(\"\\nAll Columns in Filtered Dataset:\")\n    print(list(df.columns))\n\n    print(\"\\nFirst 10 Rows of Filtered Dataset:\")\n    print(df.head(10))\n\ndef main():\n    \"\"\"\n    Main function to load, filter, save, and print dataset information.\n    \"\"\"\n    df = load_dataset(BIRDS_DATA_FILE_PATH)\n    if df is not None:\n        filtered_df = filter_by_year(df, 2022)\n        if filtered_df is not None:\n            save_filtered_dataset(filtered_df, CLEANED_BIRDS_FILE_PATH)\n            print_dataset_info(filtered_df)  # Print total columns, column names, and first 10 rows\n\nif __name__ == \"__main__\":\n    main()\n",
+  "history_output" : "Dataset loaded successfully.\nDataset filtered to keep only rows from 2022.\nFiltered dataset saved successfully as '/media/volume1/hpai-wild-birds-2022.csv'.\nTotal Number of Columns: 9\nAll Columns in Filtered Dataset:\n['State', 'County', 'Collection Date', 'Date Detected', 'HPAI Strain', 'Bird Species', 'WOAH Classification', 'Sampling Method', 'Submitting Agency']\nFirst 10 Rows of Filtered Dataset:\n            State    County  ... Sampling Method Submitting Agency\n0  South Carolina  Colleton  ...  Hunter harvest              NWDP\n1  South Carolina  Colleton  ...  Hunter harvest              NWDP\n2  North Carolina      Hyde  ...  Hunter harvest              NWDP\n3  North Carolina      Hyde  ...  Hunter harvest              NWDP\n4  North Carolina      Hyde  ...  Hunter harvest              NWDP\n5  North Carolina      Hyde  ...  Hunter harvest              NWDP\n6  North Carolina   Pamlico  ...  Hunter harvest              NWDP\n7  North Carolina   Pamlico  ...  Hunter harvest              NWDP\n8  North Carolina   Pamlico  ...  Hunter harvest              NWDP\n9  North Carolina   Pamlico  ...  Hunter harvest              NWDP\n[10 rows x 9 columns]\n",
+  "history_begin_time" : 1742429710968,
+  "history_end_time" : 1742429711571,
+  "history_notes" : null,
+  "history_process" : "kth1gk",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "sNvRQmxYNK4d",
+  "history_input" : "import os\nimport pandas as pd\n\n# Define the directory where the dataset is stored\nTARGET_DIRECTORY = \"/media/volume1\"\n\n# Define file paths\nBIRDS_DATA_FILE_PATH = os.path.join(TARGET_DIRECTORY, \"hpai-wild-birds.csv\")\nCLEANED_BIRDS_FILE_PATH = os.path.join(TARGET_DIRECTORY, \"hpai-wild-birds-2022.csv\")\n\ndef load_dataset(file_path):\n    \"\"\"\n    Loads the dataset from the given file path.\n\n    Args:\n        file_path (str): Path to the dataset.\n\n    Returns:\n        pd.DataFrame: Loaded pandas DataFrame.\n    \"\"\"\n    if not os.path.exists(file_path):\n        print(f\"Error: File '{file_path}' not found.\")\n        return None\n\n    try:\n        df = pd.read_csv(file_path)\n        print(\"Dataset loaded successfully.\")\n        return df\n    except Exception as e:\n        print(f\"Error loading dataset: {e}\")\n        return None\n\ndef filter_by_year(df, year=2022):\n    \"\"\"\n    Filters the dataset to keep only rows where 'Date Detected' is in the specified year.\n\n    Args:\n        df (pd.DataFrame): The dataset to filter.\n        year (int): The year to keep.\n\n    Returns:\n        pd.DataFrame: Filtered dataset.\n    \"\"\"\n    try:\n        # Ensure 'Date Detected' column exists\n        if \"Date Detected\" not in df.columns:\n            print(\"Error: 'Date Detected' column not found in dataset.\")\n            return None\n\n        # Convert 'Date Detected' column to datetime format\n        df[\"Date Detected\"] = pd.to_datetime(df[\"Date Detected\"], errors=\"coerce\")\n\n        # Filter only rows where the year is 2022\n        df_filtered = df[df[\"Date Detected\"].dt.year == year]\n\n        print(f\"Dataset filtered to keep only rows from {year}.\")\n        return df_filtered\n    except Exception as e:\n        print(f\"Error during filtering: {e}\")\n        return None\n\ndef save_filtered_dataset(df, file_path):\n    \"\"\"\n    Saves the filtered dataset to the specified file path.\n\n    Args:\n        df (pd.DataFrame): The filtered dataset.\n        file_path (str): Path to save the dataset.\n    \"\"\"\n    try:\n        df.to_csv(file_path, index=False)\n        print(f\"Filtered dataset saved successfully as '{file_path}'.\")\n    except Exception as e:\n        print(f\"Error saving dataset: {e}\")\n\ndef print_dataset_info(df):\n    \"\"\"\n    Prints the dataset's column names and first 10 rows.\n\n    Args:\n        df (pd.DataFrame): The dataset to print.\n    \"\"\"\n    print(\"\\nAll Columns in Filtered Dataset:\")\n    print(list(df.columns))\n\n    print(\"\\nFirst 10 Rows of Filtered Dataset:\")\n    print(df.head(10))\n\ndef main():\n    \"\"\"\n    Main function to load, filter, save, and print dataset information.\n    \"\"\"\n    df = load_dataset(BIRDS_DATA_FILE_PATH)\n    if df is not None:\n        filtered_df = filter_by_year(df, 2022)\n        if filtered_df is not None:\n            save_filtered_dataset(filtered_df, CLEANED_BIRDS_FILE_PATH)\n            print_dataset_info(filtered_df)  # Print columns and first 10 rows\n\nif __name__ == \"__main__\":\n    main()\n",
+  "history_output" : "Dataset loaded successfully.\nDataset filtered to keep only rows from 2022.\nFiltered dataset saved successfully as '/media/volume1/hpai-wild-birds-2022.csv'.\nAll Columns in Filtered Dataset:\n['State', 'County', 'Collection Date', 'Date Detected', 'HPAI Strain', 'Bird Species', 'WOAH Classification', 'Sampling Method', 'Submitting Agency']\nFirst 10 Rows of Filtered Dataset:\n            State    County  ... Sampling Method Submitting Agency\n0  South Carolina  Colleton  ...  Hunter harvest              NWDP\n1  South Carolina  Colleton  ...  Hunter harvest              NWDP\n2  North Carolina      Hyde  ...  Hunter harvest              NWDP\n3  North Carolina      Hyde  ...  Hunter harvest              NWDP\n4  North Carolina      Hyde  ...  Hunter harvest              NWDP\n5  North Carolina      Hyde  ...  Hunter harvest              NWDP\n6  North Carolina   Pamlico  ...  Hunter harvest              NWDP\n7  North Carolina   Pamlico  ...  Hunter harvest              NWDP\n8  North Carolina   Pamlico  ...  Hunter harvest              NWDP\n9  North Carolina   Pamlico  ...  Hunter harvest              NWDP\n[10 rows x 9 columns]\n",
+  "history_begin_time" : 1742429631902,
+  "history_end_time" : 1742429632587,
+  "history_notes" : null,
+  "history_process" : "kth1gk",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "LrUEqRafGoHb",
+  "history_input" : "import os\nimport pandas as pd\n\n# Define the directory where the dataset is stored\nTARGET_DIRECTORY = \"/media/volume1\"\n\n# Define file paths\nBIRDS_DATA_FILE_PATH = os.path.join(TARGET_DIRECTORY, \"hpai-wild-birds.csv\")\nCLEANED_BIRDS_FILE_PATH = os.path.join(TARGET_DIRECTORY, \"hpai-wild-birds-2022.csv\")\n\ndef load_dataset(file_path):\n    \"\"\"\n    Loads the dataset from the given file path.\n\n    Args:\n        file_path (str): Path to the dataset.\n\n    Returns:\n        pd.DataFrame: Loaded pandas DataFrame.\n    \"\"\"\n    if not os.path.exists(file_path):\n        print(f\"Error: File '{file_path}' not found.\")\n        return None\n\n    try:\n        df = pd.read_csv(file_path)\n        print(\"Dataset loaded successfully.\")\n        return df\n    except Exception as e:\n        print(f\"Error loading dataset: {e}\")\n        return None\n\ndef filter_by_year(df, year=2022):\n    \"\"\"\n    Filters the dataset to keep only rows where 'Date Detected' is in the specified year.\n\n    Args:\n        df (pd.DataFrame): The dataset to filter.\n        year (int): The year to keep.\n\n    Returns:\n        pd.DataFrame: Filtered dataset.\n    \"\"\"\n    try:\n        # Ensure 'Date Detected' column exists\n        if \"Date Detected\" not in df.columns:\n            print(\"Error: 'Date Detected' column not found in dataset.\")\n            return None\n\n        # Convert 'Date Detected' column to datetime format\n        df[\"Date Detected\"] = pd.to_datetime(df[\"Date Detected\"], errors=\"coerce\")\n\n        # Filter only rows where the year is 2022\n        df_filtered = df[df[\"Date Detected\"].dt.year == year]\n\n        print(f\"Dataset filtered to keep only rows from {year}.\")\n        return df_filtered\n    except Exception as e:\n        print(f\"Error during filtering: {e}\")\n        return None\n\ndef save_filtered_dataset(df, file_path):\n    \"\"\"\n    Saves the filtered dataset to the specified file path.\n\n    Args:\n        df (pd.DataFrame): The filtered dataset.\n        file_path (str): Path to save the dataset.\n    \"\"\"\n    try:\n        df.to_csv(file_path, index=False)\n        print(f\"Filtered dataset saved successfully as '{file_path}'.\")\n    except Exception as e:\n        print(f\"Error saving dataset: {e}\")\n\ndef print_dataset_info(df):\n    \"\"\"\n    Prints the dataset's column names and first 10 rows.\n\n    Args:\n        df (pd.DataFrame): The dataset to print.\n    \"\"\"\n    print(\"\\nAll Columns in Filtered Dataset:\")\n    print(list(df.columns))\n\n    print(\"\\nFirst 10 Rows of Filtered Dataset:\")\n    print(df.head(10))\n\ndef main():\n    \"\"\"\n    Main function to load, filter, save, and print dataset information.\n    \"\"\"\n    df = load_dataset(BIRDS_DATA_FILE_PATH)\n    if df is not None:\n        filtered_df = filter_by_year(df, 2022)\n        if filtered_df is not None:\n            save_filtered_dataset(filtered_df, CLEANED_BIRDS_FILE_PATH)\n            print_dataset_info(filtered_df)  # Print columns and first 10 rows\n\nif __name__ == \"__main__\":\n    main()\n",
+  "history_output" : "Dataset loaded successfully.\nDataset filtered to keep only rows from 2022.\nFiltered dataset saved successfully as '/media/volume1/hpai-wild-birds-2022.csv'.\nAll Columns in Filtered Dataset:\n['State', 'County', 'Collection Date', 'Date Detected', 'HPAI Strain', 'Bird Species', 'WOAH Classification', 'Sampling Method', 'Submitting Agency']\nFirst 10 Rows of Filtered Dataset:\n            State    County  ... Sampling Method Submitting Agency\n0  South Carolina  Colleton  ...  Hunter harvest              NWDP\n1  South Carolina  Colleton  ...  Hunter harvest              NWDP\n2  North Carolina      Hyde  ...  Hunter harvest              NWDP\n3  North Carolina      Hyde  ...  Hunter harvest              NWDP\n4  North Carolina      Hyde  ...  Hunter harvest              NWDP\n5  North Carolina      Hyde  ...  Hunter harvest              NWDP\n6  North Carolina   Pamlico  ...  Hunter harvest              NWDP\n7  North Carolina   Pamlico  ...  Hunter harvest              NWDP\n8  North Carolina   Pamlico  ...  Hunter harvest              NWDP\n9  North Carolina   Pamlico  ...  Hunter harvest              NWDP\n[10 rows x 9 columns]\n",
+  "history_begin_time" : 1742429575615,
+  "history_end_time" : 1742429576215,
+  "history_notes" : null,
+  "history_process" : "kth1gk",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "nz8252yzPoLA",
+  "history_input" : "import pandas as pd\nimport os\n\n# Define the path to the Downloads folder (update if needed)\ndownloads_path = os.path.expanduser(\"~/Downloads\")\n\n# Define file paths\nfinal_merged_file_path = os.path.join(downloads_path, \"final_merged_dataset.csv\")\nbirds_file_path = os.path.join(downloads_path, \"HPAI Detections in Wild Birds.csv\")\noutput_file_path = os.path.join(downloads_path, \"birds_merged_dataset.csv\")\n\n# Load the datasets\nfinal_merged_df = pd.read_csv(final_merged_file_path)\nbirds_df = pd.read_csv(birds_file_path)\n\n# Drop date columns in the birds dataset if present\nbirds_df = birds_df.drop(columns=[col for col in birds_df.columns if 'date' in col.lower()], errors='ignore')\n\n# Get unique years from the final_merged_dataset\nyears = sorted(final_merged_df['Year'].unique())\n\n# Duplicate each row in birds dataset for every year\nbirds_expanded = pd.concat([birds_df.assign(Year=year) for year in years], ignore_index=True)\n\n# Ensure no duplicate counties for the same year by grouping and aggregating (taking first occurrence of each county-year pair)\nbirds_expanded = birds_expanded.groupby(['County', 'Year']).first().reset_index()\n\n# Merge datasets based on County and Year\nmerged_df = final_merged_df.merge(birds_expanded, on=['County', 'Year'], how='left')\n\n# Save the merged dataset\nmerged_df.to_csv(output_file_path, index=False)\n\nprint(f\"Merged dataset saved as '{output_file_path}'.\")\nprint(merged_df.head())\n",
+  "history_output" : "Merged dataset saved as '/Users/jyoshmithareddypaturi/Downloads/birds_merged_dataset.csv'.\n   State_x  ...                           Submitting Agency\n0  Alabama  ...                  AL DCNR/AL Dept of Ag/NWDP\n1  Alabama  ...                     MO Dept of Conservation\n2  Alabama  ...                                         NaN\n3  Alabama  ...                                GA DNR/SCWDS\n4  Alabama  ...  USGS/SCWDS/USFWS-National Eagle Repository\n[5 rows x 36 columns]\n",
+  "history_begin_time" : 1741275348883,
+  "history_end_time" : 1741275350532,
+  "history_notes" : null,
+  "history_process" : "kth1gk",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "qkdz4uifdgj",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275389148,
+  "history_notes" : null,
+  "history_process" : "kth1gk",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "47v0m6ufpa2",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275476093,
+  "history_notes" : null,
+  "history_process" : "kth1gk",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "dju9zca1ql3",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741870314763,
+  "history_notes" : null,
+  "history_process" : "kth1gk",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "i35iimb7kn5",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741873525556,
+  "history_notes" : null,
+  "history_process" : "kth1gk",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "6fd9iot5fgg",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741873559817,
+  "history_notes" : null,
+  "history_process" : "kth1gk",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "s9thaoam1y3",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741876725061,
+  "history_notes" : null,
+  "history_process" : "kth1gk",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "v6bsa3wdcem",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741882825260,
+  "history_notes" : null,
+  "history_process" : "kth1gk",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "2n9prtoiaob",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742429005659,
+  "history_notes" : null,
+  "history_process" : "kth1gk",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "qz1tu7z0e0p",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742429863402,
+  "history_notes" : null,
+  "history_process" : "kth1gk",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "eyvxf5yusyy",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742429900050,
+  "history_notes" : null,
+  "history_process" : "kth1gk",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "w73bstgwj6f",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742475919599,
+  "history_notes" : null,
+  "history_process" : "kth1gk",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},]

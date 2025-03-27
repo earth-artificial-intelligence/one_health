@@ -1,0 +1,241 @@
+[{
+  "history_id" : "M5f6Fpc9ZuWo",
+  "history_input" : "import os\nimport pandas as pd\nfrom download_data_utils import download_file  \n\ndef retrieve_birds_data():\n    \"\"\"\n    Downloads the birds dataset and loads it into a pandas DataFrame.\n    \"\"\"\n    # Define the target directory\n    target_directory = \"/media/volume1\"\n\n    # Ensure the directory exists\n    os.makedirs(target_directory, exist_ok=True)\n\n    # Define the URL for birds data\n    birds_data_url = \"https://huggingface.co/datasets/Geoweaver/animal_data/resolve/main/hpai-wild-birds.csv?download=true\"\n\n    # Define the expected filename\n    birds_file_name = \"hpai-wild-birds.csv\"\n    birds_file_path = os.path.join(target_directory, birds_file_name)\n\n    # Download the file\n    saved_file = download_file(birds_data_url, target_directory, birds_file_name)\n\n    if saved_file and os.path.exists(saved_file):\n        # Load the CSV file\n        birds_data = pd.read_csv(saved_file)\n\n        # Print the first few rows\n        print(\"Birds Data Preview:\")\n        print(birds_data.head())  # Prints the first 5 rows\n    else:\n        print(\"Birds data download failed. Please check the URL and permissions.\")\n\nif __name__ == \"__main__\":\n    retrieve_birds_data()\n",
+  "history_output" : "Starting file download...\nFile downloaded successfully and saved as: /media/volume1/hpai-wild-birds.csv\nBirds Data Preview:\n            State    County  ... Sampling Method Submitting Agency\n0  South Carolina  Colleton  ...  Hunter harvest              NWDP\n1  South Carolina  Colleton  ...  Hunter harvest              NWDP\n2  North Carolina      Hyde  ...  Hunter harvest              NWDP\n3  North Carolina      Hyde  ...  Hunter harvest              NWDP\n4  North Carolina      Hyde  ...  Hunter harvest              NWDP\n[5 rows x 9 columns]\n",
+  "history_begin_time" : 1742411381635,
+  "history_end_time" : 1742411382368,
+  "history_notes" : null,
+  "history_process" : "ddfkb3",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "Ru8hi8lQOUE0",
+  "history_input" : "import os\nimport pandas as pd\nfrom download_data_utils import download_file  \n\ndef retrieve_birds_data():\n    \"\"\"\n    Downloads the birds dataset and loads it into a pandas DataFrame.\n    \"\"\"\n    # Define the target directory\n    target_directory = \"/media/volume1\"\n\n    # Ensure the directory exists\n    os.makedirs(target_directory, exist_ok=True)\n\n    # Define the URL for birds data\n    birds_data_url = \"https://huggingface.co/datasets/Geoweaver/animal_data/resolve/main/hpai-wild-birds.csv?download=true\"\n\n    # Define the expected filename\n    birds_file_name = \"hpai-wild-birds.csv\"\n    birds_file_path = os.path.join(target_directory, birds_file_name)\n\n    # Download the file\n    saved_file = download_file(birds_data_url, target_directory, birds_file_name)\n\n    if saved_file and os.path.exists(saved_file):\n        # Load the CSV file\n        birds_data = pd.read_csv(saved_file)\n\n        # Print the first few rows\n        print(\"Birds Data Preview:\")\n        print(birds_data.head())  # Prints the first 5 rows\n    else:\n        print(\"Birds data download failed. Please check the URL and permissions.\")\n\nif __name__ == \"__main__\":\n    retrieve_birds_data()\n",
+  "history_output" : "Starting file download...\nFile downloaded successfully and saved as: /media/volume1/hpai-wild-birds.csv\nBirds Data Preview:\n            State    County  ... Sampling Method Submitting Agency\n0  South Carolina  Colleton  ...  Hunter harvest              NWDP\n1  South Carolina  Colleton  ...  Hunter harvest              NWDP\n2  North Carolina      Hyde  ...  Hunter harvest              NWDP\n3  North Carolina      Hyde  ...  Hunter harvest              NWDP\n4  North Carolina      Hyde  ...  Hunter harvest              NWDP\n[5 rows x 9 columns]\n",
+  "history_begin_time" : 1742411358893,
+  "history_end_time" : 1742411359674,
+  "history_notes" : null,
+  "history_process" : "ddfkb3",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "edikdxjy9kj",
+  "history_input" : "import pandas as pd\nimport os\nfrom download_data_utils. import download_file\n\ndef retrieve_hpai():\n    # Define the path to the Downloads folder\n    downloads_path = os.path.expanduser(\"~/Downloads\")\n\n    original_url = \"https://xxx\"\n\n    # Define the full path to the file\n    hpai_file = os.path.join(downloads_path, \"HPAI Detections in Wild Birds.csv\")\n\n    # automatically download it to the file\n    download_file(original_url, hpai_file)\n\n    # Load the CSV file\n    hpai_data = pd.read_csv(hpai_file)\n\n    # Print the first few rows\n    print(hpai_data.head())  # Prints the first 5 rows\n\nif __name__ == \"__main__\":\n    retrieve_hpai()\n",
+  "history_output" : "  File \"/media/volume1/gw-workspace/edikdxjy9kj/raw_birds_data.py\", line 3\n    from download_data_utils. import download_file\n                              ^^^^^^\nSyntaxError: invalid syntax\n",
+  "history_begin_time" : 1741882819444,
+  "history_end_time" : 1741882819509,
+  "history_notes" : null,
+  "history_process" : "ddfkb3",
+  "host_id" : "100001",
+  "indicator" : "Failed"
+},{
+  "history_id" : "3v6vxhKC6klH",
+  "history_input" : "import pandas as pd\nimport os\n\n# Define the path to the Downloads folder\ndownloads_path = os.path.expanduser(\"~/Downloads\")\n\n# Define the full path to the file\nhpai_file = os.path.join(downloads_path, \"HPAI Detections in Wild Birds.csv\")\n\n# Load the CSV file\nhpai_data = pd.read_csv(hpai_file)\n\n# Print the first few rows\nprint(hpai_data.head())  # Prints the first 5 rows\n",
+  "history_output" : "     State             County  ... Sampling Method Submitting Agency\n0  Arizona               Yuma  ...  Hunter harvest              NWDP\n1  Arizona               Yuma  ...  Hunter harvest              NWDP\n2  Arizona               Yuma  ...  Hunter harvest              NWDP\n3   Alaska  Matanuska-Susitna  ...       Live bird              NWDP\n4   Alaska  Matanuska-Susitna  ...       Live bird              NWDP\n[5 rows x 9 columns]\n",
+  "history_begin_time" : 1741273307327,
+  "history_end_time" : 1741273308676,
+  "history_notes" : null,
+  "history_process" : "ddfkb3",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "88UUNN2XZkrD",
+  "history_input" : "import os\n\ndownloads_path = os.path.expanduser(\"~/Downloads\")\nfiles = os.listdir(downloads_path)\n\nfor file in files:\n    print(f\"'{file}'\")  # Print file names with quotes to detect extra spaces\n\n",
+  "history_output" : "'UnitedStatesPM25-V6GL01-Annual-REGIONAL-2000-2019-wThresFrac.csv'\n'ResumeFinal[74].pdf'\n'StateDatabyWeekforMap_2022-23week40-39.csv'\n'workflowoptionspart11.mp3'\n'Academic Transcript fall24.pdf'\n'environmentpart2.mp3'\n'P1_PATURI_G01459587'\n'my_solution-3.csv'\n'GEOW2402_Geoweaver Weather Forecasting Demo_Final.mp4'\n'ep1.pdf'\n'accountSummaryOverview (1).pdf'\n'Screen Recording 2024-04-20 at 4.45.46 PM.mov'\n'merged_mortality_aqi_influenza_data.csv'\n'Project_Component2.sql'\n'UtilityBillingStatement_t0050227_012024.pdf'\n'PM2.5combined.csv'\n'Jyoshmithareddypaturi_642HW2'\n'jpaturi_resume_gmu.pdf20230903-1-ushuzb20230903-1-3ikihm.pdf'\n'shruthi VR.zip'\n'tl_2021_us_county.zip'\n'professor_dashboard.html'\n'54458922_20240711065048.pdf'\n'NSF Final.zip'\n'dbswitch6.mp3'\n'final_merged_aqi_cancer_data-2.csv'\n'54734387.pdf'\n'Virginia - Form VA-4.pdf'\n'Geoweaver Banner.png'\n'000 3.png'\n'gwdemo-part4.wav'\n'CS747_Assigment5'\n'Final.png'\n'Lecture 10.pptx'\n'Lung Cancer data.zip'\n'image (5).png'\n'lease doc.pdf'\n'gwdemo-part5.wav'\n'RangiTaranga (2015) Kannada 700MB @Links2U.mkv'\n'CHAITANYA_VARMA_SANABOINA_CV.docx'\n'000 2.png'\n'dbswitch7.mp3'\n'W8BENIC16-4.pdf'\n'jpaturi_hw4.zip'\n'Untitled (1280 x 640 px).zip'\n'jpaturi_Assignment2_code'\n'GFP.zip'\n'processpart5 (1).mp3'\n'3145-Article Text-13323-1-10-20240430.pdf'\n'workflowoptionspart4.mp3'\n'Paper Summary1_CS692.pdf'\n'202510.19861 CS-692-003 (Spring 2025): Cancelation of the first lecture on Friday.pdf'\n'Assignment 1 CS 747 template copy.docx'\n'marvel.pdf'\n'CS583-M9-ASSIGNMENT9-JYOSHMI.textClipping'\n'radonzones.csv'\n'MP5-Creating DQN Agent_Breakout-v5 (1).ipynb'\n'my_solution-2.csv'\n'accountSummaryOverview.pdf'\n'Participation Activity 9_Paturi_G01459587.zip'\n'environmentpart3.mp3'\n'workflowoptionspart10.mp3'\n'geoweaver_for_health_v2 (1).pdf'\n'Operational Monitoring of Snow Water Equivalent in the Western U.S. Using Machine Learning and Remote Sensing (5).png'\n'WhatsApp Image 2024-12-06 at 20.05.43.jpeg'\n'Sign_the_Lease_Agreement.pdf'\n'Screen Recording 2024-04-24 at 1.11.41 AM.mov'\n'CamScanner 07-26-2023 01.01.05 2.pdf'\n'203581812.zip'\n'environmentpart1.mp3'\n'airqualitytrendsbycity2000-2023.xlsx'\n'Screenshot 2024-09-09 at 11.11.57 PM.png'\n'Disease-Prediction-from-Symptoms-checkpoint.ipynb'\n'CS480_580_final_exam_topics(1).rtf'\n'birds_merged_dataset_cleaned.csv'\n'ESIP_1212025.pptx'\n'image (10).png'\n'geoweaver_poster_esdswg_2023 (1).pptx'\n'gr3yir8dynuvvrwp39ox (2).zip'\n'P1_PATURI_G01459587.zip'\n'Homework Assignment II (2).docx'\n'CS747_Assignment3-3'\n'dbswitch5.mp3'\n'JYOSHMITHA REDDY PATURI ML copy.docx'\n'merged_aqi_cancer.csv'\n'motivation 03.ipynb'\n'download-2'\n'fnafis2_hw9.mkv'\n'image (9).png'\n'stylegan_ffhq1024.pth.download'\n'dbswitch4.mp3'\n'SWE 642 ExtraCredit Report.pdf'\n'000.png'\n'MetaVersePaper.pdf'\n'Cursor Mac Installer (250207y6nbaw5qc).zip'\n'WhatsApp Image 2024-04-04 at 16.27.07 (1).jpeg'\n'County_COPD_prevalence.csv'\n'MP4_generation_PART2.ipynb'\n'P1_Sivasamy_G01453460.zip'\n'motivation draft 2.ipynb'\n'apache-tomcat-10.0.23'\n'Lung Cancer data'\n'Shift coverage-form (1).pdf'\n'InstallLDBPackage64c-2-1-2-08 (1).zip'\n'STOCKS RADHIKA.xlsx'\n'ozone_data.csv.numbers'\n'P4_Matta_G01413120.zip'\n'updated_cleaned_cancer.csv'\n'overview prev.ipynb'\n'P4_Paturi_G01459587.zip'\n'final_merged_aqi_cancer_airquality.csv'\n'CS747_Assignment2'\n'Participation activity 2'\n'MultiActivity.zip'\n'my_solution-5.csv'\n'environmentpart4.mp3'\n'jpaturi_Assignment2_code.zip'\n'Operational Monitoring of Snow Water Equivalent in the Western U.S. Using Machine Learning and Remote Sensing (8).png'\n'Homework Assignment 1 550.docx'\n'affinity-designer-2.5.5.dmg'\n'giphy.mp4'\n'222283341109.JPEG'\n'workflowoptionpart5-mod.mp3'\n'radon_merged_data.csv'\n'part2.ipynb'\n'54458924_20240711065051-2.pdf'\n'PAYMENT_RECEIPT_1632924906.pdf'\n'workflowoptionspart3.mp3'\n'index.html'\n'W8BENIC16-3.pdf'\n'accountSummaryOverview-2.pdf'\n'PAYMENT_RECEIPT_1620130307.pdf'\n'Screen Recording 2024-05-17 at 11.20.49 PM.mov'\n'.DS_Store'\n'image (8).png'\n'birds_merged_dataset.csv'\n'000 5.png'\n'macbook purchased on dec 3rd, 2023.pdf'\n'readme (ec2) .txt'\n'642HW1Jyosh.ppk'\n'gwdemo-part2.wav'\n'config.py'\n'gwdemo-part3.wav'\n'642 HW1.pdf'\n'SleepyHollow_Impl.sql'\n'Vue.js.pdf'\n'gat_training_data_sampled.pt'\n'Homework Assignment II.docx'\n'000 4.png'\n'Gateways2023_paper_21.pdf'\n'swe642Assignment3'\n'P2_Sivasamy_G01453460.zip'\n'CS583-M4-ASSIGNMENT4-JYOSHMITHA REDDY PATURU.pdf'\n'WhatsApp Image 2024-04-04 at 16.27.07.jpeg'\n'dbswitch1.mp3'\n'accountSummaryOverview-3.pdf'\n'CS583-M11-ASSIGNMENT11-JYOSHMI.pdf'\n'W8BENIC16-2.pdf'\n'data_222235.csv'\n'jpaturi_Assignment3.zip'\n'GEOW2401_Storyboards_15 - UI Sequence - Intro.ai'\n'workflowoptionspart2.mp3'\n'jpaturi_hw4'\n'Lecture 6.pptx'\n'New project.zip'\n'one health paper (1).docx'\n'Using Geoweaver in OpenOnDemand Desktop.docx'\n'~$3909_Bills.xlsx'\n'image (11).png'\n'part 3.pdf'\n'Assignment 1 CS 747 template copy.pdf'\n'Gmu Id Card.pdf'\n'Measurement_Guideline.pdf'\n'cleaned_dataset.csv'\n'my_solution-4.csv'\n'~$my_summer_intern_final_v2.xlsx'\n'merged_influenza_aqi_data_2022.csv'\n'SWE.pptx'\n'P4_Matta_G01413120'\n'Operational Monitoring of Snow Water Equivalent in the Western U.S. Using Machine Learning and Remote Sensing (4).png'\n'WhatsApp Image 2024-12-06 at 20.05.42.jpeg'\n'models.py'\n'MP3_P3- Jupyter Notebook.pdf'\n'my_solution-6.csv'\n'Jyosh resumeGW.pdf'\n'Geoweaver1.mov'\n'Jake_s_Resume.pdf'\n'CS747_Assignment4_template.docx'\n'archive'\n'642'\n'CS747_DL_Assignment-1.ipynb'\n'642 midterm'\n'Screenshot 2025-02-12 at 5.09.47 PM.png'\n'CS747_Assignment4'\n'CamScan_23-02-2024_14-40-35.pdf'\n'dbswitch3.mp3'\n'merged_data.csv'\n'AGU Poster wildfire.pdf'\n'Availability_Form_J1.pdf'\n'VikasHalgarSeetharam_Resume.pdf'\n'CS480_580_final_exam_topics (1).rtf'\n'Bank statement with salary .pdf'\n'000 6.png'\n'Jyoshmitha Resume.pdf'\n'gwdemo-part1.wav'\n's96wh3yf2f3ue7jyx1v9'\n'image (4).png'\n'memory.py'\n'jpaturi_mp3_code.zip'\n'Homework Assignment 1_Solution.docx'\n'AI Ready Data for Air Pollution, Lung Cancer, and Mortality in the United States.docx'\n'dbswitch2.mp3'\n'Final Exam Discussion_001 (1).pptx'\n'Geoweaver poster 2024.png'\n'Updated poster (1).zip'\n'workflowoptionspart1.mp3'\n'Renters Insurance Binder.pdf'\n'download-2.zip'\n'WhatsApp Image 2024-10-27 at 18.55.46.jpeg'\n'Measurement_Guideline (2).pdf'\n'.localized'\n'w8benic16.pdf'\n'Jobscan Cover Letter Package.docx'\n'189334029.zip'\n'~$IHME_USA_COUNTY_RESP_DISEASE_MORTALITY_1980_2014_NATIONAL_Y2017M09D26.XLSX'\n'updated_radon_dataset.csv'\n'Jyosh Resume 10-23-24.docx'\n'Untitled2 (1).ipynb'\n'my_solution-7.csv'\n'Poster Geoweaver 2024.png'\n'P4_Paturi_G01459587 2'\n'54458925_20240711065052-2.pdf'\n'Geoweaver.dmg'\n'weatherpart6.mp3'\n'lung_disease_data (1).csv'\n'CS747-assignment1'\n'table_export.csv'\n'kaggle_rnn_submission.csv'\n'Untitled.ipynb'\n'CS747_Assignment5.zip'\n'annual_aqi_by_county_2021.csv'\n'overview.ipynb'\n'processpart5.mp3'\n'cv6j.pdf'\n'swe_predicted_2024-09-13.tif'\n'Screen Recording 2025-02-06 at 12.02.25 PM.mov'\n'swe_predicted_2024-09-07.tif'\n'httpscreate.piktochart.comteams31783171dashboard.pdf'\n'Lecture 1.pptx'\n'workflowpart5.mp3'\n'new.zip'\n'GP.pdf'\n'Project Component 3.docx'\n'Structured and engaging work framework for the Geoweaver intern students.docx'\n'ThanmayiRajendra_Resume.pdf'\n'macdownloadpart6.mp3'\n'Visa.pdf'\n'dbswitch14.mp3'\n'my_solution.csv'\n'Project Proposal Template.docx'\n'dbswitch15.mp3'\n'dockergeoweaver1.mp3'\n'macdownloadpart7.mp3'\n'cleaned_air_radon_cancer_data.csv'\n'house rent.pdf'\n'part1.mp3'\n'P2_Paturi_G01459587 2'\n'workflowpart4.mp3'\n'~$747_assignment5_template.docx'\n'validation.ipynb'\n'sql.pdf'\n'shruthi VR'\n'642.zip'\n'HW2 - SWE 632.pdf'\n'part1 (1).ipynb'\n'snotel_ghcnd_stations_4yrs_all_cols_log10.csv'\n'github.pdf'\n'OperaGXSetup.zip'\n'jcv4.pdf'\n'Gateways2023_paper_21 (1).pdf'\n'Shift coverage-form (7).pdf'\n'processpart4.mp3'\n'CAIG.ipynb'\n'CS747_Assignment4.zip'\n'GMU_CS_551_Week1_Setup.pptx'\n'annual_aqi_by_county_2020.csv'\n'Wait List Form.pdf'\n'geoweaver_poster_esdswg_2023.pptx'\n'NSF figure.pdf'\n'weatherpart7.mp3'\n'DeepMix.pdf'\n'mark sheets.pdf'\n'366674374-fe3538f8-1616-45a0-91c2-a745d474478e.png'\n'weatherpart5.mp3'\n'Shift coverage-form (11).pdf'\n'Extra Credit G01459609 2'\n'insertions.sql'\n'DALL·E 2024-09-06 01.04.22 - A visually engaging figure summarizing an NSF project integrating AI with snow water equivalent (SWE) forecasting. The figure should have an appealing.webp'\n'Participation activity'\n'jpaturi_MP4_generation_PART2_output.pdf'\n'processpart6.mp3'\n'final data.zip'\n'SUMMARY-3.pdf'\n'lung_disease_data.csv'\n'GEOW2401_Storyboards_21 - UI Sequence - Trial and Error (1).ai'\n'monthly_aqi_by_state_2022.csv'\n'datasets inventory.xlsx'\n'Project1'\n'workflowoptionpart6.mp3'\n'Android5'\n'workflowpart6.mp3'\n'ViewPDF.pdf'\n'Screenshot 2024-05-27 at 6.11.07 PM.png'\n'part3.mp3'\n'macdownloadpart5.mp3'\n'Geoweaver Poster new.pdf'\n'create-your-own_64635515 (1).zip'\n'dockergeoweaver3.mp3'\n'dbswitch17.mp3'\n'WhatsApp Image 2024-04-04 at 16.27.07 (2).jpeg'\n'P3_Sivasamy_G01453460.zip'\n'image (3).png'\n'geoweaver (1).jar'\n'swe642Assignment3.zip'\n'dbswitch16.mp3'\n'dockergeoweaver2.mp3'\n'JGW.pdf'\n'macdownloadpart4.mp3'\n'CS583-M1-ASSIGNMENT1-JYOSHMITHA REDDY PATURU.pdf'\n'P2_Paturi_G01459587 (1).zip'\n'part2.mp3'\n'disease-prediction-model-workflow-main.zip'\n'workflowpart7.mp3'\n'jpaturi_mp4_code.zip'\n'Final Exam Discussion_001.pptx'\n'jpaturi_MP5_code.zip'\n'workflowoptionpart7.mp3'\n'JYOSHMITHA REDDY PATURI RESUME.pdf'\n'I94 - JYOSHMITHA.pdf'\n'netbeans-21-bin.zip'\n'SUMMARY-2.pdf'\n'processpart7.mp3'\n'Offer - Jyoshmitha Reddy Paturi.pdf'\n'Gateway ppt.pptx'\n'Homework Assignment II (1).docx'\n'CS747_homework2.zip'\n'Operational Monitoring of Snow Water Equivalent in the Western U.S. Using Machine Learning and Remote Sensing (3).png'\n'weatherpart4.mp3'\n'Operational Monitoring of Snow Water Equivalent in the Western U.S. Using Machine Learning and Remote Sensing (2).png'\n'final_merged_aqi_cancer_data.csv'\n'CS747_Assignment3.zip'\n'jpaturi_Assignment3'\n'DALL·E 2024-09-06 00.20.29 - A visually engaging rectangular figure summarizing an NSF project integrating AI with snow water equivalent (SWE) forecasting. The figure should have .webp'\n'CHAITANYA VARMA SANABOINA_Resume_PM.docx'\n'_tmp__lease_documents_20240918122930.pdf'\n'processpart3.mp3'\n'SUMMARY-6.pdf'\n'GEOW2401_Storyboards_26 - UI Sequence - Sharing Across Globe.ai'\n'mayank-baranwal-QUpQfo-eqjI-unsplash.jpg'\n'part10.mp3'\n'passport.pdf'\n'VirusViewByWeek.csv'\n'cv2.pdf'\n'part6.mp3'\n'[It Ends With Us 1] Colleen Hoover - It Ends with Us (2016, Atria Books) - libgen.li.epub'\n'PAYMENT_RECEIPT_1625957363.pdf'\n'CS583-M5-ASSIGNMENT5-JYOSHMITHA REDDY PATURU.pdf'\n'workflowpart3.mp3'\n'Operational Monitoring of Snow Water Equivalent in the Western U.S. Using Machine Learning and Remote Sensing.zip'\n'dbswitch12.mp3'\n'dockergeoweaver6.mp3'\n'50840994.pdf'\n'CS747-assignment1 3.zip'\n'image (2).png'\n'part1.ipynb'\n'CS747-assignment1 2.zip'\n'macdownloadpart1.mp3'\n'dockergeoweaver7.mp3'\n'dbswitch13.mp3'\n'Screen Recording 2025-02-24 at 11.07.43 AM.mov'\n'workflowpart2.mp3'\n'overview 01.ipynb'\n'Credit card bill.PNG'\n'part7.mp3'\n'gr3yir8dynuvvrwp39ox (1)'\n'cv3.pdf'\n'Untitled2.ipynb'\n'Sun_Irene_Kim_2023ASSIP_Poster.pptx (2).pdf'\n'Geoweaver.MOV'\n'00README_catalogue_and_licence.txt'\n'MP4_generation.ipynb'\n'SUMMARY-7.pdf'\n'JYOSHMITHA REDDY PATURI ML.pdf'\n'create-your-own_64627352.zip'\n'PLAN OF WORK JYOSHMITHA TEAM.docx'\n'processpart2.mp3'\n'Shift coverage-form (10).pdf'\n'gr3yir8dynuvvrwp39ox'\n'gat_training_data.pt'\n'weatherpart1.mp3'\n'speech_20250306042111128.mp3'\n'P1_PATURI_G01459587 2'\n'weatherpart3.mp3'\n'Predictions-2.ipynb'\n'kk60jzeqxdesff3u7b41'\n'annual_aqi_by_county_2018.csv'\n'radon_zones-spreadsheet.xls'\n'Untitled design-2.pdf'\n'Shift coverage-form (6).pdf'\n'SUMMARY-5.pdf'\n'SQLDeveloper.app'\n'Final Grades 1.pdf'\n'GEOWEAVER POSTER 2024 .png'\n'Data-2.zip'\n'data-table-3.csv'\n'merged_cancer_airquality_data.csv'\n'P4_Paturi_G01459587'\n'Screen Recording 2024-04-20 at 4.42.20 PM (1).mov'\n'ChatGPT.dmg'\n'GEOW2401_Storyboards_35 - Geoweaver Logo on Binary Stars Background.ai'\n'submission_189334029.pdf'\n'part5.mp3'\n'Virginia - Form VA-4 (1).pdf'\n'PAYMENT_RECEIPT_1640825057.pdf'\n'Lecture 4 (1).pptx'\n'dbswitch11.mp3'\n'dockergeoweaver5.mp3'\n'repository-open-graph-template (1).png'\n'54458925_20240711065052.pdf'\n'AVR.pdf'\n'3117811.3117815.pdf'\n'Operational Monitoring of Snow Water Equivalent in the Western U.S. Using Machine Learning and Remote Sensing-page-001 (1).jpg'\n'macdownloadpart3.mp3'\n'Screenshot 2024-12-03 at 12.26.23 AM.png'\n'conclusion.ipynb'\n'Overview 03.ipynb'\n'CS 550 Syllabus (1).docx'\n'Homework1_CS_747_Fall_2024_Deep_Learning-2.pdf'\n'NSF Final-page-001.jpg'\n'gr3yir8dynuvvrwp39ox (2)'\n'macdownloadpart2.mp3'\n'Captura de pantalla 2024-07-17 a la(s) 5.09.29 p.m..png'\n'EL JYOSHMITHA REDDY.pdf'\n'dockergeoweaver4.mp3'\n'dbswitch10.mp3'\n'Nehaa_Insurance.pdf'\n'2506_stylemorph_disentangled_3d_awa.pdf'\n'workflowpart1.mp3'\n'cleaned_aggregated_data (1).csv'\n'OpTransactionHistory25-01-2025.pdf'\n'w4nr.pdf'\n'IncidOzone2018.csv'\n'video1231717176.MP4'\n'data-table-2.csv'\n'motivation.ipynb'\n'jcv1.pdf'\n'VideoConferencingInTheWildPaper.pdf'\n'processpart1.mp3'\n'Quantum_poster20240828.pdf'\n'Untitled design-3.pdf'\n'SUMMARY-4.pdf'\n'cv7j.pdf'\n'annual_aqi_by_county_2019.csv'\n'MP5-Creating DQN Agent_Breakout-v5.ipynb'\n'weatherpart2.mp3'\n'Data_Set_Final_LTD_Slope_Intercept.xlsx'\n'P4_Paturi_G01459587 (2).zip'\n'Shift coverage-form.pdf'\n'Welcome Letter.pdf'\n'JYOSHMITHA REDDY PATURI ML.docx'\n'38689983.pdf'\n'MP3_P1 part 3 .pdf'\n'Homework Assignment 3.docx'\n'HW4.docx'\n'Shift coverage-form (5).pdf'\n'dockergeoweaver10.mp3'\n'Screenshot 2024-11-28 at 10.32.58 PM.png'\n'model.py'\n'Paper Summary3_CS692.pdf'\n'model (1).py'\n'jpaturi_assignment11'\n's96wh3yf2f3ue7jyx1v9 (1).zip'\n'jpaturi_MP4_classification_output.pdf'\n'cleaned_aggregated_data.csv'\n'Assignment 1 CS 747 template.docx'\n'Geoweaver poster 2024 (1).png'\n'part9.mp3'\n'normalized_data.csv'\n'dockergeoweaver9.mp3'\n'training data to GNN format - Jupyter Notebook.pdf'\n'StateDatabyWeekforMap_2021-22week40-39.csv'\n'Health (2).pptx'\n'CS583-M10-Assignment10-RithikTheddu.pdf'\n'CS583-M2-ASSIGNMENT2-JYOSHMITHA REDDY PATURU.pdf'\n'GEOW2401_Storyboards_14 - Geoweaver Logo Dark on White.ai'\n'Jyoshmitha_G01459587_642HW1'\n'dockergeoweaver8.mp3'\n'i20 document George mason university (1).pdf'\n'jpaturi_mp3_code'\n'training data to GNN format .ipynb'\n'Project Component 1.docx'\n'part8.mp3'\n'pexels-krivec-ales-547115.jpg'\n'Lecture 3.pptx'\n'Health data.zip'\n'PJyoshmithaReddy1Resume.pdf'\n'ChatGPT.dmg-2.download'\n'CVJ.pdf'\n'Docker.dmg'\n'pm25_data.csv'\n'jpaturi_Assignment5_report.pdf'\n'motivation draft.ipynb'\n'Jyoshmithareddypaturi_642HW2 2'\n'Lecture 6 (2).pptx'\n'cv4j.pdf'\n'Operational Monitoring of Snow Water Equivalent in the Western U.S. Using Machine Learning and Remote Sensing.pdf'\n'Untitled (1).png'\n'dockergeoweaver11.mp3'\n'217301372.zip'\n'54458924_20240711065051.pdf'\n'gw.history.fixed.js'\n'my_summer_intern_final_v2.xlsx'\n'P4_Paturi_G01459587 (1).zip'\n'Operational Monitoring of Snow Water Equivalent in the Western U.S. Using Machine Learning and Remote Sensing (1).png'\n'Sun_Irene_Kim_2023ASSIP_Poster.pptx.pdf'\n'Slack-4.36.140-macOS.dmg'\n'CS583-M9-ASSIGNMENT9-JYOSHMITHA REDDY PATURU.pdf'\n'ChatGPT_Desktop_public_latest.dmg'\n'annual_aqi_by_county_2017.csv'\n'invoice-04351-3860503.pdf'\n'Shift coverage-form (9).pdf'\n'uw-data-science-seminar-ziheng-sun.ics'\n'Untitled2 (2).ipynb'\n'Operational Monitoring of Snow Water Equivalent in the Western U.S. Using Machine Learning and Remote Sensing.png'\n'Wait List Form.doc'\n'[Twisted 02] Ana Huang - Twisted Games (2021) - libgen.li.epub'\n'jpaturi_MP5_output.pdf'\n'training data to GNN format'\n'cs747'\n'Geoweaver-3.dmg'\n'image (1).png'\n'MP3_P1.ipynb'\n's10653-023-01820-4.pdf'\n'CS583-M1-ASSIGNMENT1-JYOSHMITHA REDDY PATURU (1).pdf'\n'CS480_580_final_exam_topics.rtf'\n'Screen Recording 2024-04-20 at 4.42.20 PM.mov'\n'SWE.pptx.pdf'\n'Geoweaver-2.dmg'\n'MP5-Creating DQN Agent_Breakout-v5-mountaincar-Copy2 (1).ipynb'\n'67088922.pdf'\n'IncidPM2.52018.csv'\n'Sun_Irene_Kim_2023ASSIP_Poster.pptx (1).pdf'\n'SSN.pdf'\n'Midterm.pptx'\n'P3_Paturi_G01459587'\n'utils.py'\n'jpaturi_MP4_generation_output.pdf'\n'dockergeoweaver12.mp3'\n'download'\n'weatherpart9.mp3'\n'VikasHalgarSeetharam_Resume1.pdf'\n'MP5-Creating DQN Agent_Breakout-v5 (2).ipynb'\n'Lung Cancer data 3.zip'\n'~$osh Resume 10-23-24.docx'\n'671ecbedc023579e10da5eb5a8a7837e.pdf'\n'training data to GNN format.zip'\n'disease-prediction-model-workflow-main'\n'Hw10.mkv'\n'gw.history.updated.js'\n'passport-JYOSHMITHA.pdf'\n'6cvdocx.docx'\n'Participation activity.zip'\n'~$747_Assignment4_template.docx'\n'CS583-M10-ASSIGNMENT10-JYOSHMITHA REDDY PATURU.pdf'\n'Untitled (1280 x 640 px) (1).pdf'\n'SWE.ipynb'\n'MultiActivity'\n'hostpart2.mp3'\n'Daily_Census_Tract-Level_Ozone_Concentrations__2011-2015.csv'\n'50840989.pdf'\n'Thanmayi_642_2'\n'macdownloadpart9.mp3'\n'geoweaver_for_health_v1 (2).docx'\n'CHAITANYA VARMA SANABOINA_Resume.docx'\n'incd.csv'\n'stylemc-main.zip'\n'Offer - Jyoshmitha Reddy Paturi-2.pdf'\n'jpaturi_mp3_part2(1)_output.pdf'\n'data-table (1).csv'\n'~$oweaver_for_health_v1.docx'\n'macdownloadpart8.mp3'\n'install 2.pdf'\n'53131052.pdf'\n'hostpart3.mp3'\n'anyconnect-macos-4.10.07073-core-vpn-webdeploy-k9.zip'\n'android-studio-2023.2.1.24-mac_arm.dmg'\n'ResumeFinal.pdf'\n'Shift coverage-form (8).pdf'\n'Design Overview.pdf'\n'I-20_Paturi_psw.pdf'\n'~$STOCKS RADHIKA.xlsx'\n'jpaturi_HW13.zip'\n'GP.zip'\n'lec13.pptx'\n'geoweaver_for_health_v1.docx'\n'Lung Cancer data 2.zip'\n'new'\n'agent.py'\n'Copy of data_cleaned_final(1).csv'\n'weatherpart8.mp3'\n'My Movie 14.MOV'\n'train.py'\n'CVJ.docx'\n'testing&Evaluation.ipynb'\n'416012284-081552d3-32a2-4251-91d6-8653abaa0531.png'\n'processpart9.mp3'\n'~$HW3.docx'\n'cv5j.pdf'\n'Screenshot 2024-06-09 at 7.00.32 PM.png'\n'Operational_Fire_Resilience Template Slide for Sessions JAN25.pptx'\n'gr3yir8dynuvvrwp39ox.zip'\n'jpaturi_assignment13.mp4'\n'Install Cursor.app'\n'Operational_Fire_Resilience Template Slide for Sessions JAN25-2.pptx'\n'kaggle_rnn_submission (1).csv'\n'Lecture 2.pptx'\n'stylemc-main'\n'workflowoptionpart9.mp3'\n'~$5.1CV.docx'\n'swe_predicted_2022-10-11.tif'\n'CS583-M6-ASSIGNMENT6-JYOSHMITHA REDDY PATURU.pdf'\n'Warp.dmg'\n'Vue.js.pptx'\n'Captura de pantalla 2024-07-17 a la(s) 5.09.19 p.m..png'\n'JYOSHMITHA_RESUME (1).pdf'\n'Jyoshmitha_G01459587_642HW1 2'\n'hostpart1.mp3'\n'workflowpart9.mp3'\n'dbswitch18.mp3'\n'GEOW2401_Storyboards_21 - UI Sequence - Trial and Error.ai'\n'Final Poster.png'\n'HW4-SWE632.pdf'\n'Motivation prev.ipynb'\n'jpaturi_HW10'\n'[Template] PLAN OF WORK INDIVIDUAL.docx'\n'Geoweaver-4.dmg'\n'dbswitch19.mp3'\n'Air_Quality_Measures_on_the_National_Environmental_Health_Tracking_Network.csv'\n'disease-prediction'\n'SWE - Jupyter Notebook.pdf'\n'DALL·E 2024-10-30 19.43.52 - A social media preview image for the Geoweaver project. Include a clean, modern design with a white or light blue background, the Geoweaver logo promi.webp'\n'workflowpart8.mp3'\n'P3_Paturi_G01459587.zip'\n'Academic Transcript-2nd.pdf'\n'217301372'\n'water_payment.pdf'\n'New project-page-001 2.jpg'\n'netbeans'\n'Shift coverage-form (4).pdf'\n'jpaturi_HW10.zip'\n'processpart8.mp3'\n'dockeraudio.mp3'\n'macdownloadpart5mod.mp3'\n'Lecture  7.pptx'\n'692_Jyoshmitha_G01459587.pdf'\n'Android Networking Configuration.pptx'\n'Jyoshmitha Reddy P_Software Engineer I_20250118.pdf'\n'readme.txt'\n'gateways geoweaver paper 2024.docx'\n'Operational Monitoring of Snow Water Equivalent in the Western U.S. Using Machine Learning and Remote Sensing (7).png'\n'ec2 setup commands.rtf'\n'642(2) midterm'\n'68028009.pdf'\n'feature_engineering_notebook.py'\n'Project Component 1 Rubric.docx'\n'New project-page-001.jpg'\n'ideate-model.pdf'\n'losses.py'\n'~$teways2023_paper_21.docx'\n'.ipynb_checkpoints'\n'New project.pdf'\n'VisionProPaper.pdf'\n'Health (1).pptx'\n'Jyoshmitha_G01459587.pdf'\n'GEOW2401_Storyboards_14 - Geoweaver Logo Dark on White (1).ai'\n'Thanmayi_642_2.zip'\n'My copy Geoweaver Guide Video Transcripts.docx'\n'Paper Summary1_CS692.docx'\n'Paper Summary2_CS692.pdf'\n'weatherpart7 (1).mp3'\n'CS480_580_final_exam_topics (2).rtf'\n'ViewPDF-6.pdf'\n'Untitled.png'\n'image (7).png'\n'GEOW2401_Storyboards_18 - UI Sequence - Time and Money.ai'\n'Lecture 6 (1).pptx'\n'Will Machine Learning AI Make Human Translators An Endangered Species?.jpg'\n'CS583-M3-ASSIGNMENT3-JYOSHMITHA REDDY PATURU.pdf'\n'Bill on the name of Harini who is our primary appllicant.pdf'\n'MP3_P1 - Jupyter Notebook.pdf'\n'final_merged_aqi_cancer_airquality-2.csv'\n'Lecture 9.pptx'\n'msj.pdf'\n'Abstract.ipynb'\n'qgis-macos-pr.dmg'\n'MentorLastName_FirstName_LastName_2023ASSIP_Poster.pptx'\n'PAYMENT_RECEIPT_1622945183.pdf'\n'jpaturi_mp3_code 2'\n'SUMMARY.pdf'\n'Google Fi-2023-08-10.pdf'\n'IMG_7773.jpg'\n'SWE632- HW3.pdf'\n'database.jsp'\n'geoweaver.jar'\n'Screenshot 2024-06-03 at 8.23.25 PM.png'\n'Project1.zip'\n'Vamsi Seemakurthi_Resume.pdf'\n'Virginia - Form VA-4-2.pdf'\n'GEOW2401_Storyboards_22 - UI Sequence - Visualizing Results.ai'\n'~$OSHMITHA REDDY PATURI ML copy.docx'\n'XGBoost.ipynb'\n'Geoweaver board.pdf'\n'Paturi_Wage Letter_.pdf'\n'model_training.ipynb'\n'W4NR-3.pdf'\n'Gateways2023_paper_21.docx'\n'GEOW2401_Storyboards_40 - Geoweaver Favicon.ai'\n'vlc-3.0.20-arm64.dmg'\n'Academic Transcript-2nd[91].pdf'\n'one health paper.docx'\n'Shift coverage-form (3).pdf'\n'~$16.1CV.docx'\n'PM2.5combined (1).csv'\n'P2_Paturi_G01459587'\n'paper 1.pdf'\n'THE-INNOVATION-D-24-00099_R1.pdf'\n's96wh3yf2f3ue7jyx1v9.zip'\n'repository-open-graph-template.png'\n'Extra Credit G01459609 2.zip'\n'000 6300.png'\n'GEOW2401_Storyboards_14 - Geoweaver Logo Dark on White (2).ai'\n'~$747_Assignment2_submission_template.docx'\n'082869ef-9e4a-4ffe-8258-686e63583f69.pkpass'\n'download.zip'\n'merged_influenza_data_2022.csv'\n'vhalgars_Hw13.zip'\n'yashwant'\n'jpaturi_Assignment2_report.docx'\n'perceptron_submission_CIFAR.csv'\n'Jan bill.jpg'\n'Geoweaver (1).dmg'\n'ViewPDF-5.pdf'\n'wifi bill paid by my roommate sruthi.pdf'\n'GEOW2401_Storyboards_06 - Remote Work - Data Sharing.ai'\n'Data-2'\n'Untitled'\n'signed_packet_file_lease_document_17388530_1726677704.pdf'\n'SWE 642 ExtraCredit Report.docx'\n'ViewPDF-4.pdf'\n'Project Proposal_Jyoshmitha_G01459587.pdf'\n'HW2 - SWE 632 (1).pdf'\n'overLay.pdf'\n'MP4_classification.ipynb'\n'Hospital bills.pdf'\n'Operational Monitoring of Snow Water Equivalent in the Western U.S. Using Machine Learning and Remote Sensing-page-001.jpg'\n'archive.zip'\n'final_merged_with_region_zone.csv'\n'jpaturi_MP5_code'\n'54458923_20240711065049-2.pdf'\n'student_dashboard.html'\n'CS747-assignment1 2'\n'Lecture 5.pptx'\n'readme (S3 bucket).txt'\n'Jyoshmithareddypaturi_642HW2.zip'\n'54458922_20240711065048-2.pdf'\n'Jyosh resumeGW.docx'\n'image (12).png'\n'WhatsApp Image 2024-04-04 at 16.27.12.jpeg'\n'CS747_assignment5_template.docx'\n'CS747_Assignment 5'\n'Screen Recording 2024-03-16 at 11.19.55 PM.gif'\n'Realizing Practical Earth AI.pptx'\n'Reordered_Dataset.csv'\n'CS747_Assignment2_part1.ipynb - Colab.pdf'\n'tl_2021_us_county'\n'geoweaver_for_health_v2.pdf'\n'GEOW2401_Storyboards_28 - Research Institutions Landscape.ai'\n'github-recovery-codes.txt'\n'Screen Recording 2024-04-20 at 4.45.46 PM (1).mov'\n'W4NR-2.pdf'\n'Presentation 4.pdf'\n'Jyoshmitha_G01459587_642HW1.zip'\n'CS583-M8-ASSIGNMENT8-JYOSHMITHA REDDY PATURU.pdf'\n'Lung_Disease_prediction.ipynb'\n'queries.sql'\n'Request for Permission for Missing my Mobile Immersive Computing(CS692) First Class of Spring 2025..pdf'\n'50838716.pdf'\n'Untitled (1280 x 640 px).pdf'\n'Health data'\n'readme copy.txt'\n'~$ 550 Syllabus.docx'\n'54458923_20240711065049.pdf'\n'Chatbot_for_healthcare_system_using_Arti.pdf'\n'Screen Recording 2024-04-20 at 10.46.39 AM.mov'\n'pdf folder'\n'Lecture 4.pptx'\n'GEOW2401_Storyboards_38 - Geoweaver Logo Black.ai'\n'gr3yir8dynuvvrwp39ox (1).zip'\n'~$17.3CV.docx'\n'merged_mortality_aqi_data.csv'\n'Shift coverage-form3.pdf'\n'CS583-M12-ASSIGNMENT12-JYOSHMI.pdf'\n'PAYMENT_RECEIPT_1637379423.pdf'\n'jpaturi_mp4_code'\n'dbswitch9.mp3'\n'cleaned_radon_data.csv'\n'P1_PATURI_G01459587 (1).zip'\n'Jres.pdf'\n'ML AGU.xlsx'\n'OracleDB'\n'Screen Recording 2024-05-17 at 11.24.30 PM.mov'\n'~$Realizing Practical Earth AI.pptx'\n'Untitled design.pdf'\n'Networking1.zip'\n'XGBoost - Jupyter Notebook.pdf'\n'dbswitch8.mp3'\n'part2data.txt'\n'data-table.csv'\n'~$CVJ.docx'\n'CS_747_Final_Report.pdf'\n'Shift coverage-form (2).pdf'\n'geoweaver_for_health_v1 (1).docx'\n'PAYMENT_RECEIPT_1629631184.pdf'\n'P2_Paturi_G01459587.zip'\n'Untitled design-3-page-001.jpg'\n'NSF Final.pdf'\n'Project1 2.zip'\n'Screenshot 2024-11-28 at 10.32.42 PM.png'\n'WhatsApp Image 2024-12-06 at 20.05.43 (1).jpeg'\n'P4_Sivasamy_G01453460 3'\n'HW3.docx'\n'decision_tree.joblib'\n'FW: 2024 ESIP Collaboration of the Year Nomination Form .pdf'\n'VISA-JYOSHMITHA.pdf'\n'WhatsApp Image 2024-09-23 at 15.53.40.jpeg'\n'GP-page-001.jpg'\n'69612586.pdf'\n'Untitled design.jpg'\n'CS747-assignment1.zip'\n'Ozonecombined.csv'\n'FlashBack.pdf'\n'Sun_Anping_Huang_2024ASSIP_Poster.pptx'\n'commands for ec2 connection.txt'\n'Jyoshmitha_G01459587_642HW1 (1).zip'\n'accountSummaryOverview (2).pdf'\n'Screen Recording 2024-04-20 at 10.22.40 AM.mov'\n'merged_annual_aqi_by_county.csv'\n'anyconnect-macos-4.10.07073-core-vpn-webdeploy-k9.dmg'\n'disease-prediction.zip'\n'MortPM2.5.csv'\n'CamScanner 07-26-2023 01.01.05.pdf'\n'Predictions.ipynb'\n'processpart10.mp3'\n'Lecture 8.pptx'\n'jpaturi_hw9.zip'\n'ViewPDF-3.pdf'\n'Geoweaver new banner.png'\n'Project Proposal.pdf'\n'37937313.pdf'\n'vhalgars_homework13.mp4'\n'Updated poster.zip'\n'daily_aqi_by_county_2023.csv'\n'image.png'\n'spectral_normalization.py'\n'image (6).png'\n'P4_Sivasamy_G01453460 2'\n'4130_learning_input_agnostic_manipu.pdf'\n'daily_aqi_by_county_2022.csv'\n'CS480_580_final_exam_topics (3).rtf'\n'Sai Nikhil Raga Software Development Engineer Resume.pdf'\n'Jyoshmitha Reddy P_Software Engineer I_20250118.docx'\n'Job Explore.xlsx'\n'ViewPDF-2.pdf'\n'final_merged_dataset.csv'\n's10596-024-10317-7.pdf'\n'Screenshot 2024-11-06 at 1.01.17 PM.png'\n'MortOzone.csv'\n'Untitled (1280 x 640 px).png'\n'Treatment bill.jpeg'\n'Networking1'\n'Ozonecombined (1).csv'\n'pexels-eberhard-grossgasteiger-572897.jpg'\n'CS583-M7-ASSIGNMENT7-JYOSHMITHA REDDY PATURU.pdf'\n'workflowoptionspart8.mp3'\n'GeoDa1.22.0.4-Installer.dmg'\n'Android5.zip'\n'OracleDB.zip'\n'CS 550 Syllabus.docx'\n'17.3CV.docx'\n'intro_to_swe_workflow_geoweaver.ipynb'\n'IHME_USA_COUNTY_RESP_DISEASE_MORTALITY_1980_2014_NATIONAL_Y2017M09D26.XLSX'\n'Operational Monitoring of Snow Water Equivalent in the Western U.S. Using Machine Learning and Remote Sensing (6).png'\n'create-your-own_64635515.zip'\n'annual_aqi_5_years_average.csv'\n'DALL·E 2024-08-30 09.18.50 - A professional and visually engaging scientific poster on 'Operational Monitoring of Snow Water Equivalent (SWE) in the Western U.S. Using Machine Lea.webp'\n",
+  "history_begin_time" : 1741273090758,
+  "history_end_time" : 1741273093201,
+  "history_notes" : null,
+  "history_process" : "ddfkb3",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "5gsNraXrAdNI",
+  "history_input" : "import pandas as pd\nimport os\n\n# Define the path to the Downloads folder\ndownloads_path = os.path.expanduser(\"~/Downloads\")\n\n# Define the full path to the file\nhpai_file = os.path.join(downloads_path, \"HPAI Detections in Wild Birds.csv\")\n\n# Load the CSV file\nhpai_data = pd.read_csv(hpai_file)\n\n# Print the first few rows\nprint(hpai_data.head())  # Prints the first 5 rows\n",
+  "history_output" : "Traceback (most recent call last):\n  File \"/Users/jyoshmithareddypaturi/gw-workspace/5gsNraXrAdNI/raw_birds_data.py\", line 11, in <module>\n    hpai_data = pd.read_csv(hpai_file)\n                ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/jyoshmithareddypaturi/anaconda3/lib/python3.11/site-packages/pandas/io/parsers/readers.py\", line 912, in read_csv\n    return _read(filepath_or_buffer, kwds)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/jyoshmithareddypaturi/anaconda3/lib/python3.11/site-packages/pandas/io/parsers/readers.py\", line 577, in _read\n    parser = TextFileReader(filepath_or_buffer, **kwds)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/jyoshmithareddypaturi/anaconda3/lib/python3.11/site-packages/pandas/io/parsers/readers.py\", line 1407, in __init__\n    self._engine = self._make_engine(f, self.engine)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/jyoshmithareddypaturi/anaconda3/lib/python3.11/site-packages/pandas/io/parsers/readers.py\", line 1661, in _make_engine\n    self.handles = get_handle(\n                   ^^^^^^^^^^^\n  File \"/Users/jyoshmithareddypaturi/anaconda3/lib/python3.11/site-packages/pandas/io/common.py\", line 859, in get_handle\n    handle = open(\n             ^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '/Users/jyoshmithareddypaturi/Downloads/HPAI Detections in Wild Birds.csv'\n",
+  "history_begin_time" : 1741272916873,
+  "history_end_time" : 1741272918211,
+  "history_notes" : null,
+  "history_process" : "ddfkb3",
+  "host_id" : null,
+  "indicator" : "Failed"
+},{
+  "history_id" : "zoy84B0GTQa7",
+  "history_input" : "import pandas as pd\nimport os\n\n# Define the path to the Downloads folder\ndownloads_path = os.path.expanduser(\"~/Downloads\")\n\n# Define the full path to the file\nhpai_file = os.path.join(downloads_path, \"HPAI Detections in Wild Birds.csv\")\n\n# Load the CSV file\nhpai_data = pd.read_csv(hpai_file)\n\n# Print the first few rows\nprint(hpai_data.head())  # Prints the first 5 rows\n",
+  "history_output" : "Traceback (most recent call last):\n  File \"/Users/jyoshmithareddypaturi/gw-workspace/zoy84B0GTQa7/raw_birds_data.py\", line 11, in <module>\n    hpai_data = pd.read_csv(hpai_file)\n                ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/jyoshmithareddypaturi/anaconda3/lib/python3.11/site-packages/pandas/io/parsers/readers.py\", line 912, in read_csv\n    return _read(filepath_or_buffer, kwds)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/jyoshmithareddypaturi/anaconda3/lib/python3.11/site-packages/pandas/io/parsers/readers.py\", line 577, in _read\n    parser = TextFileReader(filepath_or_buffer, **kwds)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/jyoshmithareddypaturi/anaconda3/lib/python3.11/site-packages/pandas/io/parsers/readers.py\", line 1407, in __init__\n    self._engine = self._make_engine(f, self.engine)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/jyoshmithareddypaturi/anaconda3/lib/python3.11/site-packages/pandas/io/parsers/readers.py\", line 1661, in _make_engine\n    self.handles = get_handle(\n                   ^^^^^^^^^^^\n  File \"/Users/jyoshmithareddypaturi/anaconda3/lib/python3.11/site-packages/pandas/io/common.py\", line 859, in get_handle\n    handle = open(\n             ^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '/Users/jyoshmithareddypaturi/Downloads/HPAI Detections in Wild Birds.csv'\n",
+  "history_begin_time" : 1741272847981,
+  "history_end_time" : 1741272850550,
+  "history_notes" : null,
+  "history_process" : "ddfkb3",
+  "host_id" : null,
+  "indicator" : "Failed"
+},{
+  "history_id" : "8avm8t5sibf",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741274063430,
+  "history_notes" : null,
+  "history_process" : "ddfkb3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "jza5107nzn6",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275207449,
+  "history_notes" : null,
+  "history_process" : "ddfkb3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "kltdhe0sslq",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275476087,
+  "history_notes" : null,
+  "history_process" : "ddfkb3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "3jzux47fuxf",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740630100178,
+  "history_notes" : null,
+  "history_process" : "ddfkb3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "q8cqojpfkeo",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741212507922,
+  "history_notes" : null,
+  "history_process" : "ddfkb3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "8ve4omojy35",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741213300613,
+  "history_notes" : null,
+  "history_process" : "ddfkb3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "9ayp1mxk8dd",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741213324316,
+  "history_notes" : null,
+  "history_process" : "ddfkb3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "c4x5j5nl3ez",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741213335986,
+  "history_notes" : null,
+  "history_process" : "ddfkb3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "jqdt5myho7x",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275389127,
+  "history_notes" : null,
+  "history_process" : "ddfkb3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "v13k9k5aad6",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741870314752,
+  "history_notes" : null,
+  "history_process" : "ddfkb3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "10eo836l212",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741873525530,
+  "history_notes" : null,
+  "history_process" : "ddfkb3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "l5ecvpk2d74",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741873559811,
+  "history_notes" : null,
+  "history_process" : "ddfkb3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "cg2cblvk66t",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741876725056,
+  "history_notes" : null,
+  "history_process" : "ddfkb3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "8py91dpolwv",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742429005654,
+  "history_notes" : null,
+  "history_process" : "ddfkb3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "8wmdb0sw2f0",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742429862389,
+  "history_notes" : null,
+  "history_process" : "ddfkb3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "2jp0f43jz27",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742429900038,
+  "history_notes" : null,
+  "history_process" : "ddfkb3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "038rmzqnrfy",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742475919586,
+  "history_notes" : null,
+  "history_process" : "ddfkb3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},]

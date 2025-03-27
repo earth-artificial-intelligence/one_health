@@ -1,0 +1,91 @@
+[{
+  "history_id" : "58o31ma4tub",
+  "history_input" : "import pandas as pd\nimport os\n\n# Define the path to the Downloads folder\ndownloads_path = os.path.expanduser(\"~/Downloads\")\n\n# Define the full path to the file\naqi_file_2018 = os.path.join(downloads_path, \"annual_aqi_by_county_2018.csv\")\n\n# Load the CSV file\naqi_data_2018 = pd.read_csv(aqi_file_2018)\n\n# Print the first few rows\nprint(aqi_data_2018.head())  # Prints the first 5 rows\n",
+  "history_output" : "     State   County  Year  ...  Days Ozone  Days PM2.5  Days PM10\n0  Alabama  Baldwin  2018  ...         194          76          0\n1  Alabama     Clay  2018  ...           0         110          0\n2  Alabama  Colbert  2018  ...         184          93          0\n3  Alabama   DeKalb  2018  ...         286          64          0\n4  Alabama   Elmore  2018  ...         222           0          0\n[5 rows x 18 columns]\n",
+  "history_begin_time" : 1741232285582,
+  "history_end_time" : 1741232289391,
+  "history_notes" : null,
+  "history_process" : "z3kcsx",
+  "host_id" : "100001",
+  "indicator" : "Done"
+},{
+  "history_id" : "t8fyNBj3ettv",
+  "history_input" : "import pandas as pd\nimport os\n\n# Define the path to the Downloads folder\ndownloads_path = os.path.expanduser(\"~/Downloads\")\n\n# Define the full path to the file\naqi_file_2018 = os.path.join(downloads_path, \"annual_aqi_by_county_2018.csv\")\n\n# Load the CSV file\naqi_data_2018 = pd.read_csv(aqi_file_2018)\n\n# Print the first few rows\nprint(aqi_data_2018.head())  # Prints the first 5 rows\n",
+  "history_output" : "     State   County  Year  ...  Days Ozone  Days PM2.5  Days PM10\n0  Alabama  Baldwin  2018  ...         194          76          0\n1  Alabama     Clay  2018  ...           0         110          0\n2  Alabama  Colbert  2018  ...         184          93          0\n3  Alabama   DeKalb  2018  ...         286          64          0\n4  Alabama   Elmore  2018  ...         222           0          0\n[5 rows x 18 columns]\n",
+  "history_begin_time" : 1740629523935,
+  "history_end_time" : 1740629524695,
+  "history_notes" : null,
+  "history_process" : "z3kcsx",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "wx1lh4jtna7",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741274063396,
+  "history_notes" : null,
+  "history_process" : "z3kcsx",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "v7b6ul3vt9p",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740629860962,
+  "history_notes" : null,
+  "history_process" : "z3kcsx",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "jpdr3fqee11",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275207420,
+  "history_notes" : null,
+  "history_process" : "z3kcsx",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "7ca0dwrs856",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740629989080,
+  "history_notes" : null,
+  "history_process" : "z3kcsx",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "y84vkf8i561",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740630100149,
+  "history_notes" : null,
+  "history_process" : "z3kcsx",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "x890ehrcan0",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275389027,
+  "history_notes" : null,
+  "history_process" : "z3kcsx",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "awq5hg91k0b",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275476072,
+  "history_notes" : null,
+  "history_process" : "z3kcsx",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},]

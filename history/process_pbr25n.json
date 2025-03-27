@@ -1,0 +1,191 @@
+[{
+  "history_id" : "8xv2q14s579",
+  "history_input" : "import os\nimport pandas as pd\nimport zipfile\nfrom download_data_utils import download_file  \n\n# Define the base directory to save files\nTARGET_DIRECTORY = \"/media/volume1\"\n\n# Ensure the directory exists\nos.makedirs(TARGET_DIRECTORY, exist_ok=True)\n\n# Dictionary of URLs for all years\nAQI_DATA_URLS = {\n    2017: \"https://aqs.epa.gov/aqsweb/airdata/annual_aqi_by_county_2017.zip\",\n    2018: \"https://aqs.epa.gov/aqsweb/airdata/annual_aqi_by_county_2018.zip\",\n    2019: \"https://aqs.epa.gov/aqsweb/airdata/annual_aqi_by_county_2019.zip\",\n    2020: \"https://aqs.epa.gov/aqsweb/airdata/annual_aqi_by_county_2020.zip\",\n    2021: \"https://aqs.epa.gov/aqsweb/airdata/annual_aqi_by_county_2021.zip\",\n}\n\ndef retrieve_aqi(year):\n    \"\"\"\n    Downloads the AQI ZIP file for a given year, extracts the CSV, and saves it to /media/volume1.\n    \"\"\"\n    zip_file_path = os.path.join(TARGET_DIRECTORY, f\"annual_aqi_by_county_{year}.zip\")\n    extracted_csv_path = os.path.join(TARGET_DIRECTORY, f\"annual_aqi_by_county_{year}.csv\")\n\n    # Get the download URL\n    original_url = AQI_DATA_URLS.get(year)\n    if not original_url:\n        print(f\"No URL found for year {year}. Skipping...\")\n        return\n\n    # Download the ZIP file\n    saved_file = download_file(original_url, TARGET_DIRECTORY, f\"annual_aqi_by_county_{year}.zip\")\n\n    if saved_file and os.path.exists(saved_file):\n        try:\n            # Extract the ZIP file\n            with zipfile.ZipFile(saved_file, \"r\") as zip_ref:\n                zip_ref.extractall(TARGET_DIRECTORY)\n                extracted_files = zip_ref.namelist()  # Get extracted file names\n\n            # Identify the correct CSV file\n            csv_file_name = next((f for f in extracted_files if f.endswith(\".csv\")), None)\n            if csv_file_name:\n                extracted_csv_path = os.path.join(TARGET_DIRECTORY, csv_file_name)\n\n                # Load CSV into pandas\n                df = pd.read_csv(extracted_csv_path)\n\n                # Print a few rows to verify\n                print(f\"AQI Data for {year} extracted and saved as: {extracted_csv_path}\")\n                print(\"\\nAQI Data Preview:\")\n                print(df.head())  # Prints the first 5 rows\n            else:\n                print(f\"No CSV file found in the ZIP archive for {year}.\")\n\n        except Exception as e:\n            print(f\"Error extracting or loading AQI Data for {year}: {e}\")\n    else:\n        print(f\"AQI data download failed for {year}. Please check the URL and permissions.\")\n\ndef retrieve_all_years():\n    \"\"\"\n    Downloads and processes AQI data for all specified years.\n    \"\"\"\n    for year in AQI_DATA_URLS.keys():\n        retrieve_aqi(year)\n\nif __name__ == \"__main__\":\n    retrieve_all_years()\n",
+  "history_output" : "Starting file download...\nFile downloaded successfully and saved as: /media/volume1/annual_aqi_by_county_2017.zip\nAQI Data for 2017 extracted and saved as: /media/volume1/annual_aqi_by_county_2017.csv\nAQI Data Preview:\n     State   County  Year  ...  Days Ozone  Days PM2.5  Days PM10\n0  Alabama  Baldwin  2017  ...         188          82          0\n1  Alabama     Clay  2017  ...           0         118          0\n2  Alabama  Colbert  2017  ...         202          81          0\n3  Alabama   DeKalb  2017  ...         290          69          0\n4  Alabama   Elmore  2017  ...         226           0          0\n[5 rows x 18 columns]\nStarting file download...\nFile downloaded successfully and saved as: /media/volume1/annual_aqi_by_county_2018.zip\nAQI Data for 2018 extracted and saved as: /media/volume1/annual_aqi_by_county_2018.csv\nAQI Data Preview:\n     State   County  Year  ...  Days Ozone  Days PM2.5  Days PM10\n0  Alabama  Baldwin  2018  ...         194          76          0\n1  Alabama     Clay  2018  ...           0         110          0\n2  Alabama  Colbert  2018  ...         184          93          0\n3  Alabama   DeKalb  2018  ...         286          64          0\n4  Alabama   Elmore  2018  ...         222           0          0\n[5 rows x 18 columns]\nStarting file download...\nFile downloaded successfully and saved as: /media/volume1/annual_aqi_by_county_2019.zip\nAQI Data for 2019 extracted and saved as: /media/volume1/annual_aqi_by_county_2019.csv\nAQI Data Preview:\n     State   County  Year  ...  Days Ozone  Days PM2.5  Days PM10\n0  Alabama  Baldwin  2019  ...         198          73          0\n1  Alabama     Clay  2019  ...           0         107          0\n2  Alabama  Colbert  2019  ...         219          44          0\n3  Alabama   DeKalb  2019  ...         306          55          0\n4  Alabama   Elmore  2019  ...         228           0          0\n[5 rows x 18 columns]\nStarting file download...\nFile downloaded successfully and saved as: /media/volume1/annual_aqi_by_county_2020.zip\nAQI Data for 2020 extracted and saved as: /media/volume1/annual_aqi_by_county_2020.csv\nAQI Data Preview:\n     State   County  Year  ...  Days Ozone  Days PM2.5  Days PM10\n0  Alabama  Baldwin  2020  ...         178          91          0\n1  Alabama     Clay  2020  ...           0         105          0\n2  Alabama   DeKalb  2020  ...         309          55          0\n3  Alabama   Elmore  2020  ...         197           0          0\n4  Alabama   Etowah  2020  ...         191          85          0\n[5 rows x 18 columns]\nStarting file download...\nFile downloaded successfully and saved as: /media/volume1/annual_aqi_by_county_2021.zip\nAQI Data for 2021 extracted and saved as: /media/volume1/annual_aqi_by_county_2021.csv\nAQI Data Preview:\n     State   County  Year  ...  Days Ozone  Days PM2.5  Days PM10\n0  Alabama  Baldwin  2021  ...         199          81          0\n1  Alabama     Clay  2021  ...           0         110          0\n2  Alabama   DeKalb  2021  ...         298          63          0\n3  Alabama   Elmore  2021  ...         241           0          0\n4  Alabama   Etowah  2021  ...         201          85          0\n[5 rows x 18 columns]\n",
+  "history_begin_time" : 1741882819563,
+  "history_end_time" : 1741882820780,
+  "history_notes" : null,
+  "history_process" : "pbr25n",
+  "host_id" : "100001",
+  "indicator" : "Done"
+},{
+  "history_id" : "3n61xbP0DniN",
+  "history_input" : "import os\nimport pandas as pd\nimport zipfile\nfrom download_data_utils import download_file  \n\n# Define the base directory to save files\nTARGET_DIRECTORY = \"/media/volume1\"\n\n# Ensure the directory exists\nos.makedirs(TARGET_DIRECTORY, exist_ok=True)\n\n# Dictionary of URLs for all years\nAQI_DATA_URLS = {\n    2017: \"https://aqs.epa.gov/aqsweb/airdata/annual_aqi_by_county_2017.zip\",\n    2018: \"https://aqs.epa.gov/aqsweb/airdata/annual_aqi_by_county_2018.zip\",\n    2019: \"https://aqs.epa.gov/aqsweb/airdata/annual_aqi_by_county_2019.zip\",\n    2020: \"https://aqs.epa.gov/aqsweb/airdata/annual_aqi_by_county_2020.zip\",\n    2021: \"https://aqs.epa.gov/aqsweb/airdata/annual_aqi_by_county_2021.zip\",\n}\n\ndef retrieve_aqi(year):\n    \"\"\"\n    Downloads the AQI ZIP file for a given year, extracts the CSV, and saves it to /media/volume1.\n    \"\"\"\n    zip_file_path = os.path.join(TARGET_DIRECTORY, f\"annual_aqi_by_county_{year}.zip\")\n    extracted_csv_path = os.path.join(TARGET_DIRECTORY, f\"annual_aqi_by_county_{year}.csv\")\n\n    # Get the download URL\n    original_url = AQI_DATA_URLS.get(year)\n    if not original_url:\n        print(f\"No URL found for year {year}. Skipping...\")\n        return\n\n    # Download the ZIP file\n    saved_file = download_file(original_url, TARGET_DIRECTORY, f\"annual_aqi_by_county_{year}.zip\")\n\n    if saved_file and os.path.exists(saved_file):\n        try:\n            # Extract the ZIP file\n            with zipfile.ZipFile(saved_file, \"r\") as zip_ref:\n                zip_ref.extractall(TARGET_DIRECTORY)\n                extracted_files = zip_ref.namelist()  # Get extracted file names\n\n            # Identify the correct CSV file\n            csv_file_name = next((f for f in extracted_files if f.endswith(\".csv\")), None)\n            if csv_file_name:\n                extracted_csv_path = os.path.join(TARGET_DIRECTORY, csv_file_name)\n\n                # Load CSV into pandas\n                df = pd.read_csv(extracted_csv_path)\n\n                # Print a few rows to verify\n                print(f\"AQI Data for {year} extracted and saved as: {extracted_csv_path}\")\n                print(\"\\nAQI Data Preview:\")\n                print(df.head())  # Prints the first 5 rows\n            else:\n                print(f\"No CSV file found in the ZIP archive for {year}.\")\n\n        except Exception as e:\n            print(f\"Error extracting or loading AQI Data for {year}: {e}\")\n    else:\n        print(f\"AQI data download failed for {year}. Please check the URL and permissions.\")\n\ndef retrieve_all_years():\n    \"\"\"\n    Downloads and processes AQI data for all specified years.\n    \"\"\"\n    for year in AQI_DATA_URLS.keys():\n        retrieve_aqi(year)\n\nif __name__ == \"__main__\":\n    retrieve_all_years()\n",
+  "history_output" : "Starting file download...\nFile downloaded successfully and saved as: /media/volume1/annual_aqi_by_county_2017.zip\nAQI Data for 2017 extracted and saved as: /media/volume1/annual_aqi_by_county_2017.csv\nAQI Data Preview:\n     State   County  Year  ...  Days Ozone  Days PM2.5  Days PM10\n0  Alabama  Baldwin  2017  ...         188          82          0\n1  Alabama     Clay  2017  ...           0         118          0\n2  Alabama  Colbert  2017  ...         202          81          0\n3  Alabama   DeKalb  2017  ...         290          69          0\n4  Alabama   Elmore  2017  ...         226           0          0\n[5 rows x 18 columns]\nStarting file download...\nFile downloaded successfully and saved as: /media/volume1/annual_aqi_by_county_2018.zip\nAQI Data for 2018 extracted and saved as: /media/volume1/annual_aqi_by_county_2018.csv\nAQI Data Preview:\n     State   County  Year  ...  Days Ozone  Days PM2.5  Days PM10\n0  Alabama  Baldwin  2018  ...         194          76          0\n1  Alabama     Clay  2018  ...           0         110          0\n2  Alabama  Colbert  2018  ...         184          93          0\n3  Alabama   DeKalb  2018  ...         286          64          0\n4  Alabama   Elmore  2018  ...         222           0          0\n[5 rows x 18 columns]\nStarting file download...\nFile downloaded successfully and saved as: /media/volume1/annual_aqi_by_county_2019.zip\nAQI Data for 2019 extracted and saved as: /media/volume1/annual_aqi_by_county_2019.csv\nAQI Data Preview:\n     State   County  Year  ...  Days Ozone  Days PM2.5  Days PM10\n0  Alabama  Baldwin  2019  ...         198          73          0\n1  Alabama     Clay  2019  ...           0         107          0\n2  Alabama  Colbert  2019  ...         219          44          0\n3  Alabama   DeKalb  2019  ...         306          55          0\n4  Alabama   Elmore  2019  ...         228           0          0\n[5 rows x 18 columns]\nStarting file download...\nFile downloaded successfully and saved as: /media/volume1/annual_aqi_by_county_2020.zip\nAQI Data for 2020 extracted and saved as: /media/volume1/annual_aqi_by_county_2020.csv\nAQI Data Preview:\n     State   County  Year  ...  Days Ozone  Days PM2.5  Days PM10\n0  Alabama  Baldwin  2020  ...         178          91          0\n1  Alabama     Clay  2020  ...           0         105          0\n2  Alabama   DeKalb  2020  ...         309          55          0\n3  Alabama   Elmore  2020  ...         197           0          0\n4  Alabama   Etowah  2020  ...         191          85          0\n[5 rows x 18 columns]\nStarting file download...\nFile downloaded successfully and saved as: /media/volume1/annual_aqi_by_county_2021.zip\nAQI Data for 2021 extracted and saved as: /media/volume1/annual_aqi_by_county_2021.csv\nAQI Data Preview:\n     State   County  Year  ...  Days Ozone  Days PM2.5  Days PM10\n0  Alabama  Baldwin  2021  ...         199          81          0\n1  Alabama     Clay  2021  ...           0         110          0\n2  Alabama   DeKalb  2021  ...         298          63          0\n3  Alabama   Elmore  2021  ...         241           0          0\n4  Alabama   Etowah  2021  ...         201          85          0\n[5 rows x 18 columns]\n",
+  "history_begin_time" : 1741870193684,
+  "history_end_time" : 1741870194972,
+  "history_notes" : null,
+  "history_process" : "pbr25n",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "dam7bqllur7",
+  "history_input" : "import pandas as pd\nimport os\n\n# Define the path to the Downloads folder\ndownloads_path = os.path.expanduser(\"~/Downloads\")\n\n# Define the full path to the file\naqi_file = os.path.join(downloads_path, \"annual_aqi_by_county_2017.csv\")\n\n# Load the CSV file\naqi_data = pd.read_csv(aqi_file)\n\n# Print the first few rows\nprint(aqi_data.head())  # Prints the first 5 rows\n",
+  "history_output" : "     State   County  Year  ...  Days Ozone  Days PM2.5  Days PM10\n0  Alabama  Baldwin  2017  ...         188          82          0\n1  Alabama     Clay  2017  ...           0         118          0\n2  Alabama  Colbert  2017  ...         202          81          0\n3  Alabama   DeKalb  2017  ...         290          69          0\n4  Alabama   Elmore  2017  ...         226           0          0\n[5 rows x 18 columns]\n",
+  "history_begin_time" : 1741232285591,
+  "history_end_time" : 1741232289390,
+  "history_notes" : null,
+  "history_process" : "pbr25n",
+  "host_id" : "100001",
+  "indicator" : "Done"
+},{
+  "history_id" : "wLIvflZjpz5E",
+  "history_input" : "import pandas as pd\nimport os\n\n# Define the path to the Downloads folder\ndownloads_path = os.path.expanduser(\"~/Downloads\")\n\n# Define the full path to the file\naqi_file = os.path.join(downloads_path, \"annual_aqi_by_county_2017.csv\")\n\n# Load the CSV file\naqi_data = pd.read_csv(aqi_file)\n\n# Print the first few rows\nprint(aqi_data.head())  # Prints the first 5 rows\n",
+  "history_output" : "     State   County  Year  ...  Days Ozone  Days PM2.5  Days PM10\n0  Alabama  Baldwin  2017  ...         188          82          0\n1  Alabama     Clay  2017  ...           0         118          0\n2  Alabama  Colbert  2017  ...         202          81          0\n3  Alabama   DeKalb  2017  ...         290          69          0\n4  Alabama   Elmore  2017  ...         226           0          0\n[5 rows x 18 columns]\n",
+  "history_begin_time" : 1740629420287,
+  "history_end_time" : 1740629421047,
+  "history_notes" : null,
+  "history_process" : "pbr25n",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "v7a3q9affwp",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741274063393,
+  "history_notes" : null,
+  "history_process" : "pbr25n",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "bbflvvfw5jt",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740629860961,
+  "history_notes" : null,
+  "history_process" : "pbr25n",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "sxk7e2yusa7",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275207417,
+  "history_notes" : null,
+  "history_process" : "pbr25n",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "81xkbabx6vu",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275476070,
+  "history_notes" : null,
+  "history_process" : "pbr25n",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "00t2ggw68en",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740629989079,
+  "history_notes" : null,
+  "history_process" : "pbr25n",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "5trwrn59prb",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740630100147,
+  "history_notes" : null,
+  "history_process" : "pbr25n",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "g1so4br7z6x",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275389019,
+  "history_notes" : null,
+  "history_process" : "pbr25n",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "zih1b0r9o9z",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741870314770,
+  "history_notes" : null,
+  "history_process" : "pbr25n",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "4tkonw4y0be",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741873525581,
+  "history_notes" : null,
+  "history_process" : "pbr25n",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "8i1llisofy6",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741873559832,
+  "history_notes" : null,
+  "history_process" : "pbr25n",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "pail1kx9vfm",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741876725066,
+  "history_notes" : null,
+  "history_process" : "pbr25n",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "ggmgfx2aykd",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742429005666,
+  "history_notes" : null,
+  "history_process" : "pbr25n",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "tkvlfziw39g",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742429863398,
+  "history_notes" : null,
+  "history_process" : "pbr25n",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "o7xj38jkeai",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742429900046,
+  "history_notes" : null,
+  "history_process" : "pbr25n",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "pzbai3hs27q",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742475919594,
+  "history_notes" : null,
+  "history_process" : "pbr25n",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},]

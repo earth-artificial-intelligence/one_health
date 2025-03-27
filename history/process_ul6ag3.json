@@ -1,0 +1,371 @@
+[{
+  "history_id" : "bjxnvo64jui",
+  "history_input" : "import os\nimport pandas as pd\nfrom download_data_utils import download_file  \n\ndef retrieve_cancer_data():\n    \"\"\"\n    Downloads the cancer incidence data and loads it into a pandas DataFrame.\n    \"\"\"\n    # Define the target directory\n    target_directory = \"/media/volume1\"\n\n    # Ensure the directory exists\n    os.makedirs(target_directory, exist_ok=True)\n\n    # Define the URL for cancer data\n    cancer_data_url = \"https://www.statecancerprofiles.cancer.gov/incidencerates/index.php?stateFIPS=00&areatype=county&cancer=047&race=00&sex=0&age=001&stage=999&type=incd&sortVariableName=rate&sortOrder=desc&output=1\"\n\n    # Define the expected filename\n    cancer_file_name = \"incd.csv\"\n    cancer_file_path = os.path.join(target_directory, cancer_file_name)\n\n    # Download the file\n    saved_file = download_file(cancer_data_url, target_directory, cancer_file_name)\n\n    if saved_file and os.path.exists(saved_file):\n        # Load the CSV file while skipping the first 8 empty rows\n        cancer_data = pd.read_csv(saved_file, skiprows=8)\n\n        # Print the first few rows\n        print(\"Cancer Data Preview:\")\n        print(cancer_data.head())  # Prints the first 5 rows\n    else:\n        print(\"Cancer data download failed. Please check the URL and permissions.\")\n\nif __name__ == \"__main__\":\n    retrieve_cancer_data()\n",
+  "history_output" : "Starting file download...\nFile downloaded successfully and saved as: /media/volume1/incd.csv\nCancer Data Preview:\n                          County  ...  Upper 95% Confidence Interval.1\n0              US (SEER+NPCR)(1)  ...                             -2.9\n1       Union County, Florida(6)  ...                             -0.7\n2     Owsley County, Kentucky(7)  ...                              4.3\n3  Alexander County, Illinois(7)  ...                              2.1\n4    Carroll County, Kentucky(7)  ...                              2.6\n[5 rows x 14 columns]\n",
+  "history_begin_time" : 1741882815530,
+  "history_end_time" : 1741882816645,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : "100001",
+  "indicator" : "Done"
+},{
+  "history_id" : "QXnbSOYEDDDm",
+  "history_input" : "import os\nimport pandas as pd\nfrom download_data_utils import download_file  # Using your existing function\n\ndef retrieve_cancer_data():\n    \"\"\"\n    Downloads the cancer incidence data and loads it into a pandas DataFrame.\n    \"\"\"\n    # Define the target directory\n    target_directory = \"/media/volume1\"\n\n    # Ensure the directory exists\n    os.makedirs(target_directory, exist_ok=True)\n\n    # Define the URL for cancer data\n    cancer_data_url = \"https://www.statecancerprofiles.cancer.gov/incidencerates/index.php?stateFIPS=00&areatype=county&cancer=047&race=00&sex=0&age=001&stage=999&type=incd&sortVariableName=rate&sortOrder=desc&output=1\"\n\n    # Define the expected filename\n    cancer_file_name = \"incd.csv\"\n    cancer_file_path = os.path.join(target_directory, cancer_file_name)\n\n    # Download the file\n    saved_file = download_file(cancer_data_url, target_directory, cancer_file_name)\n\n    if saved_file and os.path.exists(saved_file):\n        # Load the CSV file while skipping the first 8 empty rows\n        cancer_data = pd.read_csv(saved_file, skiprows=8)\n\n        # Print the first few rows\n        print(\"Cancer Data Preview:\")\n        print(cancer_data.head())  # Prints the first 5 rows\n    else:\n        print(\"Cancer data download failed. Please check the URL and permissions.\")\n\nif __name__ == \"__main__\":\n    retrieve_cancer_data()\n",
+  "history_output" : "Starting file download...\nFile downloaded successfully and saved as: /media/volume1/incd.csv\nCancer Data Preview:\n                          County  ...  Upper 95% Confidence Interval.1\n0              US (SEER+NPCR)(1)  ...                             -2.9\n1       Union County, Florida(6)  ...                             -0.7\n2     Owsley County, Kentucky(7)  ...                              4.3\n3  Alexander County, Illinois(7)  ...                              2.1\n4    Carroll County, Kentucky(7)  ...                              2.6\n[5 rows x 14 columns]\n",
+  "history_begin_time" : 1741868652257,
+  "history_end_time" : 1741868656210,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "euCU5tvuDA2D",
+  "history_input" : "import os\nimport pandas as pd\nfrom download_data_utils import download_file  # Using your improved function\n\ndef retrieve_cancer_data():\n    \"\"\"\n    Downloads the cancer incidence data and loads it into a pandas DataFrame.\n    \"\"\"\n    # Define the target directory\n    target_directory = \"/media/volume1\"\n\n    # Ensure the directory exists\n    os.makedirs(target_directory, exist_ok=True)\n\n    # Define the URL for cancer data\n    cancer_data_url = \"https://www.statecancerprofiles.cancer.gov/incidencerates/index.php?stateFIPS=00&areatype=county&cancer=047&race=00&sex=0&age=001&stage=999&type=incd&sortVariableName=rate&sortOrder=desc&output=1\"\n\n    # Define the expected filename\n    cancer_file_name = \"incd.csv\"\n    cancer_file_path = os.path.join(target_directory, cancer_file_name)\n\n    # Download the file\n    saved_file = download_file(cancer_data_url, target_directory, cancer_file_name)\n\n    if saved_file and os.path.exists(saved_file):\n        # Load the CSV file\n        cancer_data = pd.read_csv(saved_file)\n\n        # Print the first few rows\n        print(\"Cancer Data Preview:\")\n        print(cancer_data.head())  # Prints the first 5 rows\n    else:\n        print(\"Cancer data download failed. Please check the URL and permissions.\")\n\nif __name__ == \"__main__\":\n    retrieve_cancer_data()\n",
+  "history_output" : "Starting file download...\nFile downloaded successfully and saved as: /media/volume1/incd.csv\nTraceback (most recent call last):\n  File \"/media/volume1/gw-workspace/euCU5tvuDA2D/raw_cancer_data.py\", line 36, in <module>\n    retrieve_cancer_data()\n  File \"/media/volume1/gw-workspace/euCU5tvuDA2D/raw_cancer_data.py\", line 27, in retrieve_cancer_data\n    cancer_data = pd.read_csv(saved_file)\n                  ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/geo2021/anaconda3/lib/python3.12/site-packages/pandas/io/parsers/readers.py\", line 1026, in read_csv\n    return _read(filepath_or_buffer, kwds)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/geo2021/anaconda3/lib/python3.12/site-packages/pandas/io/parsers/readers.py\", line 626, in _read\n    return parser.read(nrows)\n           ^^^^^^^^^^^^^^^^^^\n  File \"/home/geo2021/anaconda3/lib/python3.12/site-packages/pandas/io/parsers/readers.py\", line 1923, in read\n    ) = self._engine.read(  # type: ignore[attr-defined]\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/geo2021/anaconda3/lib/python3.12/site-packages/pandas/io/parsers/c_parser_wrapper.py\", line 234, in read\n    chunks = self._reader.read_low_memory(nrows)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"parsers.pyx\", line 838, in pandas._libs.parsers.TextReader.read_low_memory\n  File \"parsers.pyx\", line 905, in pandas._libs.parsers.TextReader._read_rows\n  File \"parsers.pyx\", line 874, in pandas._libs.parsers.TextReader._tokenize_rows\n  File \"parsers.pyx\", line 891, in pandas._libs.parsers.TextReader._check_tokenize_status\n  File \"parsers.pyx\", line 2061, in pandas._libs.parsers.raise_parser_error\npandas.errors.ParserError: Error tokenizing data. C error: Expected 1 fields in line 9, saw 14\n",
+  "history_begin_time" : 1741868515986,
+  "history_end_time" : 1741868520167,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : null,
+  "indicator" : "Failed"
+},{
+  "history_id" : "PBtHxFEPxhiO",
+  "history_input" : "import os\nimport time\nimport pandas as pd\nfrom selenium import webdriver\nfrom selenium.webdriver.common.by import By\nfrom selenium.webdriver.chrome.service import Service\nfrom webdriver_manager.chrome import ChromeDriverManager\n\ndef retrieve_cancer_data():\n    # Define the path where the file will be saved\n    save_path = \"/media/volume1\"\n    os.makedirs(save_path, exist_ok=True)\n    cancer_file = os.path.join(save_path, \"incd.csv\")\n\n    # Use the extracted Chrome binary path\n    chrome_binary_path = \"/home/geo2021/chrome_install/opt/google/chrome/google-chrome\"\n\n    # Set up Selenium WebDriver\n    chrome_options = webdriver.ChromeOptions()\n    chrome_options.binary_location = chrome_binary_path  # Set Chrome binary path\n    prefs = {\"download.default_directory\": save_path}\n    chrome_options.add_experimental_option(\"prefs\", prefs)\n    chrome_options.add_argument(\"--headless\")  # Run in headless mode\n    chrome_options.add_argument(\"--no-sandbox\")\n    chrome_options.add_argument(\"--disable-dev-shm-usage\")\n\n    service = Service(ChromeDriverManager().install())  # Auto-install ChromeDriver\n    driver = webdriver.Chrome(service=service, options=chrome_options)\n\n    try:\n        driver.get(\"https://www.statecancerprofiles.cancer.gov/incidencerates/index.php?stateFIPS=00&areatype=county&cancer=047&race=00&sex=0&age=001&stage=999&type=incd&sortVariableName=rate&sortOrder=default&output=0#results\")\n        time.sleep(5)  # Allow time for the page to load\n\n        # Click the \"Generate Table\" button\n        generate_table_button = driver.find_element(By.XPATH, \"//input[@value='Generate Table']\")\n        generate_table_button.click()\n        time.sleep(10)  # Wait for table to generate\n\n        # Click the \"CSV\" download link\n        download_csv_button = driver.find_element(By.LINK_TEXT, \"CSV\")\n        download_csv_button.click()\n        print(\"Download initiated...\")\n\n        time.sleep(15)  # Allow file to download\n\n    finally:\n        driver.quit()\n        print(\"Process completed.\")\n\n    # Load the CSV file\n    if os.path.exists(cancer_file):\n        cancer_data = pd.read_csv(cancer_file)\n        print(cancer_data.head())  # Print first 5 rows\n    else:\n        print(\"Download failed. CSV file not found.\")\n\nif __name__ == \"__main__\":\n    retrieve_cancer_data()\n",
+  "history_output" : "Traceback (most recent call last):\n  File \"/media/volume1/gw-workspace/PBtHxFEPxhiO/raw_cancer_data.py\", line 58, in <module>\n    retrieve_cancer_data()\n  File \"/media/volume1/gw-workspace/PBtHxFEPxhiO/raw_cancer_data.py\", line 28, in retrieve_cancer_data\n    driver = webdriver.Chrome(service=service, options=chrome_options)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/geo2021/anaconda3/lib/python3.12/site-packages/selenium/webdriver/chrome/webdriver.py\", line 45, in __init__\n    super().__init__(\n  File \"/home/geo2021/anaconda3/lib/python3.12/site-packages/selenium/webdriver/chromium/webdriver.py\", line 66, in __init__\n    super().__init__(command_executor=executor, options=options)\n  File \"/home/geo2021/anaconda3/lib/python3.12/site-packages/selenium/webdriver/remote/webdriver.py\", line 250, in __init__\n    self.start_session(capabilities)\n  File \"/home/geo2021/anaconda3/lib/python3.12/site-packages/selenium/webdriver/remote/webdriver.py\", line 342, in start_session\n    response = self.execute(Command.NEW_SESSION, caps)[\"value\"]\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/geo2021/anaconda3/lib/python3.12/site-packages/selenium/webdriver/remote/webdriver.py\", line 429, in execute\n    self.error_handler.check_response(response)\n  File \"/home/geo2021/anaconda3/lib/python3.12/site-packages/selenium/webdriver/remote/errorhandler.py\", line 232, in check_response\n    raise exception_class(message, screen, stacktrace)\nselenium.common.exceptions.WebDriverException: Message: unknown error: Chrome failed to start: exited abnormally.\n  (unknown error: DevToolsActivePort file doesn't exist)\n  (The process started from chrome location /home/geo2021/chrome_install/opt/google/chrome/google-chrome is no longer running, so ChromeDriver is assuming that Chrome has crashed.)\nStacktrace:\n#0 0x5671f86874e3 <unknown>\n#1 0x5671f83b6c76 <unknown>\n#2 0x5671f83dfd78 <unknown>\n#3 0x5671f83dc029 <unknown>\n#4 0x5671f841accc <unknown>\n#5 0x5671f841a47f <unknown>\n#6 0x5671f8411de3 <unknown>\n#7 0x5671f83e72dd <unknown>\n#8 0x5671f83e834e <unknown>\n#9 0x5671f86473e4 <unknown>\n#10 0x5671f864b3d7 <unknown>\n#11 0x5671f8655b20 <unknown>\n#12 0x5671f864c023 <unknown>\n#13 0x5671f861a1aa <unknown>\n#14 0x5671f86706b8 <unknown>\n#15 0x5671f8670847 <unknown>\n#16 0x5671f8680243 <unknown>\n#17 0x7f391809caa4 <unknown>\n#18 0x7f3918129c3c <unknown>\n",
+  "history_begin_time" : 1741841101681,
+  "history_end_time" : 1741841103032,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : null,
+  "indicator" : "Failed"
+},{
+  "history_id" : "m1UFSp8sqfRW",
+  "history_input" : "import os\nimport time\nimport pandas as pd\nfrom selenium import webdriver\nfrom selenium.webdriver.common.by import By\nfrom selenium.webdriver.chrome.service import Service\nfrom webdriver_manager.chrome import ChromeDriverManager\n\ndef retrieve_cancer_data():\n    # Define the path where the file will be saved\n    save_path = \"/media/volume1\"\n    os.makedirs(save_path, exist_ok=True)\n    cancer_file = os.path.join(save_path, \"incd.csv\")\n\n    # Cancer data URL\n    original_url = \"https://www.statecancerprofiles.cancer.gov/incidencerates/index.php?stateFIPS=00&areatype=county&cancer=047&race=00&sex=0&age=001&stage=999&type=incd&sortVariableName=rate&sortOrder=default&output=0#results\"\n\n    # Set up Selenium WebDriver (auto-install ChromeDriver)\n    chrome_options = webdriver.ChromeOptions()\n    prefs = {\"download.default_directory\": save_path}  # Set download location\n    chrome_options.add_experimental_option(\"prefs\", prefs)\n    chrome_options.add_argument(\"--headless\")  # Run in headless mode\n    chrome_options.add_argument(\"--no-sandbox\")\n    chrome_options.add_argument(\"--disable-dev-shm-usage\")\n\n    service = Service(ChromeDriverManager().install())  # Auto-install ChromeDriver\n    driver = webdriver.Chrome(service=service, options=chrome_options)\n\n    try:\n        driver.get(original_url)\n        time.sleep(5)  # Allow time for the page to load\n\n        # Click the \"Generate Table\" button\n        generate_table_button = driver.find_element(By.XPATH, \"//input[@value='Generate Table']\")\n        generate_table_button.click()\n        time.sleep(10)  # Wait for table to generate\n\n        # Click the \"CSV\" download link\n        download_csv_button = driver.find_element(By.LINK_TEXT, \"CSV\")\n        download_csv_button.click()\n        print(\"Download initiated...\")\n\n        time.sleep(15)  # Allow file to download\n\n    finally:\n        driver.quit()\n        print(\"Process completed.\")\n\n    # Load the CSV file\n    if os.path.exists(cancer_file):\n        cancer_data = pd.read_csv(cancer_file)\n        print(cancer_data.head())  # Print first 5 rows\n    else:\n        print(\"Download failed. CSV file not found.\")\n\nif __name__ == \"__main__\":\n    retrieve_cancer_data()\n",
+  "history_output" : "Traceback (most recent call last):\n  File \"/media/volume1/gw-workspace/m1UFSp8sqfRW/raw_cancer_data.py\", line 57, in <module>\n    retrieve_cancer_data()\n  File \"/media/volume1/gw-workspace/m1UFSp8sqfRW/raw_cancer_data.py\", line 27, in retrieve_cancer_data\n    driver = webdriver.Chrome(service=service, options=chrome_options)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/geo2021/anaconda3/lib/python3.12/site-packages/selenium/webdriver/chrome/webdriver.py\", line 45, in __init__\n    super().__init__(\n  File \"/home/geo2021/anaconda3/lib/python3.12/site-packages/selenium/webdriver/chromium/webdriver.py\", line 66, in __init__\n    super().__init__(command_executor=executor, options=options)\n  File \"/home/geo2021/anaconda3/lib/python3.12/site-packages/selenium/webdriver/remote/webdriver.py\", line 250, in __init__\n    self.start_session(capabilities)\n  File \"/home/geo2021/anaconda3/lib/python3.12/site-packages/selenium/webdriver/remote/webdriver.py\", line 342, in start_session\n    response = self.execute(Command.NEW_SESSION, caps)[\"value\"]\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/geo2021/anaconda3/lib/python3.12/site-packages/selenium/webdriver/remote/webdriver.py\", line 429, in execute\n    self.error_handler.check_response(response)\n  File \"/home/geo2021/anaconda3/lib/python3.12/site-packages/selenium/webdriver/remote/errorhandler.py\", line 232, in check_response\n    raise exception_class(message, screen, stacktrace)\nselenium.common.exceptions.WebDriverException: Message: unknown error: cannot find Chrome binary\nStacktrace:\n#0 0x6465784694e3 <unknown>\n#1 0x646578198c76 <unknown>\n#2 0x6465781bf757 <unknown>\n#3 0x6465781be029 <unknown>\n#4 0x6465781fcccc <unknown>\n#5 0x6465781fc47f <unknown>\n#6 0x6465781f3de3 <unknown>\n#7 0x6465781c92dd <unknown>\n#8 0x6465781ca34e <unknown>\n#9 0x6465784293e4 <unknown>\n#10 0x64657842d3d7 <unknown>\n#11 0x646578437b20 <unknown>\n#12 0x64657842e023 <unknown>\n#13 0x6465783fc1aa <unknown>\n#14 0x6465784526b8 <unknown>\n#15 0x646578452847 <unknown>\n#16 0x646578462243 <unknown>\n#17 0x7f323569caa4 <unknown>\n#18 0x7f3235729c3c <unknown>\n",
+  "history_begin_time" : 1741830527451,
+  "history_end_time" : 1741830529134,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : null,
+  "indicator" : "Failed"
+},{
+  "history_id" : "DLaqpB2yGX3M",
+  "history_input" : "import os\nimport time\nimport pandas as pd\nfrom selenium import webdriver\nfrom selenium.webdriver.chrome.service import Service\nfrom selenium.webdriver.common.by import By\nfrom selenium.webdriver.common.keys import Keys\nfrom download_data_utils import download_file  # Assuming you have a module for this\n\ndef retrieve_cancer_data():\n    # Define the path where the file will be saved\n    save_path = \"/media/volume1\"\n    os.makedirs(save_path, exist_ok=True)\n    cancer_file = os.path.join(save_path, \"incd.csv\")\n\n    # Cancer data URL\n    original_url = \"https://www.statecancerprofiles.cancer.gov/incidencerates/index.php?stateFIPS=00&areatype=county&cancer=047&race=00&sex=0&age=001&stage=999&type=incd&sortVariableName=rate&sortOrder=default&output=0#results\"\n\n    # Set up Selenium WebDriver\n    chrome_options = webdriver.ChromeOptions()\n    prefs = {\"download.default_directory\": save_path}  # Set download location\n    chrome_options.add_experimental_option(\"prefs\", prefs)\n    chrome_options.add_argument(\"--headless\")  # Run in headless mode\n    chrome_options.add_argument(\"--no-sandbox\")\n    chrome_options.add_argument(\"--disable-dev-shm-usage\")\n\n    service = Service('/path/to/chromedriver')  # Replace with your actual path\n    driver = webdriver.Chrome(service=service, options=chrome_options)\n\n    try:\n        driver.get(original_url)\n        time.sleep(5)  # Allow time for the page to load\n\n        # Click the \"Generate Table\" button\n        generate_table_button = driver.find_element(By.XPATH, \"//input[@value='Generate Table']\")\n        generate_table_button.click()\n        time.sleep(10)  # Wait for table to generate\n\n        # Click the \"CSV\" download link\n        download_csv_button = driver.find_element(By.LINK_TEXT, \"CSV\")\n        download_csv_button.click()\n        print(\"Download initiated...\")\n\n        time.sleep(15)  # Allow file to download\n\n    finally:\n        driver.quit()\n        print(\"Process completed.\")\n\n    # Load the CSV file\n    if os.path.exists(cancer_file):\n        cancer_data = pd.read_csv(cancer_file)\n        print(cancer_data.head())  # Print first 5 rows\n    else:\n        print(\"Download failed. CSV file not found.\")\n\nif __name__ == \"__main__\":\n    retrieve_cancer_data()\n",
+  "history_output" : "Traceback (most recent call last):\n  File \"/home/geo2021/anaconda3/lib/python3.12/site-packages/selenium/webdriver/common/driver_finder.py\", line 64, in _binary_paths\n    raise ValueError(f\"The path is not a valid file: {path}\")\nValueError: The path is not a valid file: /path/to/chromedriver\nThe above exception was the direct cause of the following exception:\nTraceback (most recent call last):\n  File \"/media/volume1/gw-workspace/DLaqpB2yGX3M/raw_cancer_data.py\", line 58, in <module>\n    retrieve_cancer_data()\n  File \"/media/volume1/gw-workspace/DLaqpB2yGX3M/raw_cancer_data.py\", line 28, in retrieve_cancer_data\n    driver = webdriver.Chrome(service=service, options=chrome_options)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/geo2021/anaconda3/lib/python3.12/site-packages/selenium/webdriver/chrome/webdriver.py\", line 45, in __init__\n    super().__init__(\n  File \"/home/geo2021/anaconda3/lib/python3.12/site-packages/selenium/webdriver/chromium/webdriver.py\", line 50, in __init__\n    if finder.get_browser_path():\n       ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/geo2021/anaconda3/lib/python3.12/site-packages/selenium/webdriver/common/driver_finder.py\", line 47, in get_browser_path\n    return self._binary_paths()[\"browser_path\"]\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/home/geo2021/anaconda3/lib/python3.12/site-packages/selenium/webdriver/common/driver_finder.py\", line 78, in _binary_paths\n    raise NoSuchDriverException(msg) from err\nselenium.common.exceptions.NoSuchDriverException: Message: Unable to obtain driver for chrome; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors/driver_location\n",
+  "history_begin_time" : 1741830464812,
+  "history_end_time" : 1741830465433,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : null,
+  "indicator" : "Failed"
+},{
+  "history_id" : "MrsCTr03iKOz",
+  "history_input" : "import os\nimport time\nimport pandas as pd\nfrom selenium import webdriver\nfrom selenium.webdriver.chrome.service import Service\nfrom selenium.webdriver.common.by import By\nfrom selenium.webdriver.common.keys import Keys\nfrom download_data_utils import download_file  # Assuming you have a module for this\n\ndef retrieve_cancer_data():\n    # Define the path where the file will be saved\n    save_path = \"/media/volume1\"\n    os.makedirs(save_path, exist_ok=True)\n    cancer_file = os.path.join(save_path, \"incd.csv\")\n\n    # Cancer data URL\n    original_url = \"https://www.statecancerprofiles.cancer.gov/incidencerates/index.php?stateFIPS=00&areatype=county&cancer=047&race=00&sex=0&age=001&stage=999&type=incd&sortVariableName=rate&sortOrder=default&output=0#results\"\n\n    # Set up Selenium WebDriver\n    chrome_options = webdriver.ChromeOptions()\n    prefs = {\"download.default_directory\": save_path}  # Set download location\n    chrome_options.add_experimental_option(\"prefs\", prefs)\n    chrome_options.add_argument(\"--headless\")  # Run in headless mode\n    chrome_options.add_argument(\"--no-sandbox\")\n    chrome_options.add_argument(\"--disable-dev-shm-usage\")\n\n    service = Service('/path/to/chromedriver')  # Replace with your actual path\n    driver = webdriver.Chrome(service=service, options=chrome_options)\n\n    try:\n        driver.get(original_url)\n        time.sleep(5)  # Allow time for the page to load\n\n        # Click the \"Generate Table\" button\n        generate_table_button = driver.find_element(By.XPATH, \"//input[@value='Generate Table']\")\n        generate_table_button.click()\n        time.sleep(10)  # Wait for table to generate\n\n        # Click the \"CSV\" download link\n        download_csv_button = driver.find_element(By.LINK_TEXT, \"CSV\")\n        download_csv_button.click()\n        print(\"Download initiated...\")\n\n        time.sleep(15)  # Allow file to download\n\n    finally:\n        driver.quit()\n        print(\"Process completed.\")\n\n    # Load the CSV file\n    if os.path.exists(cancer_file):\n        cancer_data = pd.read_csv(cancer_file)\n        print(cancer_data.head())  # Print first 5 rows\n    else:\n        print(\"Download failed. CSV file not found.\")\n\nif __name__ == \"__main__\":\n    retrieve_cancer_data()\n",
+  "history_output" : "Traceback (most recent call last):\n  File \"/home/geo2021/anaconda3/lib/python3.12/site-packages/selenium/webdriver/common/driver_finder.py\", line 64, in _binary_paths\n    raise ValueError(f\"The path is not a valid file: {path}\")\nValueError: The path is not a valid file: /path/to/chromedriver\nThe above exception was the direct cause of the following exception:\nTraceback (most recent call last):\n  File \"/media/volume1/gw-workspace/MrsCTr03iKOz/raw_cancer_data.py\", line 58, in <module>\n    retrieve_cancer_data()\n  File \"/media/volume1/gw-workspace/MrsCTr03iKOz/raw_cancer_data.py\", line 28, in retrieve_cancer_data\n    driver = webdriver.Chrome(service=service, options=chrome_options)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/geo2021/anaconda3/lib/python3.12/site-packages/selenium/webdriver/chrome/webdriver.py\", line 45, in __init__\n    super().__init__(\n  File \"/home/geo2021/anaconda3/lib/python3.12/site-packages/selenium/webdriver/chromium/webdriver.py\", line 50, in __init__\n    if finder.get_browser_path():\n       ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/geo2021/anaconda3/lib/python3.12/site-packages/selenium/webdriver/common/driver_finder.py\", line 47, in get_browser_path\n    return self._binary_paths()[\"browser_path\"]\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/home/geo2021/anaconda3/lib/python3.12/site-packages/selenium/webdriver/common/driver_finder.py\", line 78, in _binary_paths\n    raise NoSuchDriverException(msg) from err\nselenium.common.exceptions.NoSuchDriverException: Message: Unable to obtain driver for chrome; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors/driver_location\n",
+  "history_begin_time" : 1741830414188,
+  "history_end_time" : 1741830414976,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : null,
+  "indicator" : "Failed"
+},{
+  "history_id" : "oIqmtBrXqoXE",
+  "history_input" : "import pandas as pd\nimport os\n\ndef fetch_data():\n    # Path to the CSV file\n    downloads_folder = os.path.expanduser('~') + '/Downloads'\n    file_path = os.path.join(downloads_folder, 'incd.csv')\n\n    if os.path.exists(file_path):\n        try:\n            # Try reading the CSV file while skipping the first 10 rows of metadata\n            lung_cancer_data = pd.read_csv(file_path, skiprows=10) \n            print(\"Data loaded successfully.\")\n            return lung_cancer_data\n        except Exception as e:\n            print(f\"Error loading data: {e}\")\n            return None\n    else:\n        print(f\"Error: {file_path} does not exist.\")\n        return None\n\n# Test the function\ndata = fetch_data()\nif data is not None:\n    print(data.head())  # Prints the first few rows of the data\n",
+  "history_output" : "Data loaded successfully.\n         Union County, Florida(6)    12125  Rural  ...  -2.7   -4.7  -0.7\n0      Owsley County, Kentucky(7)  21189.0  Rural  ...   1.0   -2.1   4.3\n1   Alexander County, Illinois(7)  17003.0  Urban  ...  -0.8   -3.9   2.1\n2     Carroll County, Kentucky(7)  21041.0  Rural  ...   0.1   -2.3   2.6\n3  Livingston County, Kentucky(7)  21139.0  Urban  ...   1.1   -1.5   3.8\n4        Knox County, Kentucky(7)  21121.0  Rural  ...   0.2   -1.5   1.8\n[5 rows x 14 columns]\n",
+  "history_begin_time" : 1740025764126,
+  "history_end_time" : 1740025767816,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "lvaXzNAUvNUF",
+  "history_input" : "import pandas as pd\nimport os\n\ndef fetch_data():\n    # Path to the CSV file\n    downloads_folder = os.path.expanduser('~') + '/Downloads'\n    file_path = os.path.join(downloads_folder, 'incd.csv')\n\n    if os.path.exists(file_path):\n        try:\n            # Try reading the CSV file while skipping the first 10 rows of metadata\n            lung_cancer_data = pd.read_csv(file_path, skiprows=10) \n            print(\"Data loaded successfully.\")\n            return lung_cancer_data\n        except Exception as e:\n            print(f\"Error loading data: {e}\")\n            return None\n    else:\n        print(f\"Error: {file_path} does not exist.\")\n        return None\n\n# Test the function\ndata = fetch_data()\nif data is not None:\n    print(data.head())  # Prints the first few rows of the data\n",
+  "history_output" : "Data loaded successfully.\n         Union County, Florida(6)    12125  Rural  ...  -2.7   -4.7  -0.7\n0      Owsley County, Kentucky(7)  21189.0  Rural  ...   1.0   -2.1   4.3\n1   Alexander County, Illinois(7)  17003.0  Urban  ...  -0.8   -3.9   2.1\n2     Carroll County, Kentucky(7)  21041.0  Rural  ...   0.1   -2.3   2.6\n3  Livingston County, Kentucky(7)  21139.0  Urban  ...   1.1   -1.5   3.8\n4        Knox County, Kentucky(7)  21121.0  Rural  ...   0.2   -1.5   1.8\n[5 rows x 14 columns]\n",
+  "history_begin_time" : 1739426159221,
+  "history_end_time" : 1739426160299,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "xnoghL0TbzEB",
+  "history_input" : "import pandas as pd\nimport os\n\ndef fetch_data():\n    # Path to your CSV file\n    downloads_folder = os.path.expanduser('~') + '/Downloads'\n    file_path = os.path.join(downloads_folder, 'incd.csv')\n\n    if os.path.exists(file_path):\n        try:\n            # Try reading the CSV file while skipping the first 10 rows of metadata\n            lung_cancer_data = pd.read_csv(file_path, skiprows=10)  # Adjust number of skipped rows if needed\n            print(\"Data loaded successfully.\")\n            return lung_cancer_data\n        except Exception as e:\n            print(f\"Error loading data: {e}\")\n            return None\n    else:\n        print(f\"Error: {file_path} does not exist.\")\n        return None\n\n# Test the function\ndata = fetch_data()\nif data is not None:\n    print(data.head())  # Print the first few rows of the data\n",
+  "history_output" : "Data loaded successfully.\n         Union County, Florida(6)    12125  Rural  ...  -2.7   -4.7  -0.7\n0      Owsley County, Kentucky(7)  21189.0  Rural  ...   1.0   -2.1   4.3\n1   Alexander County, Illinois(7)  17003.0  Urban  ...  -0.8   -3.9   2.1\n2     Carroll County, Kentucky(7)  21041.0  Rural  ...   0.1   -2.3   2.6\n3  Livingston County, Kentucky(7)  21139.0  Urban  ...   1.1   -1.5   3.8\n4        Knox County, Kentucky(7)  21121.0  Rural  ...   0.2   -1.5   1.8\n[5 rows x 14 columns]\n",
+  "history_begin_time" : 1739424505231,
+  "history_end_time" : 1739424506409,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "gMpe8ArqyCyh",
+  "history_input" : "import pandas as pd\nimport os\n\ndef fetch_data():\n    # Path to the CSV file \n    downloads_folder = os.path.expanduser('~') + '/Downloads'\n    file_path = os.path.join(downloads_folder, 'incd.csv')\n\n    # Check if file exists\n    if os.path.exists(file_path):\n        # Load the data from the CSV\n        lung_cancer_data = pd.read_csv(file_path)\n        print(\"Data loaded successfully.\")\n        return lung_cancer_data\n    else:\n        print(f\"Error: {file_path} does not exist.\")\n        return None\n\ndata = fetch_data()\nif data is not None:\n    print(data.head())  # Print the first few rows of the data\n",
+  "history_output" : "Traceback (most recent call last):\n  File \"/Users/jyoshmithareddypaturi/gw-workspace/gMpe8ArqyCyh/raw_data.py\", line 19, in <module>\n    data = fetch_data()\n           ^^^^^^^^^^^^\n  File \"/Users/jyoshmithareddypaturi/gw-workspace/gMpe8ArqyCyh/raw_data.py\", line 12, in fetch_data\n    lung_cancer_data = pd.read_csv(file_path)\n                       ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/jyoshmithareddypaturi/anaconda3/lib/python3.11/site-packages/pandas/io/parsers/readers.py\", line 912, in read_csv\n    return _read(filepath_or_buffer, kwds)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/jyoshmithareddypaturi/anaconda3/lib/python3.11/site-packages/pandas/io/parsers/readers.py\", line 583, in _read\n    return parser.read(nrows)\n           ^^^^^^^^^^^^^^^^^^\n  File \"/Users/jyoshmithareddypaturi/anaconda3/lib/python3.11/site-packages/pandas/io/parsers/readers.py\", line 1704, in read\n    ) = self._engine.read(  # type: ignore[attr-defined]\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/jyoshmithareddypaturi/anaconda3/lib/python3.11/site-packages/pandas/io/parsers/c_parser_wrapper.py\", line 234, in read\n    chunks = self._reader.read_low_memory(nrows)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"pandas/_libs/parsers.pyx\", line 814, in pandas._libs.parsers.TextReader.read_low_memory\n  File \"pandas/_libs/parsers.pyx\", line 875, in pandas._libs.parsers.TextReader._read_rows\n  File \"pandas/_libs/parsers.pyx\", line 850, in pandas._libs.parsers.TextReader._tokenize_rows\n  File \"pandas/_libs/parsers.pyx\", line 861, in pandas._libs.parsers.TextReader._check_tokenize_status\n  File \"pandas/_libs/parsers.pyx\", line 2029, in pandas._libs.parsers.raise_parser_error\npandas.errors.ParserError: Error tokenizing data. C error: Expected 1 fields in line 9, saw 14\n",
+  "history_begin_time" : 1739424243183,
+  "history_end_time" : 1739424247815,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : null,
+  "indicator" : "Failed"
+},{
+  "history_id" : "mi5hsrx5d58",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740625254799,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "iun6ox5ooum",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1739427450814,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "7a55hc71m78",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740629008012,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "uce9updf1xy",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741274063380,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "6rt44lkbv0z",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1739426135911,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "n3j0bxkfygq",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740629860954,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "az2qyr2a096",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1739427569846,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "4hdy4phettr",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275207408,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "zvhzchgxlun",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275476067,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "8foz2cajwh2",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1739427390940,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "x2accjrgis4",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1739426114222,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "i918k0t3u9j",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1739426200358,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "x8js84nmjfq",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1739427177611,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "gzpvooes9od",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740628647097,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "r41dt8ifqiz",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740630100141,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "4p0dav51d3n",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275389003,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "0yhzli2s1u6",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740629989076,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "16197qcc6h0",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740625279523,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "brorp9crhkq",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741870314743,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "huv07tsmn04",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741873525520,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "nvsxgkptcug",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741873559803,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "9g07wulqeln",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741876725047,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "4ujmpzk7wym",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742429005645,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "i29zh7jy2q2",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742429862380,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "d1rnz9ci0mc",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742429900029,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "aobra8oahhn",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742475919556,
+  "history_notes" : null,
+  "history_process" : "ul6ag3",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},]

@@ -1,0 +1,121 @@
+[{
+  "history_id" : "6HT3JMJJSp2o",
+  "history_input" : "import pandas as pd\nimport os\n\n# Define the path to the Downloads folder\ndownloads_path = os.path.expanduser(\"~/Downloads\")\n\n# Define the full path to the file\naqi_file_2021 = os.path.join(downloads_path, \"annual_aqi_by_county_2021.csv\")\n\n# Load the CSV file\naqi_data_2021 = pd.read_csv(aqi_file_2021)\n\n# Print the first few rows\nprint(aqi_data_2021.head())  # Prints the first 5 rows\n",
+  "history_output" : "     State   County  Year  ...  Days Ozone  Days PM2.5  Days PM10\n0  Alabama  Baldwin  2021  ...         199          81          0\n1  Alabama     Clay  2021  ...           0         110          0\n2  Alabama   DeKalb  2021  ...         298          63          0\n3  Alabama   Elmore  2021  ...         241           0          0\n4  Alabama   Etowah  2021  ...         201          85          0\n[5 rows x 18 columns]\n",
+  "history_begin_time" : 1740629832415,
+  "history_end_time" : 1740629833124,
+  "history_notes" : null,
+  "history_process" : "p2ymk1",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "qmmn5y9ph1x",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741274063423,
+  "history_notes" : null,
+  "history_process" : "p2ymk1",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "h886fogltvc",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740629860968,
+  "history_notes" : null,
+  "history_process" : "p2ymk1",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "6rmcta11uds",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275207442,
+  "history_notes" : null,
+  "history_process" : "p2ymk1",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "a6a1yjfnyb8",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275476084,
+  "history_notes" : null,
+  "history_process" : "p2ymk1",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "kd64n4a5b0f",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740630100173,
+  "history_notes" : null,
+  "history_process" : "p2ymk1",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "2y47fnivdgn",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275389108,
+  "history_notes" : null,
+  "history_process" : "p2ymk1",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "9xnynudy640",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740629989089,
+  "history_notes" : null,
+  "history_process" : "p2ymk1",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "m8m2mgsbs1s",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741212507931,
+  "history_notes" : null,
+  "history_process" : "p2ymk1",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "0o0l96ny234",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741213300618,
+  "history_notes" : null,
+  "history_process" : "p2ymk1",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "od6smlfladb",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741213324323,
+  "history_notes" : null,
+  "history_process" : "p2ymk1",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "zv8xgsopo8w",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741213335990,
+  "history_notes" : null,
+  "history_process" : "p2ymk1",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},]

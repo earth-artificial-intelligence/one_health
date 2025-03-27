@@ -1,0 +1,131 @@
+[{
+  "history_id" : "Z2BVga7dyAP3",
+  "history_input" : "import pandas as pd\nimport os\n\ndef fetch_and_process_data():\n    # Assuming the uploaded file is in the working directory\n    # Get the path to the Downloads folder or GeoWeaver's workspace\n    downloads_folder = os.path.expanduser('~') + '/Downloads'\n    \n    # Path to the CSV file in Downloads folder (adjust path if necessary for GeoWeaver)\n    file_path = os.path.join(downloads_folder, 'data_222235.csv')\n\n    if os.path.exists(file_path):\n        try:\n            # Read the data from the CSV file with 'latin1' encoding\n            data = pd.read_csv(file_path, encoding='latin1')\n            print(\"Initial Dataset:\")\n            print(data.head())  # Display the first few rows of the data\n\n            # Columns to drop\n            columns_to_drop = ['Year', 'Data Comment', 'StateFIPS', 'CountyFIPS', 'Unnamed: 7']\n            data_cleaned = data.drop(columns=columns_to_drop)\n            \n            # Aggregating the data by 'State' and 'County' with the mean of the numerical columns\n            data_aggregated = data_cleaned.groupby(['State', 'County'], as_index=False).mean()\n            \n            # Remove decimals from the 'Value' column and convert to integer\n            data_aggregated['Value'] = data_aggregated['Value'].round(0).astype(int)\n            \n            # Define the output file path (to save the cleaned and aggregated data in Downloads folder)\n            output_file_path = os.path.join(downloads_folder, 'cleaned_aggregated_data.csv')\n            \n            # Save the aggregated dataset to a new CSV file\n            data_aggregated.to_csv(output_file_path, index=False)\n            print(f\"\\nAggregated dataset saved to {output_file_path}\")\n            \n            # Return the output file path for further use in GeoWeaver\n            return output_file_path\n\n        except Exception as e:\n            print(f\"Error processing the CSV file: {e}\")\n            return None\n    else:\n        print(f\"Error: {file_path} does not exist.\")\n        return None\n\n# Call the function to process the data and save it\noutput_file = fetch_and_process_data()\n",
+  "history_output" : "Initial Dataset:\n   StateFIPS    State  CountyFIPS  ... Value  Data Comment  Unnamed: 7\n0          1  Alabama        1001  ...  40.0           NaN         NaN\n1          1  Alabama        1001  ...  30.0           NaN         NaN\n2          1  Alabama        1001  ...  40.0           NaN         NaN\n3          1  Alabama        1003  ...  30.0           NaN         NaN\n4          1  Alabama        1003  ...  20.0           NaN         NaN\n[5 rows x 8 columns]\nAggregated dataset saved to /Users/jyoshmithareddypaturi/Downloads/cleaned_aggregated_data.csv\n",
+  "history_begin_time" : 1739427039858,
+  "history_end_time" : 1739427040850,
+  "history_notes" : null,
+  "history_process" : "3onu0b",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "y5zhi48ndgc",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740625254796,
+  "history_notes" : null,
+  "history_process" : "3onu0b",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "nmklqprtvzs",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740629008009,
+  "history_notes" : null,
+  "history_process" : "3onu0b",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "kx8j2ejvn6p",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741274063376,
+  "history_notes" : null,
+  "history_process" : "3onu0b",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "1tm5be4im2i",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740629860952,
+  "history_notes" : null,
+  "history_process" : "3onu0b",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "m15zn14z92c",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1739427569853,
+  "history_notes" : null,
+  "history_process" : "3onu0b",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "872n3l59z9h",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275207404,
+  "history_notes" : null,
+  "history_process" : "3onu0b",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "7qepy6fw7gz",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275476064,
+  "history_notes" : null,
+  "history_process" : "3onu0b",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "x5otoxxhd7r",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740625279518,
+  "history_notes" : null,
+  "history_process" : "3onu0b",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "aefffjsxk70",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740628647095,
+  "history_notes" : null,
+  "history_process" : "3onu0b",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "4m2qjx1okgv",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740629989074,
+  "history_notes" : null,
+  "history_process" : "3onu0b",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "gtm9vp1g363",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740630100137,
+  "history_notes" : null,
+  "history_process" : "3onu0b",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "hirubdommb2",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275388995,
+  "history_notes" : null,
+  "history_process" : "3onu0b",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},]

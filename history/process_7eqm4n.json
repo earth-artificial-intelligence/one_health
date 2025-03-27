@@ -1,0 +1,61 @@
+[{
+  "history_id" : "B0Fvz12JAd2H",
+  "history_input" : "import os\nimport pandas as pd\n\n# Define the directory where the dataset is stored\nTARGET_DIRECTORY = \"/media/volume1\"\n\n# Define file paths\nFINAL_MERGED_FILE_PATH = os.path.join(TARGET_DIRECTORY, \"final_merged_dataset.csv\")\nCLEANED_FILE_PATH = os.path.join(TARGET_DIRECTORY, \"cleaned_final_merged_dataset.csv\")\n\ndef load_dataset(file_path):\n    \"\"\"\n    Loads the dataset from the given file path.\n    \n    Args:\n        file_path (str): Path to the dataset.\n\n    Returns:\n        pd.DataFrame: Loaded pandas DataFrame.\n    \"\"\"\n    if not os.path.exists(file_path):\n        print(f\"Error: File '{file_path}' not found.\")\n        return None\n\n    try:\n        df = pd.read_csv(file_path)\n        print(\"Dataset loaded successfully.\")\n        return df\n    except Exception as e:\n        print(f\"Error loading dataset: {e}\")\n        return None\n\ndef clean_dataset(df):\n    \"\"\"\n    Cleans the dataset by:\n    1. Dropping 'State_y'.\n    2. Renaming 'State_x' to 'State'.\n\n    Args:\n        df (pd.DataFrame): The dataset to clean.\n\n    Returns:\n        pd.DataFrame: Cleaned dataset.\n    \"\"\"\n    try:\n        # Drop 'State_y' if it exists\n        if \"State_y\" in df.columns:\n            df.drop(columns=[\"State_y\"], inplace=True)\n\n        # Rename 'State_x' to 'State' if it exists\n        if \"State_x\" in df.columns:\n            df.rename(columns={\"State_x\": \"State\"}, inplace=True)\n\n        print(\"Dataset cleaned successfully.\")\n        return df\n    except Exception as e:\n        print(f\"Error during cleaning: {e}\")\n        return None\n\ndef save_cleaned_dataset(df, file_path):\n    \"\"\"\n    Saves the cleaned dataset to the specified file path.\n\n    Args:\n        df (pd.DataFrame): The cleaned dataset.\n        file_path (str): Path to save the cleaned dataset.\n    \"\"\"\n    try:\n        df.to_csv(file_path, index=False)\n        print(f\"Cleaned dataset saved successfully as '{file_path}'.\")\n    except Exception as e:\n        print(f\"Error saving dataset: {e}\")\n\ndef print_dataset_info(df):\n    \"\"\"\n    Prints the dataset's column names and first 10 rows.\n\n    Args:\n        df (pd.DataFrame): The dataset to print.\n    \"\"\"\n    print(\"\\nAll Columns in Cleaned Dataset:\")\n    print(list(df.columns))\n\n    print(\"\\nFirst 10 Rows of Cleaned Dataset:\")\n    print(df.head(10))\n\ndef main():\n    \"\"\"\n    Main function to load, clean, and save the dataset.\n    \"\"\"\n    df = load_dataset(FINAL_MERGED_FILE_PATH)\n    if df is not None:\n        cleaned_df = clean_dataset(df)\n        if cleaned_df is not None:\n            save_cleaned_dataset(cleaned_df, CLEANED_FILE_PATH)\n            print_dataset_info(cleaned_df)  # Print columns and first 10 rows\n\nif __name__ == \"__main__\":\n    main()\n",
+  "history_output" : "Dataset loaded successfully.\nDataset cleaned successfully.\nCleaned dataset saved successfully as '/media/volume1/cleaned_final_merged_dataset.csv'.\nAll Columns in Cleaned Dataset:\n['State', 'County', 'Year', 'Days with AQI', 'Good Days', 'Moderate Days', 'Unhealthy for Sensitive Groups Days', 'Unhealthy Days', 'Very Unhealthy Days', 'Hazardous Days', 'Max AQI', '90th Percentile AQI', 'Median AQI', 'Days CO', 'Days NO2', 'Days Ozone', 'Days PM2.5', 'Days PM10', '2023 Rural-Urban Continuum Codes([rural urban note])', 'Age-Adjusted Incidence Rate([rate note]) - cases per 100,000', 'Lower 95% Confidence Interval', 'Upper 95% Confidence Interval', 'Average Annual Count', 'Recent Trend', 'Recent 5-Year Trend ([trend note]) in Incidence Rates', 'Lower 95% Confidence Interval.1', 'Upper 95% Confidence Interval.1', 'Region', 'Zone']\nFirst 10 Rows of Cleaned Dataset:\n     State     County  Year  ...  Upper 95% Confidence Interval.1  Region  Zone\n0  Alabama    Baldwin  2017  ...                             -1.4     4.0   3.0\n1  Alabama       Clay  2017  ...                              1.1     4.0   1.0\n2  Alabama    Colbert  2017  ...                              1.3     4.0   1.0\n3  Alabama     DeKalb  2017  ...                             -0.5     NaN   NaN\n4  Alabama     Elmore  2017  ...                             -0.8     4.0   2.0\n5  Alabama     Etowah  2017  ...                             -0.2     4.0   2.0\n6  Alabama    Houston  2017  ...                             -1.5     4.0   3.0\n7  Alabama  Jefferson  2017  ...                             -1.9     4.0   2.0\n8  Alabama   Lawrence  2017  ...                              1.2     4.0   1.0\n9  Alabama    Madison  2017  ...                             -2.3     4.0   1.0\n[10 rows x 29 columns]\n",
+  "history_begin_time" : 1742428942760,
+  "history_end_time" : 1742428943455,
+  "history_notes" : null,
+  "history_process" : "7eqm4n",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "Xc8ONoN1GMBA",
+  "history_input" : "import os\nimport pandas as pd\n\n# Define the directory where the dataset is stored\nTARGET_DIRECTORY = \"/media/volume1\"\n\n# Define file paths\nFINAL_MERGED_FILE_PATH = os.path.join(TARGET_DIRECTORY, \"final_merged_dataset.csv\")\nCLEANED_FILE_PATH = os.path.join(TARGET_DIRECTORY, \"cleaned_final_merged_dataset.csv\")\n\ndef load_dataset(file_path):\n    \"\"\"\n    Loads the dataset from the given file path.\n    \n    Args:\n        file_path (str): Path to the dataset.\n\n    Returns:\n        pd.DataFrame: Loaded pandas DataFrame.\n    \"\"\"\n    if not os.path.exists(file_path):\n        print(f\"Error: File '{file_path}' not found.\")\n        return None\n\n    try:\n        df = pd.read_csv(file_path)\n        print(\"Dataset loaded successfully.\")\n        return df\n    except Exception as e:\n        print(f\"Error loading dataset: {e}\")\n        return None\n\ndef clean_dataset(df):\n    \"\"\"\n    Cleans the dataset by:\n    1. Dropping 'State_y'.\n    2. Renaming 'State_x' to 'State'.\n\n    Args:\n        df (pd.DataFrame): The dataset to clean.\n\n    Returns:\n        pd.DataFrame: Cleaned dataset.\n    \"\"\"\n    try:\n        # Drop 'State_y' if it exists\n        if \"State_y\" in df.columns:\n            df.drop(columns=[\"State_y\"], inplace=True)\n\n        # Rename 'State_x' to 'State' if it exists\n        if \"State_x\" in df.columns:\n            df.rename(columns={\"State_x\": \"State\"}, inplace=True)\n\n        print(\"Dataset cleaned successfully.\")\n        return df\n    except Exception as e:\n        print(f\"Error during cleaning: {e}\")\n        return None\n\ndef save_cleaned_dataset(df, file_path):\n    \"\"\"\n    Saves the cleaned dataset to the specified file path.\n\n    Args:\n        df (pd.DataFrame): The cleaned dataset.\n        file_path (str): Path to save the cleaned dataset.\n    \"\"\"\n    try:\n        df.to_csv(file_path, index=False)\n        print(f\"Cleaned dataset saved successfully as '{file_path}'.\")\n    except Exception as e:\n        print(f\"Error saving dataset: {e}\")\n\ndef print_dataset_info(df):\n    \"\"\"\n    Prints the dataset's column names and first 10 rows.\n\n    Args:\n        df (pd.DataFrame): The dataset to print.\n    \"\"\"\n    print(\"\\nAll Columns in Cleaned Dataset:\")\n    print(list(df.columns))\n\n    print(\"\\nFirst 10 Rows of Cleaned Dataset:\")\n    print(df.head(10))\n\ndef main():\n    \"\"\"\n    Main function to load, clean, and save the dataset.\n    \"\"\"\n    df = load_dataset(FINAL_MERGED_FILE_PATH)\n    if df is not None:\n        cleaned_df = clean_dataset(df)\n        if cleaned_df is not None:\n            save_cleaned_dataset(cleaned_df, CLEANED_FILE_PATH)\n            print_dataset_info(cleaned_df)  # Print columns and first 10 rows\n\nif __name__ == \"__main__\":\n    main()\n",
+  "history_output" : "Dataset loaded successfully.\nDataset cleaned successfully.\nCleaned dataset saved successfully as '/media/volume1/cleaned_final_merged_dataset.csv'.\nAll Columns in Cleaned Dataset:\n['State', 'County', 'Year', 'Days with AQI', 'Good Days', 'Moderate Days', 'Unhealthy for Sensitive Groups Days', 'Unhealthy Days', 'Very Unhealthy Days', 'Hazardous Days', 'Max AQI', '90th Percentile AQI', 'Median AQI', 'Days CO', 'Days NO2', 'Days Ozone', 'Days PM2.5', 'Days PM10', '2023 Rural-Urban Continuum Codes([rural urban note])', 'Age-Adjusted Incidence Rate([rate note]) - cases per 100,000', 'Lower 95% Confidence Interval', 'Upper 95% Confidence Interval', 'Average Annual Count', 'Recent Trend', 'Recent 5-Year Trend ([trend note]) in Incidence Rates', 'Lower 95% Confidence Interval.1', 'Upper 95% Confidence Interval.1', 'Region', 'Zone']\nFirst 10 Rows of Cleaned Dataset:\n     State     County  Year  ...  Upper 95% Confidence Interval.1  Region  Zone\n0  Alabama    Baldwin  2017  ...                             -1.4     4.0   3.0\n1  Alabama       Clay  2017  ...                              1.1     4.0   1.0\n2  Alabama    Colbert  2017  ...                              1.3     4.0   1.0\n3  Alabama     DeKalb  2017  ...                             -0.5     NaN   NaN\n4  Alabama     Elmore  2017  ...                             -0.8     4.0   2.0\n5  Alabama     Etowah  2017  ...                             -0.2     4.0   2.0\n6  Alabama    Houston  2017  ...                             -1.5     4.0   3.0\n7  Alabama  Jefferson  2017  ...                             -1.9     4.0   2.0\n8  Alabama   Lawrence  2017  ...                              1.2     4.0   1.0\n9  Alabama    Madison  2017  ...                             -2.3     4.0   1.0\n[10 rows x 29 columns]\n",
+  "history_begin_time" : 1742428916625,
+  "history_end_time" : 1742428917310,
+  "history_notes" : null,
+  "history_process" : "7eqm4n",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "138dc1ci0lq",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742429005668,
+  "history_notes" : null,
+  "history_process" : "7eqm4n",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "lerut9hui2o",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742429863400,
+  "history_notes" : null,
+  "history_process" : "7eqm4n",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "u5lwdhyj9gf",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742429900047,
+  "history_notes" : null,
+  "history_process" : "7eqm4n",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "t806oedvts1",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742475919597,
+  "history_notes" : null,
+  "history_process" : "7eqm4n",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},]

@@ -1,0 +1,81 @@
+[{
+  "history_id" : "kwnqvChUYt0M",
+  "history_input" : "import pandas as pd\nimport os\n\n# Define the path to the Downloads folder\ndownloads_path = os.path.expanduser(\"~/Downloads\")\n\n# Define the full path to the file\naqi_file_2020 = os.path.join(downloads_path, \"annual_aqi_by_county_2020.csv\")\n\n# Load the CSV file\naqi_data_2020 = pd.read_csv(aqi_file_2020)\n\n# Print the first few rows\nprint(aqi_data_2020.head())  # Prints the first 5 rows\n",
+  "history_output" : "     State   County  Year  ...  Days Ozone  Days PM2.5  Days PM10\n0  Alabama  Baldwin  2020  ...         178          91          0\n1  Alabama     Clay  2020  ...           0         105          0\n2  Alabama   DeKalb  2020  ...         309          55          0\n3  Alabama   Elmore  2020  ...         197           0          0\n4  Alabama   Etowah  2020  ...         191          85          0\n[5 rows x 18 columns]\n",
+  "history_begin_time" : 1740629745664,
+  "history_end_time" : 1740629746372,
+  "history_notes" : null,
+  "history_process" : "m2rtkz",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "ojb7d0m4m7a",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741274063419,
+  "history_notes" : null,
+  "history_process" : "m2rtkz",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "qt04bhilejr",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740629860967,
+  "history_notes" : null,
+  "history_process" : "m2rtkz",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "r4ucoq2kghj",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275207437,
+  "history_notes" : null,
+  "history_process" : "m2rtkz",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "m9xb2hobnom",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275476083,
+  "history_notes" : null,
+  "history_process" : "m2rtkz",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "lpgeezhpady",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740630100171,
+  "history_notes" : null,
+  "history_process" : "m2rtkz",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "r3lp7qqlhud",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740629989087,
+  "history_notes" : null,
+  "history_process" : "m2rtkz",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "1sf9vw1liu8",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275389101,
+  "history_notes" : null,
+  "history_process" : "m2rtkz",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},]

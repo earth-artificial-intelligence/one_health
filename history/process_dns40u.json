@@ -1,0 +1,81 @@
+[{
+  "history_id" : "c2XQnwYlTNnC",
+  "history_input" : "import pandas as pd\nimport os\n\n# Define the path to the Downloads folder\ndownloads_path = os.path.expanduser(\"~/Downloads\")\n\n# Define the full path to the file\naqi_file_2019 = os.path.join(downloads_path, \"annual_aqi_by_county_2019.csv\")\n\n# Load the CSV file\naqi_data_2019 = pd.read_csv(aqi_file_2019)\n\n# Print the first few rows\nprint(aqi_data_2019.head())  # Prints the first 5 rows\n",
+  "history_output" : "     State   County  Year  ...  Days Ozone  Days PM2.5  Days PM10\n0  Alabama  Baldwin  2019  ...         198          73          0\n1  Alabama     Clay  2019  ...           0         107          0\n2  Alabama  Colbert  2019  ...         219          44          0\n3  Alabama   DeKalb  2019  ...         306          55          0\n4  Alabama   Elmore  2019  ...         228           0          0\n[5 rows x 18 columns]\n",
+  "history_begin_time" : 1740629656873,
+  "history_end_time" : 1740629657590,
+  "history_notes" : null,
+  "history_process" : "dns40u",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "xdfvecgfdk2",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740629860966,
+  "history_notes" : null,
+  "history_process" : "dns40u",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "i31258xodnc",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740629989085,
+  "history_notes" : null,
+  "history_process" : "dns40u",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "gfozz12t40q",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740630100168,
+  "history_notes" : null,
+  "history_process" : "dns40u",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "9jx5smi83cl",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741274063413,
+  "history_notes" : null,
+  "history_process" : "dns40u",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "5rb8dvc49l7",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275207429,
+  "history_notes" : null,
+  "history_process" : "dns40u",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "0ejty7qmqlx",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275389092,
+  "history_notes" : null,
+  "history_process" : "dns40u",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "12hmxdefluy",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275476081,
+  "history_notes" : null,
+  "history_process" : "dns40u",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},]

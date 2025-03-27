@@ -1,0 +1,71 @@
+[{
+  "history_id" : "56esWc1je8Tm",
+  "history_input" : "import pandas as pd\nimport os\n\n# Define the path to the Downloads folder (update if needed)\ndownloads_path = os.path.expanduser(\"~/Downloads\")\nfile_path = os.path.join(downloads_path, \"cleaned_dataset.csv\")  # Adjust if necessary\n\n# Load the dataset\ndf = pd.read_csv(file_path)\n\n# Splitting the 'County' column into 'County Name' and 'State Name'\ndf[['County Name', 'State Name']] = df['County'].str.extract(r'^(.*) County, (.*)\\(\\d+\\)$')\n\n# Removing the original 'County' column\ndf.drop(columns=['County'], inplace=True)\n\n# Reordering columns to place 'State Name' and 'County Name' first\ncolumns_order = [\"State Name\", \"County Name\"] + [col for col in df.columns if col not in [\"State Name\", \"County Name\"]]\ndf = df[columns_order]\n\n# Save the modified dataset\noutput_file_path = os.path.join(downloads_path, \"updated_cleaned_cancer.csv\")\ndf.to_csv(output_file_path, index=False)\n\nprint(f\"Updated dataset saved as '{output_file_path}'.\")\n",
+  "history_output" : "Updated dataset saved as '/Users/jyoshmithareddypaturi/Downloads/updated_cleaned_cancer.csv'.\n",
+  "history_begin_time" : 1741274034358,
+  "history_end_time" : 1741274035446,
+  "history_notes" : null,
+  "history_process" : "mo2hsb",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "1n7kr5ultgz",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741274063433,
+  "history_notes" : null,
+  "history_process" : "mo2hsb",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "iyifwem2y6k",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275207451,
+  "history_notes" : null,
+  "history_process" : "mo2hsb",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "s1v30slelzl",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275476088,
+  "history_notes" : null,
+  "history_process" : "mo2hsb",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "naq0390e2gy",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275389130,
+  "history_notes" : null,
+  "history_process" : "mo2hsb",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "i12i5ipkbrz",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741870314757,
+  "history_notes" : null,
+  "history_process" : "mo2hsb",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "vtqtvnl4ii0",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741873525532,
+  "history_notes" : null,
+  "history_process" : "mo2hsb",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},]

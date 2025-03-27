@@ -1,0 +1,111 @@
+[{
+  "history_id" : "to386iih17r",
+  "history_input" : "import os\nimport urllib.request\nimport urllib.parse\n\ndef download_file(url, save_location, file_name=\"incd.csv\"):\n    \"\"\"\n    Downloads a file from a given URL and saves it to the specified location.\n    \n    Args:\n        url (str): The URL of the file to download.\n        save_location (str): The directory where the file should be saved.\n        file_name (str): The name to save the file as (default is 'incd.csv').\n    \n    Returns:\n        str: Full path of the saved file if successful, None if failed.\n    \"\"\"\n    try:\n        print(\"Starting file download...\")\n        \n        # Ensure the save directory exists\n        os.makedirs(save_location, exist_ok=True)\n\n        # Open the URL and read the content\n        with urllib.request.urlopen(url) as response:\n            if response.status != 200:\n                print(f\"Failed to download file. HTTP Status: {response.status}\")\n                return None\n            file_content = response.read()\n        \n        # Define the full save path\n        save_path = os.path.join(save_location, file_name)\n\n        # Write the file\n        with open(save_path, 'wb') as file:\n            file.write(file_content)\n\n        print(f\"File downloaded successfully and saved as: {save_path}\")\n        return save_path  # Return the saved file path\n\n    except Exception as e:\n        print(f\"An error occurred while downloading the file: {str(e)}\")\n        return None\n",
+  "history_output" : "",
+  "history_begin_time" : 1742475917857,
+  "history_end_time" : 1742475919594,
+  "history_notes" : null,
+  "history_process" : "dv6ldm",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "xdwersax00z",
+  "history_input" : "import os\nimport urllib.request\nimport urllib.parse\n\ndef download_file(url, save_location, file_name=\"incd.csv\"):\n    \"\"\"\n    Downloads a file from a given URL and saves it to the specified location.\n    \n    Args:\n        url (str): The URL of the file to download.\n        save_location (str): The directory where the file should be saved.\n        file_name (str): The name to save the file as (default is 'incd.csv').\n    \n    Returns:\n        str: Full path of the saved file if successful, None if failed.\n    \"\"\"\n    try:\n        print(\"Starting file download...\")\n        \n        # Ensure the save directory exists\n        os.makedirs(save_location, exist_ok=True)\n\n        # Open the URL and read the content\n        with urllib.request.urlopen(url) as response:\n            if response.status != 200:\n                print(f\"Failed to download file. HTTP Status: {response.status}\")\n                return None\n            file_content = response.read()\n        \n        # Define the full save path\n        save_path = os.path.join(save_location, file_name)\n\n        # Write the file\n        with open(save_path, 'wb') as file:\n            file.write(file_content)\n\n        print(f\"File downloaded successfully and saved as: {save_path}\")\n        return save_path  # Return the saved file path\n\n    except Exception as e:\n        print(f\"An error occurred while downloading the file: {str(e)}\")\n        return None\n",
+  "history_output" : "",
+  "history_begin_time" : 1742429898912,
+  "history_end_time" : 1742429900053,
+  "history_notes" : null,
+  "history_process" : "dv6ldm",
+  "host_id" : "100001",
+  "indicator" : "Done"
+},{
+  "history_id" : "ow0qlvd2tyn",
+  "history_input" : "import os\nimport urllib.request\nimport urllib.parse\n\ndef download_file(url, save_location, file_name=\"incd.csv\"):\n    \"\"\"\n    Downloads a file from a given URL and saves it to the specified location.\n    \n    Args:\n        url (str): The URL of the file to download.\n        save_location (str): The directory where the file should be saved.\n        file_name (str): The name to save the file as (default is 'incd.csv').\n    \n    Returns:\n        str: Full path of the saved file if successful, None if failed.\n    \"\"\"\n    try:\n        print(\"Starting file download...\")\n        \n        # Ensure the save directory exists\n        os.makedirs(save_location, exist_ok=True)\n\n        # Open the URL and read the content\n        with urllib.request.urlopen(url) as response:\n            if response.status != 200:\n                print(f\"Failed to download file. HTTP Status: {response.status}\")\n                return None\n            file_content = response.read()\n        \n        # Define the full save path\n        save_path = os.path.join(save_location, file_name)\n\n        # Write the file\n        with open(save_path, 'wb') as file:\n            file.write(file_content)\n\n        print(f\"File downloaded successfully and saved as: {save_path}\")\n        return save_path  # Return the saved file path\n\n    except Exception as e:\n        print(f\"An error occurred while downloading the file: {str(e)}\")\n        return None\n",
+  "history_output" : "",
+  "history_begin_time" : 1742429861825,
+  "history_end_time" : 1742429863397,
+  "history_notes" : null,
+  "history_process" : "dv6ldm",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "iz1y5ok01gw",
+  "history_input" : "import os\nimport urllib.request\nimport urllib.parse\n\ndef download_file(url, save_location, file_name=\"incd.csv\"):\n    \"\"\"\n    Downloads a file from a given URL and saves it to the specified location.\n    \n    Args:\n        url (str): The URL of the file to download.\n        save_location (str): The directory where the file should be saved.\n        file_name (str): The name to save the file as (default is 'incd.csv').\n    \n    Returns:\n        str: Full path of the saved file if successful, None if failed.\n    \"\"\"\n    try:\n        print(\"Starting file download...\")\n        \n        # Ensure the save directory exists\n        os.makedirs(save_location, exist_ok=True)\n\n        # Open the URL and read the content\n        with urllib.request.urlopen(url) as response:\n            if response.status != 200:\n                print(f\"Failed to download file. HTTP Status: {response.status}\")\n                return None\n            file_content = response.read()\n        \n        # Define the full save path\n        save_path = os.path.join(save_location, file_name)\n\n        # Write the file\n        with open(save_path, 'wb') as file:\n            file.write(file_content)\n\n        print(f\"File downloaded successfully and saved as: {save_path}\")\n        return save_path  # Return the saved file path\n\n    except Exception as e:\n        print(f\"An error occurred while downloading the file: {str(e)}\")\n        return None\n",
+  "history_output" : "",
+  "history_begin_time" : 1742429005267,
+  "history_end_time" : 1742429006388,
+  "history_notes" : null,
+  "history_process" : "dv6ldm",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "kllk8drzzrh",
+  "history_input" : "import os\nimport urllib.request\nimport urllib.parse\n\ndef download_file(url, save_location, file_name=\"incd.csv\"):\n    \"\"\"\n    Downloads a file from a given URL and saves it to the specified location.\n    \n    Args:\n        url (str): The URL of the file to download.\n        save_location (str): The directory where the file should be saved.\n        file_name (str): The name to save the file as (default is 'incd.csv').\n    \n    Returns:\n        str: Full path of the saved file if successful, None if failed.\n    \"\"\"\n    try:\n        print(\"Starting file download...\")\n        \n        # Ensure the save directory exists\n        os.makedirs(save_location, exist_ok=True)\n\n        # Open the URL and read the content\n        with urllib.request.urlopen(url) as response:\n            if response.status != 200:\n                print(f\"Failed to download file. HTTP Status: {response.status}\")\n                return None\n            file_content = response.read()\n        \n        # Define the full save path\n        save_path = os.path.join(save_location, file_name)\n\n        # Write the file\n        with open(save_path, 'wb') as file:\n            file.write(file_content)\n\n        print(f\"File downloaded successfully and saved as: {save_path}\")\n        return save_path  # Return the saved file path\n\n    except Exception as e:\n        print(f\"An error occurred while downloading the file: {str(e)}\")\n        return None\n",
+  "history_output" : "",
+  "history_begin_time" : 1741882802894,
+  "history_end_time" : 1741882804024,
+  "history_notes" : null,
+  "history_process" : "dv6ldm",
+  "host_id" : "100001",
+  "indicator" : "Done"
+},{
+  "history_id" : "8ogp31cvfes",
+  "history_input" : "import os\nimport urllib.request\nimport urllib.parse\n\ndef download_file(url, save_location, file_name=\"incd.csv\"):\n    \"\"\"\n    Downloads a file from a given URL and saves it to the specified location.\n    \n    Args:\n        url (str): The URL of the file to download.\n        save_location (str): The directory where the file should be saved.\n        file_name (str): The name to save the file as (default is 'incd.csv').\n    \n    Returns:\n        str: Full path of the saved file if successful, None if failed.\n    \"\"\"\n    try:\n        print(\"Starting file download...\")\n        \n        # Ensure the save directory exists\n        os.makedirs(save_location, exist_ok=True)\n\n        # Open the URL and read the content\n        with urllib.request.urlopen(url) as response:\n            if response.status != 200:\n                print(f\"Failed to download file. HTTP Status: {response.status}\")\n                return None\n            file_content = response.read()\n        \n        # Define the full save path\n        save_path = os.path.join(save_location, file_name)\n\n        # Write the file\n        with open(save_path, 'wb') as file:\n            file.write(file_content)\n\n        print(f\"File downloaded successfully and saved as: {save_path}\")\n        return save_path  # Return the saved file path\n\n    except Exception as e:\n        print(f\"An error occurred while downloading the file: {str(e)}\")\n        return None\n",
+  "history_output" : "",
+  "history_begin_time" : 1741876721569,
+  "history_end_time" : 1741876725066,
+  "history_notes" : null,
+  "history_process" : "dv6ldm",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "1z5qlhp9n6b",
+  "history_input" : "import os\nimport urllib.request\nimport urllib.parse\n\ndef download_file(url, save_location, file_name=\"incd.csv\"):\n    \"\"\"\n    Downloads a file from a given URL and saves it to the specified location.\n    \n    Args:\n        url (str): The URL of the file to download.\n        save_location (str): The directory where the file should be saved.\n        file_name (str): The name to save the file as (default is 'incd.csv').\n    \n    Returns:\n        str: Full path of the saved file if successful, None if failed.\n    \"\"\"\n    try:\n        print(\"Starting file download...\")\n        \n        # Ensure the save directory exists\n        os.makedirs(save_location, exist_ok=True)\n\n        # Open the URL and read the content\n        with urllib.request.urlopen(url) as response:\n            if response.status != 200:\n                print(f\"Failed to download file. HTTP Status: {response.status}\")\n                return None\n            file_content = response.read()\n        \n        # Define the full save path\n        save_path = os.path.join(save_location, file_name)\n\n        # Write the file\n        with open(save_path, 'wb') as file:\n            file.write(file_content)\n\n        print(f\"File downloaded successfully and saved as: {save_path}\")\n        return save_path  # Return the saved file path\n\n    except Exception as e:\n        print(f\"An error occurred while downloading the file: {str(e)}\")\n        return None\n",
+  "history_output" : "",
+  "history_begin_time" : 1741873559582,
+  "history_end_time" : 1741873560693,
+  "history_notes" : null,
+  "history_process" : "dv6ldm",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "k8l7ga39phf",
+  "history_input" : "import os\nimport urllib.request\nimport urllib.parse\n\ndef download_file(url, save_location, file_name=\"incd.csv\"):\n    \"\"\"\n    Downloads a file from a given URL and saves it to the specified location.\n    \n    Args:\n        url (str): The URL of the file to download.\n        save_location (str): The directory where the file should be saved.\n        file_name (str): The name to save the file as (default is 'incd.csv').\n    \n    Returns:\n        str: Full path of the saved file if successful, None if failed.\n    \"\"\"\n    try:\n        print(\"Starting file download...\")\n        \n        # Ensure the save directory exists\n        os.makedirs(save_location, exist_ok=True)\n\n        # Open the URL and read the content\n        with urllib.request.urlopen(url) as response:\n            if response.status != 200:\n                print(f\"Failed to download file. HTTP Status: {response.status}\")\n                return None\n            file_content = response.read()\n        \n        # Define the full save path\n        save_path = os.path.join(save_location, file_name)\n\n        # Write the file\n        with open(save_path, 'wb') as file:\n            file.write(file_content)\n\n        print(f\"File downloaded successfully and saved as: {save_path}\")\n        return save_path  # Return the saved file path\n\n    except Exception as e:\n        print(f\"An error occurred while downloading the file: {str(e)}\")\n        return None\n",
+  "history_output" : "",
+  "history_begin_time" : 1741873523953,
+  "history_end_time" : 1741873525581,
+  "history_notes" : null,
+  "history_process" : "dv6ldm",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "d7im4ivxlmz",
+  "history_input" : "import os\nimport urllib.request\nimport urllib.parse\n\ndef download_file(url, save_location, file_name=\"incd.csv\"):\n    \"\"\"\n    Downloads a file from a given URL and saves it to the specified location.\n    \n    Args:\n        url (str): The URL of the file to download.\n        save_location (str): The directory where the file should be saved.\n        file_name (str): The name to save the file as (default is 'incd.csv').\n    \n    Returns:\n        str: Full path of the saved file if successful, None if failed.\n    \"\"\"\n    try:\n        print(\"Starting file download...\")\n        \n        # Ensure the save directory exists\n        os.makedirs(save_location, exist_ok=True)\n\n        # Open the URL and read the content\n        with urllib.request.urlopen(url) as response:\n            if response.status != 200:\n                print(f\"Failed to download file. HTTP Status: {response.status}\")\n                return None\n            file_content = response.read()\n        \n        # Define the full save path\n        save_path = os.path.join(save_location, file_name)\n\n        # Write the file\n        with open(save_path, 'wb') as file:\n            file.write(file_content)\n\n        print(f\"File downloaded successfully and saved as: {save_path}\")\n        return save_path  # Return the saved file path\n\n    except Exception as e:\n        print(f\"An error occurred while downloading the file: {str(e)}\")\n        return None\n",
+  "history_output" : "",
+  "history_begin_time" : 1741870313920,
+  "history_end_time" : 1741870315074,
+  "history_notes" : null,
+  "history_process" : "dv6ldm",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "G9N89Ygg8YDm",
+  "history_input" : "import os\nimport urllib.request\nimport urllib.parse\n\ndef download_file(url, save_location, file_name=\"incd.csv\"):\n    \"\"\"\n    Downloads a file from a given URL and saves it to the specified location.\n    \n    Args:\n        url (str): The URL of the file to download.\n        save_location (str): The directory where the file should be saved.\n        file_name (str): The name to save the file as (default is 'incd.csv').\n    \n    Returns:\n        str: Full path of the saved file if successful, None if failed.\n    \"\"\"\n    try:\n        print(\"Starting file download...\")\n        \n        # Ensure the save directory exists\n        os.makedirs(save_location, exist_ok=True)\n\n        # Open the URL and read the content\n        with urllib.request.urlopen(url) as response:\n            if response.status != 200:\n                print(f\"Failed to download file. HTTP Status: {response.status}\")\n                return None\n            file_content = response.read()\n        \n        # Define the full save path\n        save_path = os.path.join(save_location, file_name)\n\n        # Write the file\n        with open(save_path, 'wb') as file:\n            file.write(file_content)\n\n        print(f\"File downloaded successfully and saved as: {save_path}\")\n        return save_path  # Return the saved file path\n\n    except Exception as e:\n        print(f\"An error occurred while downloading the file: {str(e)}\")\n        return None\n",
+  "history_output" : "",
+  "history_begin_time" : 1741868401027,
+  "history_end_time" : 1741868401118,
+  "history_notes" : null,
+  "history_process" : "dv6ldm",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "mgbf7Up46IIZ",
+  "history_input" : "\ndef download_file(url, save_location):\n    try:\n        print(\"download_file\")\n        with urllib.request.urlopen(url) as response:\n            file_content = response.read()\n        file_name = os.path.basename(url)\n        save_path = os.path.join(save_location, file_name)\n        with open(save_path, 'wb') as file:\n            file.write(file_content)\n        print(f\"File downloaded successfully and saved as: {save_path}\")\n    except Exception as e:\n        print(f\"An error occurred while downloading the file: {str(e)}\")\n",
+  "history_output" : "",
+  "history_begin_time" : 1741868271676,
+  "history_end_time" : 1741868271712,
+  "history_notes" : null,
+  "history_process" : "dv6ldm",
+  "host_id" : null,
+  "indicator" : "Done"
+},]

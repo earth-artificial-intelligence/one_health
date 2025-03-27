@@ -1,0 +1,261 @@
+[{
+  "history_id" : "0nsrqe8lkef",
+  "history_input" : "import os\nimport pandas as pd\n\n# Define the directory where the AQI files are stored\nTARGET_DIRECTORY = \"/media/volume1\"\n\n# List of AQI CSV filenames for each year\nAQI_FILES = [\n    \"annual_aqi_by_county_2017.csv\",\n    \"annual_aqi_by_county_2018.csv\",\n    \"annual_aqi_by_county_2019.csv\",\n    \"annual_aqi_by_county_2020.csv\",\n    \"annual_aqi_by_county_2021.csv\"\n]\n\ndef get_existing_files():\n    \"\"\"\n    Checks which AQI files exist in the target directory.\n    \n    Returns:\n        existing_files (list): List of valid CSV file paths.\n        missing_files (list): List of missing CSV file paths.\n    \"\"\"\n    csv_files = [os.path.join(TARGET_DIRECTORY, file) for file in AQI_FILES]\n    \n    existing_files = [file for file in csv_files if os.path.exists(file)]\n    missing_files = [file for file in csv_files if not os.path.exists(file)]\n    \n    return existing_files, missing_files\n\ndef merge_aqi_files(existing_files):\n    \"\"\"\n    Merges the available AQI CSV files into a single dataset.\n    \n    Args:\n        existing_files (list): List of valid CSV file paths.\n\n    Returns:\n        merged_df (DataFrame): Merged Pandas DataFrame containing all AQI data.\n    \"\"\"\n    print(\"\\n Merging available AQI CSV files...\")\n\n    # Read and concatenate all existing CSV files\n    df_list = [pd.read_csv(file) for file in existing_files]\n    merged_df = pd.concat(df_list, ignore_index=True)\n\n    return merged_df\n\ndef save_merged_data(merged_df):\n    \"\"\"\n    Saves the merged AQI dataset to a CSV file.\n    \n    Args:\n        merged_df (DataFrame): Merged Pandas DataFrame.\n    \"\"\"\n    merged_file_path = os.path.join(TARGET_DIRECTORY, \"merged_annual_aqi_by_county.csv\")\n    merged_df.to_csv(merged_file_path, index=False)\n\n    print(f\"\\n Merged dataset saved as: {merged_file_path}\")\n    print(\"\\nMerged Data Preview:\")\n    print(merged_df.head())  # Print the first few rows\n\ndef main():\n    \"\"\"\n    Main function to check for available AQI files, merge them, and save the final dataset.\n    \"\"\"\n    existing_files, missing_files = get_existing_files()\n\n    if missing_files:\n        print(f\" The following files are missing and will not be included in the merge:\")\n        for missing_file in missing_files:\n            print(f\"   - {missing_file}\")\n\n    if existing_files:\n        merged_df = merge_aqi_files(existing_files)\n        save_merged_data(merged_df)\n    else:\n        print(\"\\n No valid AQI files found to merge. Please check the file locations.\")\n\nif __name__ == \"__main__\":\n    main()\n",
+  "history_output" : " Merging available AQI CSV files...\n Merged dataset saved as: /media/volume1/merged_annual_aqi_by_county.csv\nMerged Data Preview:\n     State   County  Year  ...  Days Ozone  Days PM2.5  Days PM10\n0  Alabama  Baldwin  2017  ...         188          82          0\n1  Alabama     Clay  2017  ...           0         118          0\n2  Alabama  Colbert  2017  ...         202          81          0\n3  Alabama   DeKalb  2017  ...         290          69          0\n4  Alabama   Elmore  2017  ...         226           0          0\n[5 rows x 18 columns]\n",
+  "history_begin_time" : 1741882821281,
+  "history_end_time" : 1741882822001,
+  "history_notes" : null,
+  "history_process" : "wtszw9",
+  "host_id" : "100001",
+  "indicator" : "Done"
+},{
+  "history_id" : "922NNxNAc951",
+  "history_input" : "import os\nimport pandas as pd\n\n# Define the directory where the AQI files are stored\nTARGET_DIRECTORY = \"/media/volume1\"\n\n# List of AQI CSV filenames for each year\nAQI_FILES = [\n    \"annual_aqi_by_county_2017.csv\",\n    \"annual_aqi_by_county_2018.csv\",\n    \"annual_aqi_by_county_2019.csv\",\n    \"annual_aqi_by_county_2020.csv\",\n    \"annual_aqi_by_county_2021.csv\"\n]\n\ndef get_existing_files():\n    \"\"\"\n    Checks which AQI files exist in the target directory.\n    \n    Returns:\n        existing_files (list): List of valid CSV file paths.\n        missing_files (list): List of missing CSV file paths.\n    \"\"\"\n    csv_files = [os.path.join(TARGET_DIRECTORY, file) for file in AQI_FILES]\n    \n    existing_files = [file for file in csv_files if os.path.exists(file)]\n    missing_files = [file for file in csv_files if not os.path.exists(file)]\n    \n    return existing_files, missing_files\n\ndef merge_aqi_files(existing_files):\n    \"\"\"\n    Merges the available AQI CSV files into a single dataset.\n    \n    Args:\n        existing_files (list): List of valid CSV file paths.\n\n    Returns:\n        merged_df (DataFrame): Merged Pandas DataFrame containing all AQI data.\n    \"\"\"\n    print(\"\\n Merging available AQI CSV files...\")\n\n    # Read and concatenate all existing CSV files\n    df_list = [pd.read_csv(file) for file in existing_files]\n    merged_df = pd.concat(df_list, ignore_index=True)\n\n    return merged_df\n\ndef save_merged_data(merged_df):\n    \"\"\"\n    Saves the merged AQI dataset to a CSV file.\n    \n    Args:\n        merged_df (DataFrame): Merged Pandas DataFrame.\n    \"\"\"\n    merged_file_path = os.path.join(TARGET_DIRECTORY, \"merged_annual_aqi_by_county.csv\")\n    merged_df.to_csv(merged_file_path, index=False)\n\n    print(f\"\\n Merged dataset saved as: {merged_file_path}\")\n    print(\"\\nMerged Data Preview:\")\n    print(merged_df.head())  # Print the first few rows\n\ndef main():\n    \"\"\"\n    Main function to check for available AQI files, merge them, and save the final dataset.\n    \"\"\"\n    existing_files, missing_files = get_existing_files()\n\n    if missing_files:\n        print(f\" The following files are missing and will not be included in the merge:\")\n        for missing_file in missing_files:\n            print(f\"   - {missing_file}\")\n\n    if existing_files:\n        merged_df = merge_aqi_files(existing_files)\n        save_merged_data(merged_df)\n    else:\n        print(\"\\n No valid AQI files found to merge. Please check the file locations.\")\n\nif __name__ == \"__main__\":\n    main()\n",
+  "history_output" : " Merging available AQI CSV files...\n Merged dataset saved as: /media/volume1/merged_annual_aqi_by_county.csv\nMerged Data Preview:\n     State   County  Year  ...  Days Ozone  Days PM2.5  Days PM10\n0  Alabama  Baldwin  2017  ...         188          82          0\n1  Alabama     Clay  2017  ...           0         118          0\n2  Alabama  Colbert  2017  ...         202          81          0\n3  Alabama   DeKalb  2017  ...         290          69          0\n4  Alabama   Elmore  2017  ...         226           0          0\n[5 rows x 18 columns]\n",
+  "history_begin_time" : 1741872613841,
+  "history_end_time" : 1741872614524,
+  "history_notes" : null,
+  "history_process" : "wtszw9",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "eTYed6GUUfAk",
+  "history_input" : "import os\nimport pandas as pd\n\n# Define the directory where the AQI files are stored\nTARGET_DIRECTORY = \"/media/volume1\"\n\n# List of AQI CSV filenames for each year\nAQI_FILES = [\n    \"annual_aqi_by_county_2017.csv\",\n    \"annual_aqi_by_county_2018.csv\",\n    \"annual_aqi_by_county_2019.csv\",\n    \"annual_aqi_by_county_2020.csv\",\n    \"annual_aqi_by_county_2021.csv\"\n]\n\ndef get_existing_files():\n    \"\"\"\n    Checks which AQI files exist in the target directory.\n    \n    Returns:\n        existing_files (list): List of valid CSV file paths.\n        missing_files (list): List of missing CSV file paths.\n    \"\"\"\n    csv_files = [os.path.join(TARGET_DIRECTORY, file) for file in AQI_FILES]\n    \n    existing_files = [file for file in csv_files if os.path.exists(file)]\n    missing_files = [file for file in csv_files if not os.path.exists(file)]\n    \n    return existing_files, missing_files\n\ndef merge_aqi_files(existing_files):\n    \"\"\"\n    Merges the available AQI CSV files into a single dataset.\n    \n    Args:\n        existing_files (list): List of valid CSV file paths.\n\n    Returns:\n        merged_df (DataFrame): Merged Pandas DataFrame containing all AQI data.\n    \"\"\"\n    print(\"\\n🔄 Merging available AQI CSV files...\")\n\n    # Read and concatenate all existing CSV files\n    df_list = [pd.read_csv(file) for file in existing_files]\n    merged_df = pd.concat(df_list, ignore_index=True)\n\n    return merged_df\n\ndef save_merged_data(merged_df):\n    \"\"\"\n    Saves the merged AQI dataset to a CSV file.\n    \n    Args:\n        merged_df (DataFrame): Merged Pandas DataFrame.\n    \"\"\"\n    merged_file_path = os.path.join(TARGET_DIRECTORY, \"merged_annual_aqi_by_county.csv\")\n    merged_df.to_csv(merged_file_path, index=False)\n\n    print(f\"\\n Merged dataset saved as: {merged_file_path}\")\n    print(\"\\nMerged Data Preview:\")\n    print(merged_df.head())  # Print the first few rows\n\ndef main():\n    \"\"\"\n    Main function to check for available AQI files, merge them, and save the final dataset.\n    \"\"\"\n    existing_files, missing_files = get_existing_files()\n\n    if missing_files:\n        print(f\" The following files are missing and will not be included in the merge:\")\n        for missing_file in missing_files:\n            print(f\"   - {missing_file}\")\n\n    if existing_files:\n        merged_df = merge_aqi_files(existing_files)\n        save_merged_data(merged_df)\n    else:\n        print(\"\\n No valid AQI files found to merge. Please check the file locations.\")\n\nif __name__ == \"__main__\":\n    main()\n",
+  "history_output" : "🔄 Merging available AQI CSV files...\n Merged dataset saved as: /media/volume1/merged_annual_aqi_by_county.csv\nMerged Data Preview:\n     State   County  Year  ...  Days Ozone  Days PM2.5  Days PM10\n0  Alabama  Baldwin  2017  ...         188          82          0\n1  Alabama     Clay  2017  ...           0         118          0\n2  Alabama  Colbert  2017  ...         202          81          0\n3  Alabama   DeKalb  2017  ...         290          69          0\n4  Alabama   Elmore  2017  ...         226           0          0\n[5 rows x 18 columns]\n",
+  "history_begin_time" : 1741872602020,
+  "history_end_time" : 1741872602688,
+  "history_notes" : null,
+  "history_process" : "wtszw9",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "6UaIajL1RJfl",
+  "history_input" : "import os\nimport pandas as pd\n\n# Define the directory where the AQI files are stored\nTARGET_DIRECTORY = \"/media/volume1\"\n\n# List of AQI CSV filenames for each year\nAQI_FILES = [\n    \"annual_aqi_by_county_2017.csv\",\n    \"annual_aqi_by_county_2018.csv\",\n    \"annual_aqi_by_county_2019.csv\",\n    \"annual_aqi_by_county_2020.csv\",\n    \"annual_aqi_by_county_2021.csv\"\n]\n\ndef get_existing_files():\n    \"\"\"\n    Checks which AQI files exist in the target directory.\n    \n    Returns:\n        existing_files (list): List of valid CSV file paths.\n        missing_files (list): List of missing CSV file paths.\n    \"\"\"\n    csv_files = [os.path.join(TARGET_DIRECTORY, file) for file in AQI_FILES]\n    \n    existing_files = [file for file in csv_files if os.path.exists(file)]\n    missing_files = [file for file in csv_files if not os.path.exists(file)]\n    \n    return existing_files, missing_files\n\ndef merge_aqi_files(existing_files):\n    \"\"\"\n    Merges the available AQI CSV files into a single dataset.\n    \n    Args:\n        existing_files (list): List of valid CSV file paths.\n\n    Returns:\n        merged_df (DataFrame): Merged Pandas DataFrame containing all AQI data.\n    \"\"\"\n    print(\"\\n🔄 Merging available AQI CSV files...\")\n\n    # Read and concatenate all existing CSV files\n    df_list = [pd.read_csv(file) for file in existing_files]\n    merged_df = pd.concat(df_list, ignore_index=True)\n\n    return merged_df\n\ndef save_merged_data(merged_df):\n    \"\"\"\n    Saves the merged AQI dataset to a CSV file.\n    \n    Args:\n        merged_df (DataFrame): Merged Pandas DataFrame.\n    \"\"\"\n    merged_file_path = os.path.join(TARGET_DIRECTORY, \"merged_annual_aqi_by_county.csv\")\n    merged_df.to_csv(merged_file_path, index=False)\n\n    print(f\"\\n✅ Merged dataset saved as: {merged_file_path}\")\n    print(\"\\nMerged Data Preview:\")\n    print(merged_df.head())  # Print the first few rows\n\ndef main():\n    \"\"\"\n    Main function to check for available AQI files, merge them, and save the final dataset.\n    \"\"\"\n    existing_files, missing_files = get_existing_files()\n\n    if missing_files:\n        print(f\"⚠️ The following files are missing and will not be included in the merge:\")\n        for missing_file in missing_files:\n            print(f\"   - {missing_file}\")\n\n    if existing_files:\n        merged_df = merge_aqi_files(existing_files)\n        save_merged_data(merged_df)\n    else:\n        print(\"\\n❌ No valid AQI files found to merge. Please check the file locations.\")\n\nif __name__ == \"__main__\":\n    main()\n",
+  "history_output" : "🔄 Merging available AQI CSV files...\n✅ Merged dataset saved as: /media/volume1/merged_annual_aqi_by_county.csv\nMerged Data Preview:\n     State   County  Year  ...  Days Ozone  Days PM2.5  Days PM10\n0  Alabama  Baldwin  2017  ...         188          82          0\n1  Alabama     Clay  2017  ...           0         118          0\n2  Alabama  Colbert  2017  ...         202          81          0\n3  Alabama   DeKalb  2017  ...         290          69          0\n4  Alabama   Elmore  2017  ...         226           0          0\n[5 rows x 18 columns]\n",
+  "history_begin_time" : 1741872442909,
+  "history_end_time" : 1741872443507,
+  "history_notes" : null,
+  "history_process" : "wtszw9",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "Vc4Yt65Z8o8B",
+  "history_input" : "import os\nimport pandas as pd\nimport zipfile\nfrom download_data_utils import download_file  \n\n# Define the base directory to save files\nTARGET_DIRECTORY = \"/media/volume1\"\n\n# Ensure the directory exists\nos.makedirs(TARGET_DIRECTORY, exist_ok=True)\n\n# Dictionary of URLs for all years\nAQI_DATA_URLS = {\n    2017: \"https://aqs.epa.gov/aqsweb/airdata/annual_aqi_by_county_2017.zip\",\n    2018: \"https://aqs.epa.gov/aqsweb/airdata/annual_aqi_by_county_2018.zip\",\n    2019: \"https://aqs.epa.gov/aqsweb/airdata/annual_aqi_by_county_2019.zip\",\n    2020: \"https://aqs.epa.gov/aqsweb/airdata/annual_aqi_by_county_2020.zip\",\n    2021: \"https://aqs.epa.gov/aqsweb/airdata/annual_aqi_by_county_2021.zip\",\n}\n\ndef retrieve_aqi(year):\n    \"\"\"\n    Downloads the AQI ZIP file for a given year, extracts the CSV, and saves it to /media/volume1.\n    \"\"\"\n    zip_file_path = os.path.join(TARGET_DIRECTORY, f\"annual_aqi_by_county_{year}.zip\")\n    extracted_csv_path = os.path.join(TARGET_DIRECTORY, f\"annual_aqi_by_county_{year}.csv\")\n\n    # Get the download URL\n    original_url = AQI_DATA_URLS.get(year)\n    if not original_url:\n        print(f\"No URL found for year {year}. Skipping...\")\n        return None\n\n    # Download the ZIP file\n    saved_file = download_file(original_url, TARGET_DIRECTORY, f\"annual_aqi_by_county_{year}.zip\")\n\n    if saved_file and os.path.exists(saved_file):\n        try:\n            # Extract the ZIP file\n            with zipfile.ZipFile(saved_file, \"r\") as zip_ref:\n                zip_ref.extractall(TARGET_DIRECTORY)\n                extracted_files = zip_ref.namelist()  # Get extracted file names\n\n            # Identify the correct CSV file\n            csv_file_name = next((f for f in extracted_files if f.endswith(\".csv\")), None)\n            if csv_file_name:\n                extracted_csv_path = os.path.join(TARGET_DIRECTORY, csv_file_name)\n                print(f\"AQI Data for {year} extracted and saved as: {extracted_csv_path}\")\n                return extracted_csv_path  # Return the extracted CSV file path\n            else:\n                print(f\"No CSV file found in the ZIP archive for {year}.\")\n                return None\n\n        except Exception as e:\n            print(f\"Error extracting or loading AQI Data for {year}: {e}\")\n            return None\n    else:\n        print(f\"AQI data download failed for {year}. Please check the URL and permissions.\")\n        return None\n\ndef retrieve_all_aqi_data():\n    \"\"\"\n    Downloads and processes AQI data for all specified years, then merges them into one CSV.\n    \"\"\"\n    csv_files = []\n\n    for year in AQI_DATA_URLS.keys():\n        csv_file = retrieve_aqi(year)\n        if csv_file:\n            csv_files.append(csv_file)\n\n    if csv_files:\n        merge_aqi_files(csv_files)\n\ndef merge_aqi_files(csv_files):\n    \"\"\"\n    Merges all the downloaded AQI CSV files into a single dataset.\n    \"\"\"\n    print(\"\\nMerging all AQI CSV files into one dataset...\")\n\n    # Read and concatenate all CSV files\n    df_list = [pd.read_csv(file) for file in csv_files]\n    merged_df = pd.concat(df_list, ignore_index=True)\n\n    # Define the merged output file path\n    merged_file_path = os.path.join(TARGET_DIRECTORY, \"merged_annual_aqi_by_county.csv\")\n\n    # Save the merged dataframe\n    merged_df.to_csv(merged_file_path, index=False)\n\n    print(f\"\\n✅ Merged dataset saved as: {merged_file_path}\")\n    print(\"Merged Data Preview:\")\n    print(merged_df.head())  # Print first few rows\n\nif __name__ == \"__main__\":\n    retrieve_all_aqi_data()\n",
+  "history_output" : "Starting file download...\nFile downloaded successfully and saved as: /media/volume1/annual_aqi_by_county_2017.zip\nAQI Data for 2017 extracted and saved as: /media/volume1/annual_aqi_by_county_2017.csv\nStarting file download...\nFile downloaded successfully and saved as: /media/volume1/annual_aqi_by_county_2018.zip\nAQI Data for 2018 extracted and saved as: /media/volume1/annual_aqi_by_county_2018.csv\nStarting file download...\nFile downloaded successfully and saved as: /media/volume1/annual_aqi_by_county_2019.zip\nAQI Data for 2019 extracted and saved as: /media/volume1/annual_aqi_by_county_2019.csv\nStarting file download...\nFile downloaded successfully and saved as: /media/volume1/annual_aqi_by_county_2020.zip\nAQI Data for 2020 extracted and saved as: /media/volume1/annual_aqi_by_county_2020.csv\nStarting file download...\nFile downloaded successfully and saved as: /media/volume1/annual_aqi_by_county_2021.zip\nAQI Data for 2021 extracted and saved as: /media/volume1/annual_aqi_by_county_2021.csv\nMerging all AQI CSV files into one dataset...\n✅ Merged dataset saved as: /media/volume1/merged_annual_aqi_by_county.csv\nMerged Data Preview:\n     State   County  Year  ...  Days Ozone  Days PM2.5  Days PM10\n0  Alabama  Baldwin  2017  ...         188          82          0\n1  Alabama     Clay  2017  ...           0         118          0\n2  Alabama  Colbert  2017  ...         202          81          0\n3  Alabama   DeKalb  2017  ...         290          69          0\n4  Alabama   Elmore  2017  ...         226           0          0\n[5 rows x 18 columns]\n",
+  "history_begin_time" : 1741872246304,
+  "history_end_time" : 1741872247423,
+  "history_notes" : null,
+  "history_process" : "wtszw9",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "1IgESbTYFxYK",
+  "history_input" : "import os\nimport pandas as pd\nimport zipfile\nfrom download_data_utils import download_file  \n\n# Define the base directory to save files\nTARGET_DIRECTORY = \"/media/volume1\"\n\n# Ensure the directory exists\nos.makedirs(TARGET_DIRECTORY, exist_ok=True)\n\n# Dictionary of URLs for all years\nAQI_DATA_URLS = {\n    2017: \"https://aqs.epa.gov/aqsweb/airdata/annual_aqi_by_county_2017.zip\",\n    2018: \"https://aqs.epa.gov/aqsweb/airdata/annual_aqi_by_county_2018.zip\",\n    2019: \"https://aqs.epa.gov/aqsweb/airdata/annual_aqi_by_county_2019.zip\",\n    2020: \"https://aqs.epa.gov/aqsweb/airdata/annual_aqi_by_county_2020.zip\",\n    2021: \"https://aqs.epa.gov/aqsweb/airdata/annual_aqi_by_county_2021.zip\",\n}\n\ndef retrieve_aqi(year):\n    \"\"\"\n    Downloads the AQI ZIP file for a given year, extracts the CSV, and saves it to /media/volume1.\n    \"\"\"\n    zip_file_path = os.path.join(TARGET_DIRECTORY, f\"annual_aqi_by_county_{year}.zip\")\n    extracted_csv_path = os.path.join(TARGET_DIRECTORY, f\"annual_aqi_by_county_{year}.csv\")\n\n    # Get the download URL\n    original_url = AQI_DATA_URLS.get(year)\n    if not original_url:\n        print(f\"No URL found for year {year}. Skipping...\")\n        return None\n\n    # Download the ZIP file\n    saved_file = download_file(original_url, TARGET_DIRECTORY, f\"annual_aqi_by_county_{year}.zip\")\n\n    if saved_file and os.path.exists(saved_file):\n        try:\n            # Extract the ZIP file\n            with zipfile.ZipFile(saved_file, \"r\") as zip_ref:\n                zip_ref.extractall(TARGET_DIRECTORY)\n                extracted_files = zip_ref.namelist()  # Get extracted file names\n\n            # Identify the correct CSV file\n            csv_file_name = next((f for f in extracted_files if f.endswith(\".csv\")), None)\n            if csv_file_name:\n                extracted_csv_path = os.path.join(TARGET_DIRECTORY, csv_file_name)\n                print(f\"AQI Data for {year} extracted and saved as: {extracted_csv_path}\")\n                return extracted_csv_path  # Return the extracted CSV file path\n            else:\n                print(f\"No CSV file found in the ZIP archive for {year}.\")\n                return None\n\n        except Exception as e:\n            print(f\"Error extracting or loading AQI Data for {year}: {e}\")\n            return None\n    else:\n        print(f\"AQI data download failed for {year}. Please check the URL and permissions.\")\n        return None\n\ndef retrieve_all_aqi_data():\n    \"\"\"\n    Downloads and processes AQI data for all specified years, then merges them into one CSV.\n    \"\"\"\n    csv_files = []\n\n    for year in AQI_DATA_URLS.keys():\n        csv_file = retrieve_aqi(year)\n        if csv_file:\n            csv_files.append(csv_file)\n\n    if csv_files:\n        merge_aqi_files(csv_files)\n\ndef merge_aqi_files(csv_files):\n    \"\"\"\n    Merges all the downloaded AQI CSV files into a single dataset.\n    \"\"\"\n    print(\"\\nMerging all AQI CSV files into one dataset...\")\n\n    # Read and concatenate all CSV files\n    df_list = [pd.read_csv(file) for file in csv_files]\n    merged_df = pd.concat(df_list, ignore_index=True)\n\n    # Define the merged output file path\n    merged_file_path = os.path.join(TARGET_DIRECTORY, \"merged_annual_aqi_by_county.csv\")\n\n    # Save the merged dataframe\n    merged_df.to_csv(merged_file_path, index=False)\n\n    print(f\"\\n✅ Merged dataset saved as: {merged_file_path}\")\n    print(\"Merged Data Preview:\")\n    print(merged_df.head())  # Print first few rows\n\nif __name__ == \"__main__\":\n    retrieve_all_aqi_data()\n",
+  "history_output" : "Starting file download...\nFile downloaded successfully and saved as: /media/volume1/annual_aqi_by_county_2017.zip\nAQI Data for 2017 extracted and saved as: /media/volume1/annual_aqi_by_county_2017.csv\nStarting file download...\nFile downloaded successfully and saved as: /media/volume1/annual_aqi_by_county_2018.zip\nAQI Data for 2018 extracted and saved as: /media/volume1/annual_aqi_by_county_2018.csv\nStarting file download...\nFile downloaded successfully and saved as: /media/volume1/annual_aqi_by_county_2019.zip\nAQI Data for 2019 extracted and saved as: /media/volume1/annual_aqi_by_county_2019.csv\nStarting file download...\nFile downloaded successfully and saved as: /media/volume1/annual_aqi_by_county_2020.zip\nAQI Data for 2020 extracted and saved as: /media/volume1/annual_aqi_by_county_2020.csv\nStarting file download...\nFile downloaded successfully and saved as: /media/volume1/annual_aqi_by_county_2021.zip\nAQI Data for 2021 extracted and saved as: /media/volume1/annual_aqi_by_county_2021.csv\nMerging all AQI CSV files into one dataset...\n✅ Merged dataset saved as: /media/volume1/merged_annual_aqi_by_county.csv\nMerged Data Preview:\n     State   County  Year  ...  Days Ozone  Days PM2.5  Days PM10\n0  Alabama  Baldwin  2017  ...         188          82          0\n1  Alabama     Clay  2017  ...           0         118          0\n2  Alabama  Colbert  2017  ...         202          81          0\n3  Alabama   DeKalb  2017  ...         290          69          0\n4  Alabama   Elmore  2017  ...         226           0          0\n[5 rows x 18 columns]\n",
+  "history_begin_time" : 1741872201577,
+  "history_end_time" : 1741872202750,
+  "history_notes" : null,
+  "history_process" : "wtszw9",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "y82xpWRewYSh",
+  "history_input" : "import pandas as pd\nimport os\n\n# Define the path to the Downloads folder\ndownloads_path = os.path.expanduser(\"~/Downloads\")\n\n# List of file names in order\nfiles = [\n    \"annual_aqi_by_county_2017.csv\",\n    \"annual_aqi_by_county_2018.csv\",\n    \"annual_aqi_by_county_2019.csv\",\n    \"annual_aqi_by_county_2020.csv\",\n    \"annual_aqi_by_county_2021.csv\"\n]\n\n# Read and concatenate all dataframes\ndf_list = [pd.read_csv(os.path.join(downloads_path, file)) for file in files]\nmerged_df = pd.concat(df_list, ignore_index=True)\n\n# Save the merged dataframe in the Downloads folder\nmerged_file_path = os.path.join(downloads_path, \"merged_annual_aqi_by_county.csv\")\nmerged_df.to_csv(merged_file_path, index=False)\n\nprint(f\"Merged dataset saved as '{merged_file_path}'.\")\n",
+  "history_output" : "Merged dataset saved as '/Users/jyoshmithareddypaturi/Downloads/merged_annual_aqi_by_county.csv'.\n",
+  "history_begin_time" : 1741273775336,
+  "history_end_time" : 1741273776522,
+  "history_notes" : null,
+  "history_process" : "wtszw9",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "dgqxnzmsfdp",
+  "history_input" : "# Write your first Python code in Geoweaver",
+  "history_output" : "",
+  "history_begin_time" : 1741232290605,
+  "history_end_time" : 1741232291683,
+  "history_notes" : null,
+  "history_process" : "wtszw9",
+  "host_id" : "100001",
+  "indicator" : "Done"
+},{
+  "history_id" : "wrhmmhme1wa",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741274063427,
+  "history_notes" : null,
+  "history_process" : "wtszw9",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "m1ukoqswd2n",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275207447,
+  "history_notes" : null,
+  "history_process" : "wtszw9",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "bwn3bm6cyj2",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275476086,
+  "history_notes" : null,
+  "history_process" : "wtszw9",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "tdwshlr1t9o",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740629989091,
+  "history_notes" : null,
+  "history_process" : "wtszw9",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "63zhxctzh02",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740630100177,
+  "history_notes" : null,
+  "history_process" : "wtszw9",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "mkv5tiy7jp0",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741212507935,
+  "history_notes" : null,
+  "history_process" : "wtszw9",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "7bsxf1lwii5",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741213300621,
+  "history_notes" : null,
+  "history_process" : "wtszw9",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "0fekqk3zpva",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741213324328,
+  "history_notes" : null,
+  "history_process" : "wtszw9",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "uzmt6g13q9n",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741213335993,
+  "history_notes" : null,
+  "history_process" : "wtszw9",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "1monr0iss8t",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275389115,
+  "history_notes" : null,
+  "history_process" : "wtszw9",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "txpzljazlbz",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741870314750,
+  "history_notes" : null,
+  "history_process" : "wtszw9",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "yvscpatg9k3",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741873525528,
+  "history_notes" : null,
+  "history_process" : "wtszw9",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "6eh9fmiawps",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741873559810,
+  "history_notes" : null,
+  "history_process" : "wtszw9",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "4qjwq0dt1bz",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741876725054,
+  "history_notes" : null,
+  "history_process" : "wtszw9",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "033l5ynzmzl",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742429005652,
+  "history_notes" : null,
+  "history_process" : "wtszw9",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "z8gu5s2u4si",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742429862387,
+  "history_notes" : null,
+  "history_process" : "wtszw9",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "sf5y8gr4ioz",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742429900036,
+  "history_notes" : null,
+  "history_process" : "wtszw9",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "yw9cqmk6v3j",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742475919583,
+  "history_notes" : null,
+  "history_process" : "wtszw9",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},]

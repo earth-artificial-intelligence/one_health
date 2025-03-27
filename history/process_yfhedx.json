@@ -1,0 +1,151 @@
+[{
+  "history_id" : "ylsb4gwmt7a",
+  "history_input" : "import pandas as pd\nimport os\n\n# Define the directory where the cleaned datasets are stored\nTARGET_DIRECTORY = \"/media/volume1\"\n\n# Define file paths\naqi_file_path = os.path.join(TARGET_DIRECTORY, \"merged_annual_aqi_by_county.csv\")\ncancer_file_path = os.path.join(TARGET_DIRECTORY, \"updated_cleaned_cancer.csv\")\noutput_file_path = os.path.join(TARGET_DIRECTORY, \"merged_aqi_cancer.csv\")\n\ndef merge_aqi_cancer_data():\n    \"\"\"\n    Merges the updated cleaned cancer dataset with the merged AQI dataset.\n    Expands the cancer data to match all years in the AQI dataset.\n    \"\"\"\n    if not os.path.exists(aqi_file_path):\n        print(f\" Error: AQI file '{aqi_file_path}' not found.\")\n        return None\n\n    if not os.path.exists(cancer_file_path):\n        print(f\" Error: Cancer file '{cancer_file_path}' not found.\")\n        return None\n\n    try:\n        # Load the datasets\n        aqi_df = pd.read_csv(aqi_file_path)\n        cancer_df = pd.read_csv(cancer_file_path)\n\n        print(\" Datasets loaded successfully.\")\n\n        # Standardizing column names for merging\n        cancer_df.rename(columns={'State Name': 'State', 'County Name': 'County'}, inplace=True)\n\n        # Keeping relevant columns from the cancer dataset\n        cancer_df = cancer_df[['State', 'County'] + [col for col in cancer_df.columns if col not in ['State', 'County']]]\n\n        # Extracting the unique years from the AQI dataset\n        years = aqi_df['Year'].unique()\n\n        # Expanding the cancer dataset by duplicating each row for every year in AQI dataset\n        cancer_expanded_df = cancer_df.loc[cancer_df.index.repeat(len(years))].reset_index(drop=True)\n\n        # Assigning years by repeating the entire list for the correct number of rows\n        cancer_expanded_df['Year'] = years.tolist() * (len(cancer_expanded_df) // len(years))\n\n        print(\" Cancer dataset expanded to match AQI dataset years.\")\n\n        # Merging the expanded cancer dataset with the AQI dataset\n        merged_df = pd.merge(aqi_df, cancer_expanded_df, on=['State', 'County', 'Year'], how='left')\n\n        # Save the merged dataset\n        merged_df.to_csv(output_file_path, index=False)\n\n        print(f\"\\n Merged dataset saved as: {output_file_path}\")\n        print(\"\\n Merged Data Preview:\")\n        print(merged_df.head())  # Print the first few rows\n\n        return output_file_path\n\n    except Exception as e:\n        print(f\" Error during merging: {e}\")\n        return None\n\nif __name__ == \"__main__\":\n    merge_aqi_cancer_data()\n",
+  "history_output" : " Datasets loaded successfully.\n Cancer dataset expanded to match AQI dataset years.\n Merged dataset saved as: /media/volume1/merged_aqi_cancer.csv\n Merged Data Preview:\n     State  ... Upper 95% Confidence Interval.1\n0  Alabama  ...                            -1.4\n1  Alabama  ...                             1.1\n2  Alabama  ...                             1.3\n3  Alabama  ...                            -0.5\n4  Alabama  ...                            -0.8\n[5 rows x 27 columns]\n",
+  "history_begin_time" : 1741882823284,
+  "history_end_time" : 1741882823946,
+  "history_notes" : null,
+  "history_process" : "yfhedx",
+  "host_id" : "100001",
+  "indicator" : "Done"
+},{
+  "history_id" : "MCJdQE6dd2Mq",
+  "history_input" : "import pandas as pd\nimport os\n\n# Define the directory where the cleaned datasets are stored\nTARGET_DIRECTORY = \"/media/volume1\"\n\n# Define file paths\naqi_file_path = os.path.join(TARGET_DIRECTORY, \"merged_annual_aqi_by_county.csv\")\ncancer_file_path = os.path.join(TARGET_DIRECTORY, \"updated_cleaned_cancer.csv\")\noutput_file_path = os.path.join(TARGET_DIRECTORY, \"merged_aqi_cancer.csv\")\n\ndef merge_aqi_cancer_data():\n    \"\"\"\n    Merges the updated cleaned cancer dataset with the merged AQI dataset.\n    Expands the cancer data to match all years in the AQI dataset.\n    \"\"\"\n    if not os.path.exists(aqi_file_path):\n        print(f\" Error: AQI file '{aqi_file_path}' not found.\")\n        return None\n\n    if not os.path.exists(cancer_file_path):\n        print(f\" Error: Cancer file '{cancer_file_path}' not found.\")\n        return None\n\n    try:\n        # Load the datasets\n        aqi_df = pd.read_csv(aqi_file_path)\n        cancer_df = pd.read_csv(cancer_file_path)\n\n        print(\" Datasets loaded successfully.\")\n\n        # Standardizing column names for merging\n        cancer_df.rename(columns={'State Name': 'State', 'County Name': 'County'}, inplace=True)\n\n        # Keeping relevant columns from the cancer dataset\n        cancer_df = cancer_df[['State', 'County'] + [col for col in cancer_df.columns if col not in ['State', 'County']]]\n\n        # Extracting the unique years from the AQI dataset\n        years = aqi_df['Year'].unique()\n\n        # Expanding the cancer dataset by duplicating each row for every year in AQI dataset\n        cancer_expanded_df = cancer_df.loc[cancer_df.index.repeat(len(years))].reset_index(drop=True)\n\n        # Assigning years by repeating the entire list for the correct number of rows\n        cancer_expanded_df['Year'] = years.tolist() * (len(cancer_expanded_df) // len(years))\n\n        print(\" Cancer dataset expanded to match AQI dataset years.\")\n\n        # Merging the expanded cancer dataset with the AQI dataset\n        merged_df = pd.merge(aqi_df, cancer_expanded_df, on=['State', 'County', 'Year'], how='left')\n\n        # Save the merged dataset\n        merged_df.to_csv(output_file_path, index=False)\n\n        print(f\"\\n Merged dataset saved as: {output_file_path}\")\n        print(\"\\n Merged Data Preview:\")\n        print(merged_df.head())  # Print the first few rows\n\n        return output_file_path\n\n    except Exception as e:\n        print(f\" Error during merging: {e}\")\n        return None\n\nif __name__ == \"__main__\":\n    merge_aqi_cancer_data()\n",
+  "history_output" : " Datasets loaded successfully.\n Cancer dataset expanded to match AQI dataset years.\n Merged dataset saved as: /media/volume1/merged_aqi_cancer.csv\n Merged Data Preview:\n     State  ... Upper 95% Confidence Interval.1\n0  Alabama  ...                            -1.4\n1  Alabama  ...                             1.1\n2  Alabama  ...                             1.3\n3  Alabama  ...                            -0.5\n4  Alabama  ...                            -0.8\n[5 rows x 27 columns]\n",
+  "history_begin_time" : 1741873959416,
+  "history_end_time" : 1741873960053,
+  "history_notes" : null,
+  "history_process" : "yfhedx",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "sTNpJTQO2JWp",
+  "history_input" : "import pandas as pd\nimport os\n\n# Define the directory where the cleaned datasets are stored\nTARGET_DIRECTORY = \"/media/volume1\"\n\n# Define file paths\naqi_file_path = os.path.join(TARGET_DIRECTORY, \"merged_annual_aqi_by_county.csv\")\ncancer_file_path = os.path.join(TARGET_DIRECTORY, \"updated_cleaned_cancer.csv\")\noutput_file_path = os.path.join(TARGET_DIRECTORY, \"merged_aqi_cancer.csv\")\n\ndef merge_aqi_cancer_data():\n    \"\"\"\n    Merges the updated cleaned cancer dataset with the merged AQI dataset.\n    Expands the cancer data to match all years in the AQI dataset.\n    \"\"\"\n    if not os.path.exists(aqi_file_path):\n        print(f\" Error: AQI file '{aqi_file_path}' not found.\")\n        return None\n\n    if not os.path.exists(cancer_file_path):\n        print(f\" Error: Cancer file '{cancer_file_path}' not found.\")\n        return None\n\n    try:\n        # Load the datasets\n        aqi_df = pd.read_csv(aqi_file_path)\n        cancer_df = pd.read_csv(cancer_file_path)\n\n        print(\" Datasets loaded successfully.\")\n\n        # Standardizing column names for merging\n        cancer_df.rename(columns={'State Name': 'State', 'County Name': 'County'}, inplace=True)\n\n        # Keeping relevant columns from the cancer dataset\n        cancer_df = cancer_df[['State', 'County'] + [col for col in cancer_df.columns if col not in ['State', 'County']]]\n\n        # Extracting the unique years from the AQI dataset\n        years = aqi_df['Year'].unique()\n\n        # Expanding the cancer dataset by duplicating each row for every year in AQI dataset\n        cancer_expanded_df = cancer_df.loc[cancer_df.index.repeat(len(years))].reset_index(drop=True)\n\n        # Assigning years by repeating the entire list for the correct number of rows\n        cancer_expanded_df['Year'] = years.tolist() * (len(cancer_expanded_df) // len(years))\n\n        print(\" Cancer dataset expanded to match AQI dataset years.\")\n\n        # Merging the expanded cancer dataset with the AQI dataset\n        merged_df = pd.merge(aqi_df, cancer_expanded_df, on=['State', 'County', 'Year'], how='left')\n\n        # Save the merged dataset\n        merged_df.to_csv(output_file_path, index=False)\n\n        print(f\"\\n Merged dataset saved as: {output_file_path}\")\n        print(\"\\n Merged Data Preview:\")\n        print(merged_df.head())  # Print the first few rows\n\n        return output_file_path\n\n    except Exception as e:\n        print(f\" Error during merging: {e}\")\n        return None\n\nif __name__ == \"__main__\":\n    merge_aqi_cancer_data()\n",
+  "history_output" : " Datasets loaded successfully.\n Cancer dataset expanded to match AQI dataset years.\n Merged dataset saved as: /media/volume1/merged_aqi_cancer.csv\n Merged Data Preview:\n     State  ... Upper 95% Confidence Interval.1\n0  Alabama  ...                            -1.4\n1  Alabama  ...                             1.1\n2  Alabama  ...                             1.3\n3  Alabama  ...                            -0.5\n4  Alabama  ...                            -0.8\n[5 rows x 27 columns]\n",
+  "history_begin_time" : 1741873929846,
+  "history_end_time" : 1741873930562,
+  "history_notes" : null,
+  "history_process" : "yfhedx",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "KoZxuEITUsRR",
+  "history_input" : "import pandas as pd\nimport os\n\n# Define the path to the Downloads folder (update if necessary)\ndownloads_path = os.path.expanduser(\"~/Downloads\")\n\n# Define file paths\naqi_file_path = os.path.join(downloads_path, \"merged_annual_aqi_by_county.csv\")\ncancer_file_path = os.path.join(downloads_path, \"updated_cleaned_cancer.csv\")\noutput_file_path = os.path.join(downloads_path, \"merged_aqi_cancer.csv\")\n\n# Load the datasets\naqi_df = pd.read_csv(aqi_file_path)\ncancer_df = pd.read_csv(cancer_file_path)\n\n# Standardizing column names for merging\ncancer_df.rename(columns={'State Name': 'State', 'County Name': 'County'}, inplace=True)\n\n# Keeping relevant columns from the cancer dataset\ncancer_df = cancer_df[['State', 'County'] + [col for col in cancer_df.columns if col not in ['State', 'County']]]\n\n# Extracting the unique years from the AQI dataset\nyears = aqi_df['Year'].unique()\n\n# Expanding the cancer dataset by duplicating each row for every year in AQI dataset\ncancer_expanded_df = cancer_df.loc[cancer_df.index.repeat(len(years))].reset_index(drop=True)\n\n# Assigning years by repeating the entire list for the correct number of rows\ncancer_expanded_df['Year'] = years.tolist() * (len(cancer_expanded_df) // len(years))\n\n# Merging the expanded cancer dataset with the AQI dataset\nmerged_df = pd.merge(aqi_df, cancer_expanded_df, on=['State', 'County', 'Year'], how='left')\n\n# Save the merged dataset\nmerged_df.to_csv(output_file_path, index=False)\n\nprint(f\"Merged dataset saved as '{output_file_path}'.\")\n",
+  "history_output" : "Merged dataset saved as '/Users/jyoshmithareddypaturi/Downloads/merged_aqi_cancer.csv'.\n",
+  "history_begin_time" : 1741274923899,
+  "history_end_time" : 1741274925913,
+  "history_notes" : null,
+  "history_process" : "yfhedx",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "rc0blzi7tgk",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275207454,
+  "history_notes" : null,
+  "history_process" : "yfhedx",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "2kd491flhfl",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275476090,
+  "history_notes" : null,
+  "history_process" : "yfhedx",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "3200y9d1o6a",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275389134,
+  "history_notes" : null,
+  "history_process" : "yfhedx",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "0cva9bmeodj",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741870314759,
+  "history_notes" : null,
+  "history_process" : "yfhedx",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "4sb90rqq7tf",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741873525534,
+  "history_notes" : null,
+  "history_process" : "yfhedx",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "hedpwspywyp",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741873559813,
+  "history_notes" : null,
+  "history_process" : "yfhedx",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "iu2qwdvt6d4",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741876725058,
+  "history_notes" : null,
+  "history_process" : "yfhedx",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "jj62oel4srd",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742429005655,
+  "history_notes" : null,
+  "history_process" : "yfhedx",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "7fb511pumnr",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742429862391,
+  "history_notes" : null,
+  "history_process" : "yfhedx",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "vu780x9hdul",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742429900039,
+  "history_notes" : null,
+  "history_process" : "yfhedx",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "yz80jpkejzc",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742475919588,
+  "history_notes" : null,
+  "history_process" : "yfhedx",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},]

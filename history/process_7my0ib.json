@@ -1,0 +1,221 @@
+[{
+  "history_id" : "MnasorSKdCvJ",
+  "history_input" : "import pandas as pd\nimport os\n\n# Define the directory where datasets are stored\nTARGET_DIRECTORY = \"/media/volume1\"\n\n# Define file paths\nradon_file_path = os.path.join(TARGET_DIRECTORY, \"cleaned_radon_zones.csv\")\naqi_cancer_file_path = os.path.join(TARGET_DIRECTORY, \"merged_aqi_cancer.csv\")\noutput_file_path = os.path.join(TARGET_DIRECTORY, \"final_merged_dataset.csv\")\n\ndef merge_radon_aqi_cancer():\n    \"\"\"\n    Merges the cleaned Radon dataset with the AQI-Cancer dataset.\n    Expands the Radon data to match years in AQI-Cancer dataset.\n    Prints the total number of rows, columns, column names, and first 10 rows.\n    \"\"\"\n    if not os.path.exists(radon_file_path):\n        print(f\"Error: Radon file '{radon_file_path}' not found.\")\n        return None\n\n    if not os.path.exists(aqi_cancer_file_path):\n        print(f\"Error: AQI-Cancer file '{aqi_cancer_file_path}' not found.\")\n        return None\n\n    try:\n        # Load datasets\n        radon_df = pd.read_csv(radon_file_path)\n        aqi_cancer_df = pd.read_csv(aqi_cancer_file_path)\n\n        print(\"Datasets loaded successfully.\")\n\n        # Extract unique years from AQI-Cancer dataset\n        years = aqi_cancer_df['Year'].unique()\n\n        # Ensure Radon dataset has unique county entries\n        radon_df = radon_df.drop_duplicates(subset=['County'])\n\n        # Expand Radon data to match years in AQI-Cancer dataset\n        expanded_radon_df = radon_df.loc[radon_df.index.repeat(len(years))].reset_index(drop=True)\n        expanded_radon_df['Year'] = sorted(years.tolist() * len(radon_df))\n\n        print(\"Radon dataset expanded to match AQI-Cancer dataset years.\")\n\n        # Merge the expanded Radon dataset with the AQI-Cancer dataset on 'County' and 'Year'\n        merged_df = aqi_cancer_df.merge(expanded_radon_df, on=['County', 'Year'], how='left')\n\n        # Ensure no duplicate counties for the same year\n        merged_df = merged_df.drop_duplicates(subset=['County', 'Year'])\n\n        # Save the merged dataset\n        merged_df.to_csv(output_file_path, index=False)\n\n        # Print dataset shape\n        num_rows, num_columns = merged_df.shape\n        print(f\"\\nMerged dataset saved as: {output_file_path}\")\n        print(f\"Total Rows: {num_rows}, Total Columns: {num_columns}\")\n\n        # Print column names\n        print(\"\\nAll Columns in Merged Dataset:\")\n        print(list(merged_df.columns))\n\n        # Print first 10 rows\n        print(\"\\nFirst 10 Rows of Merged Dataset:\")\n        print(merged_df.head(10))\n\n        return output_file_path\n\n    except Exception as e:\n        print(f\"Error during merging: {e}\")\n        return None\n\nif __name__ == \"__main__\":\n    merge_radon_aqi_cancer()\n",
+  "history_output" : "Datasets loaded successfully.\nRadon dataset expanded to match AQI-Cancer dataset years.\nMerged dataset saved as: /media/volume1/final_merged_dataset.csv\nTotal Rows: 3941, Total Columns: 30\nAll Columns in Merged Dataset:\n['State_x', 'County', 'Year', 'Days with AQI', 'Good Days', 'Moderate Days', 'Unhealthy for Sensitive Groups Days', 'Unhealthy Days', 'Very Unhealthy Days', 'Hazardous Days', 'Max AQI', '90th Percentile AQI', 'Median AQI', 'Days CO', 'Days NO2', 'Days Ozone', 'Days PM2.5', 'Days PM10', '2023 Rural-Urban Continuum Codes([rural urban note])', 'Age-Adjusted Incidence Rate([rate note]) - cases per 100,000', 'Lower 95% Confidence Interval', 'Upper 95% Confidence Interval', 'Average Annual Count', 'Recent Trend', 'Recent 5-Year Trend ([trend note]) in Incidence Rates', 'Lower 95% Confidence Interval.1', 'Upper 95% Confidence Interval.1', 'State_y', 'Region', 'Zone']\nFirst 10 Rows of Merged Dataset:\n    State_x     County  Year  ...  State_y  Region  Zone\n0   Alabama    Baldwin  2017  ...  Alabama       4     3\n5   Alabama       Clay  2017  ...  Alabama       4     1\n10  Alabama    Colbert  2017  ...  Alabama       4     1\n15  Alabama     DeKalb  2017  ...      NaN     NaN   NaN\n16  Alabama     Elmore  2017  ...  Alabama       4     2\n21  Alabama     Etowah  2017  ...  Alabama       4     2\n26  Alabama    Houston  2017  ...  Alabama       4     3\n31  Alabama  Jefferson  2017  ...  Alabama       4     2\n36  Alabama   Lawrence  2017  ...  Alabama       4     1\n41  Alabama    Madison  2017  ...  Alabama       4     1\n[10 rows x 30 columns]\n",
+  "history_begin_time" : 1742428212228,
+  "history_end_time" : 1742428212945,
+  "history_notes" : null,
+  "history_process" : "7my0ib",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "ypr3ng12f3d",
+  "history_input" : "import pandas as pd\nimport os\n\n# Define the directory where datasets are stored\nTARGET_DIRECTORY = \"/media/volume1\"\n\n# Define file paths\nradon_file_path = os.path.join(TARGET_DIRECTORY, \"cleaned_radon_zones.csv\")\naqi_cancer_file_path = os.path.join(TARGET_DIRECTORY, \"merged_aqi_cancer.csv\")\noutput_file_path = os.path.join(TARGET_DIRECTORY, \"final_merged_dataset.csv\")\n\ndef merge_radon_aqi_cancer():\n    \"\"\"\n    Merges the cleaned Radon dataset with the AQI-Cancer dataset.\n    Expands the Radon data to match years in AQI-Cancer dataset.\n    Prints the total number of rows and columns.\n    \"\"\"\n    if not os.path.exists(radon_file_path):\n        print(f\"Error: Radon file '{radon_file_path}' not found.\")\n        return None\n\n    if not os.path.exists(aqi_cancer_file_path):\n        print(f\"Error: AQI-Cancer file '{aqi_cancer_file_path}' not found.\")\n        return None\n\n    try:\n        # Load datasets\n        radon_df = pd.read_csv(radon_file_path)\n        aqi_cancer_df = pd.read_csv(aqi_cancer_file_path)\n\n        print(\"Datasets loaded successfully.\")\n\n        # Extract unique years from AQI-Cancer dataset\n        years = aqi_cancer_df['Year'].unique()\n\n        # Ensure Radon dataset has unique county entries\n        radon_df = radon_df.drop_duplicates(subset=['County'])\n\n        # Expand Radon data to match years in AQI-Cancer dataset\n        expanded_radon_df = radon_df.loc[radon_df.index.repeat(len(years))].reset_index(drop=True)\n        expanded_radon_df['Year'] = sorted(years.tolist() * len(radon_df))\n\n        print(\"Radon dataset expanded to match AQI-Cancer dataset years.\")\n\n        # Merge the expanded Radon dataset with the AQI-Cancer dataset on 'County' and 'Year'\n        merged_df = aqi_cancer_df.merge(expanded_radon_df, on=['County', 'Year'], how='left')\n\n        # Ensure no duplicate counties for the same year\n        merged_df = merged_df.drop_duplicates(subset=['County', 'Year'])\n\n        # Save the merged dataset\n        merged_df.to_csv(output_file_path, index=False)\n\n        # Print dataset shape\n        num_rows, num_columns = merged_df.shape\n        print(f\"\\nMerged dataset saved as: {output_file_path}\")\n        print(f\"Total Rows: {num_rows}, Total Columns: {num_columns}\")\n\n        print(\"\\nMerged Data Preview:\")\n        print(merged_df.head())\n\n        return output_file_path\n\n    except Exception as e:\n        print(f\"Error during merging: {e}\")\n        return None\n\nif __name__ == \"__main__\":\n    merge_radon_aqi_cancer()\n",
+  "history_output" : "Datasets loaded successfully.\nRadon dataset expanded to match AQI-Cancer dataset years.\nMerged dataset saved as: /media/volume1/final_merged_dataset.csv\nTotal Rows: 3941, Total Columns: 30\nMerged Data Preview:\n    State_x   County  Year  ...  State_y  Region  Zone\n0   Alabama  Baldwin  2017  ...  Alabama       4     3\n5   Alabama     Clay  2017  ...  Alabama       4     1\n10  Alabama  Colbert  2017  ...  Alabama       4     1\n15  Alabama   DeKalb  2017  ...      NaN     NaN   NaN\n16  Alabama   Elmore  2017  ...  Alabama       4     2\n[5 rows x 30 columns]\n",
+  "history_begin_time" : 1741882824505,
+  "history_end_time" : 1741882825279,
+  "history_notes" : null,
+  "history_process" : "7my0ib",
+  "host_id" : "100001",
+  "indicator" : "Done"
+},{
+  "history_id" : "WsGncfeZB5KG",
+  "history_input" : "import pandas as pd\nimport os\n\n# Define the directory where datasets are stored\nTARGET_DIRECTORY = \"/media/volume1\"\n\n# Define file paths\nradon_file_path = os.path.join(TARGET_DIRECTORY, \"cleaned_radon_zones.csv\")\naqi_cancer_file_path = os.path.join(TARGET_DIRECTORY, \"merged_aqi_cancer.csv\")\noutput_file_path = os.path.join(TARGET_DIRECTORY, \"final_merged_dataset.csv\")\n\ndef merge_radon_aqi_cancer():\n    \"\"\"\n    Merges the cleaned Radon dataset with the AQI-Cancer dataset.\n    Expands the Radon data to match years in AQI-Cancer dataset.\n    Prints the total number of rows and columns.\n    \"\"\"\n    if not os.path.exists(radon_file_path):\n        print(f\"Error: Radon file '{radon_file_path}' not found.\")\n        return None\n\n    if not os.path.exists(aqi_cancer_file_path):\n        print(f\"Error: AQI-Cancer file '{aqi_cancer_file_path}' not found.\")\n        return None\n\n    try:\n        # Load datasets\n        radon_df = pd.read_csv(radon_file_path)\n        aqi_cancer_df = pd.read_csv(aqi_cancer_file_path)\n\n        print(\"Datasets loaded successfully.\")\n\n        # Extract unique years from AQI-Cancer dataset\n        years = aqi_cancer_df['Year'].unique()\n\n        # Ensure Radon dataset has unique county entries\n        radon_df = radon_df.drop_duplicates(subset=['County'])\n\n        # Expand Radon data to match years in AQI-Cancer dataset\n        expanded_radon_df = radon_df.loc[radon_df.index.repeat(len(years))].reset_index(drop=True)\n        expanded_radon_df['Year'] = sorted(years.tolist() * len(radon_df))\n\n        print(\"Radon dataset expanded to match AQI-Cancer dataset years.\")\n\n        # Merge the expanded Radon dataset with the AQI-Cancer dataset on 'County' and 'Year'\n        merged_df = aqi_cancer_df.merge(expanded_radon_df, on=['County', 'Year'], how='left')\n\n        # Ensure no duplicate counties for the same year\n        merged_df = merged_df.drop_duplicates(subset=['County', 'Year'])\n\n        # Save the merged dataset\n        merged_df.to_csv(output_file_path, index=False)\n\n        # Print dataset shape\n        num_rows, num_columns = merged_df.shape\n        print(f\"\\nMerged dataset saved as: {output_file_path}\")\n        print(f\"Total Rows: {num_rows}, Total Columns: {num_columns}\")\n\n        print(\"\\nMerged Data Preview:\")\n        print(merged_df.head())\n\n        return output_file_path\n\n    except Exception as e:\n        print(f\"Error during merging: {e}\")\n        return None\n\nif __name__ == \"__main__\":\n    merge_radon_aqi_cancer()\n",
+  "history_output" : "Datasets loaded successfully.\nRadon dataset expanded to match AQI-Cancer dataset years.\nMerged dataset saved as: /media/volume1/final_merged_dataset.csv\nTotal Rows: 3941, Total Columns: 30\nMerged Data Preview:\n    State_x   County  Year  ...  State_y  Region  Zone\n0   Alabama  Baldwin  2017  ...  Alabama       4     3\n5   Alabama     Clay  2017  ...  Alabama       4     1\n10  Alabama  Colbert  2017  ...  Alabama       4     1\n15  Alabama   DeKalb  2017  ...      NaN     NaN   NaN\n16  Alabama   Elmore  2017  ...  Alabama       4     2\n[5 rows x 30 columns]\n",
+  "history_begin_time" : 1741876562480,
+  "history_end_time" : 1741876563102,
+  "history_notes" : null,
+  "history_process" : "7my0ib",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "gFLuxTWJrFZ8",
+  "history_input" : "import pandas as pd\nimport os\n\n# Define the directory where datasets are stored\nTARGET_DIRECTORY = \"/media/volume1\"\n\n# Define file paths\nradon_file_path = os.path.join(TARGET_DIRECTORY, \"cleaned_radon_zones.csv\")\naqi_cancer_file_path = os.path.join(TARGET_DIRECTORY, \"merged_aqi_cancer.csv\")\noutput_file_path = os.path.join(TARGET_DIRECTORY, \"final_merged_dataset.csv\")\n\ndef merge_radon_aqi_cancer():\n    \"\"\"\n    Merges the cleaned Radon dataset with the AQI-Cancer dataset.\n    Expands the Radon data to match years in AQI-Cancer dataset.\n    \"\"\"\n    if not os.path.exists(radon_file_path):\n        print(f\"Error: Radon file '{radon_file_path}' not found.\")\n        return None\n\n    if not os.path.exists(aqi_cancer_file_path):\n        print(f\"Error: AQI-Cancer file '{aqi_cancer_file_path}' not found.\")\n        return None\n\n    try:\n        # Load datasets\n        radon_df = pd.read_csv(radon_file_path)\n        aqi_cancer_df = pd.read_csv(aqi_cancer_file_path)\n\n        print(\"Datasets loaded successfully.\")\n\n        # Extract unique years from AQI-Cancer dataset\n        years = aqi_cancer_df['Year'].unique()\n\n        # Ensure Radon dataset has unique county entries\n        radon_df = radon_df.drop_duplicates(subset=['County'])\n\n        # Expand Radon data to match years in AQI-Cancer dataset\n        expanded_radon_df = radon_df.loc[radon_df.index.repeat(len(years))].reset_index(drop=True)\n        expanded_radon_df['Year'] = sorted(years.tolist() * len(radon_df))\n\n        print(\"Radon dataset expanded to match AQI-Cancer dataset years.\")\n\n        # Merge the expanded Radon dataset with the AQI-Cancer dataset on 'County' and 'Year'\n        merged_df = aqi_cancer_df.merge(expanded_radon_df, on=['County', 'Year'], how='left')\n\n        # Ensure no duplicate counties for the same year\n        merged_df = merged_df.drop_duplicates(subset=['County', 'Year'])\n\n        # Save the merged dataset\n        merged_df.to_csv(output_file_path, index=False)\n\n        print(f\"\\nMerged dataset saved as: {output_file_path}\")\n        print(\"\\nMerged Data Preview:\")\n        print(merged_df.head())\n\n        return output_file_path\n\n    except Exception as e:\n        print(f\"Error during merging: {e}\")\n        return None\n\nif __name__ == \"__main__\":\n    merge_radon_aqi_cancer()\n",
+  "history_output" : "Datasets loaded successfully.\nRadon dataset expanded to match AQI-Cancer dataset years.\nMerged dataset saved as: /media/volume1/final_merged_dataset.csv\nMerged Data Preview:\n    State_x   County  Year  ...  State_y  Region  Zone\n0   Alabama  Baldwin  2017  ...  Alabama       4     3\n5   Alabama     Clay  2017  ...  Alabama       4     1\n10  Alabama  Colbert  2017  ...  Alabama       4     1\n15  Alabama   DeKalb  2017  ...      NaN     NaN   NaN\n16  Alabama   Elmore  2017  ...  Alabama       4     2\n[5 rows x 30 columns]\n",
+  "history_begin_time" : 1741876438424,
+  "history_end_time" : 1741876439161,
+  "history_notes" : null,
+  "history_process" : "7my0ib",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "bIeH2UrlDNDA",
+  "history_input" : "import pandas as pd\nimport os\n\n# Define the path to the Downloads folder (update if needed)\ndownloads_path = os.path.expanduser(\"~/Downloads\")\n\n# Define file paths\nradon_file_path = os.path.join(downloads_path, \"updated_radon_dataset.csv\")\naqi_cancer_file_path = os.path.join(downloads_path, \"merged_aqi_cancer.csv\")\noutput_file_path = os.path.join(downloads_path, \"final_merged_dataset.csv\")\n\n# Load datasets\nradon_df = pd.read_csv(radon_file_path)\naqi_cancer_df = pd.read_csv(aqi_cancer_file_path)\n\n# Extract unique years from merged_aqi_cancer.csv\nyears = aqi_cancer_df['Year'].unique()\n\n# Ensure radon dataset has unique county entries\nradon_df = radon_df.drop_duplicates(subset=['County'])\n\n# Expand radon data to match years in AQI-Cancer data\nexpanded_radon_df = radon_df.copy()\nexpanded_radon_df = expanded_radon_df.loc[expanded_radon_df.index.repeat(len(years))].reset_index(drop=True)\nexpanded_radon_df['Year'] = sorted(years.tolist() * len(radon_df))\n\n# Merge the expanded radon dataset with the AQI-Cancer dataset on 'County' and 'Year'\nmerged_df = aqi_cancer_df.merge(expanded_radon_df, on=['County', 'Year'], how='left')\n\n# Ensure no duplicate counties for the same year\nmerged_df = merged_df.drop_duplicates(subset=['County', 'Year'])\n\n# Save the merged dataset\nmerged_df.to_csv(output_file_path, index=False)\n\nprint(f\"Merged dataset saved as '{output_file_path}'.\")\nprint(merged_df.head())\n",
+  "history_output" : "Merged dataset saved as '/Users/jyoshmithareddypaturi/Downloads/final_merged_dataset.csv'.\n    State_x   County  Year  ...  State_y  Region  Zone\n0   Alabama  Baldwin  2017  ...       AL       4     3\n5   Alabama     Clay  2017  ...       AL       4     1\n10  Alabama  Colbert  2017  ...       AL       4     1\n15  Alabama   DeKalb  2017  ...      NaN     NaN   NaN\n16  Alabama   Elmore  2017  ...       AL       4     2\n[5 rows x 30 columns]\n",
+  "history_begin_time" : 1741275183236,
+  "history_end_time" : 1741275184568,
+  "history_notes" : null,
+  "history_process" : "7my0ib",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "VfAwYlcy3hdG",
+  "history_input" : "import pandas as pd\nimport os\n\n# Define the Downloads folder path\ndownloads_path = os.path.expanduser(\"~/Downloads\")\n\n# Load datasets from Downloads\ncancer_airquality_file = os.path.join(downloads_path, \"merged_cancer_airquality_data.csv\")\ncleaned_radon_file = os.path.join(downloads_path, \"cleaned_radon_data.csv\")\n\nmerged_cancer_airquality_data = pd.read_csv(cancer_airquality_file)\ncleaned_radon_data = pd.read_csv(cleaned_radon_file)\n\n# Select relevant columns\ncleaned_radon_data = cleaned_radon_data[['County', 'State', 'Region', 'Zone']]\n\n# Merge datasets\nmerged_data = pd.merge(\n    merged_cancer_airquality_data,\n    cleaned_radon_data,\n    on=['County', 'State'],\n    how='inner'\n)\n\n# Save merged data to Downloads\nmerged_output_file = os.path.join(downloads_path, \"radon_merged_data.csv\")\nmerged_data.to_csv(merged_output_file, index=False)\n\nprint(f\"Merged data saved to {merged_output_file}\")\n",
+  "history_output" : "Merged data saved to /Users/jyoshmithareddypaturi/Downloads/radon_merged_data.csv\n",
+  "history_begin_time" : 1740628741988,
+  "history_end_time" : 1740628742755,
+  "history_notes" : null,
+  "history_process" : "7my0ib",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "pmb3ljoetti",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740629008020,
+  "history_notes" : null,
+  "history_process" : "7my0ib",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "fz92wieg5v0",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741274063410,
+  "history_notes" : null,
+  "history_process" : "7my0ib",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "l6og7ujb9nr",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740629860965,
+  "history_notes" : null,
+  "history_process" : "7my0ib",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "6qn6xvztrnv",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275207456,
+  "history_notes" : null,
+  "history_process" : "7my0ib",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "baqri3u392y",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275476091,
+  "history_notes" : null,
+  "history_process" : "7my0ib",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "cz0m956mx98",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740630100163,
+  "history_notes" : null,
+  "history_process" : "7my0ib",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "fmsqkb5vtgn",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741275389140,
+  "history_notes" : null,
+  "history_process" : "7my0ib",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "1prj8etvltd",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740629989084,
+  "history_notes" : null,
+  "history_process" : "7my0ib",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "lng83zuqjl5",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741870314761,
+  "history_notes" : null,
+  "history_process" : "7my0ib",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "vit72qsuull",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741873525535,
+  "history_notes" : null,
+  "history_process" : "7my0ib",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "p6zo0ncsu14",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741873559815,
+  "history_notes" : null,
+  "history_process" : "7my0ib",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "cjbanxmkutb",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1741876725060,
+  "history_notes" : null,
+  "history_process" : "7my0ib",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "87a4yt7cuib",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742429005657,
+  "history_notes" : null,
+  "history_process" : "7my0ib",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "la5hfco0hnb",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742429862392,
+  "history_notes" : null,
+  "history_process" : "7my0ib",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "iqytba6gn74",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742429900041,
+  "history_notes" : null,
+  "history_process" : "7my0ib",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "vxlr0e5hqrv",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1742475919591,
+  "history_notes" : null,
+  "history_process" : "7my0ib",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},]

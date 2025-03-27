@@ -1,0 +1,101 @@
+[{
+  "history_id" : "7NFPSbvGA6eK",
+  "history_input" : "import pandas as pd\nimport os\n\ndef merge_cancer_airquality_data():\n    # Get the path to the Downloads folder or GeoWeaver workspace\n    downloads_folder = os.path.expanduser('~') + '/Downloads'\n    \n    # Paths to the input CSV files\n    cancer_data_path = os.path.join(downloads_folder, 'cleaned_dataset.csv')\n    airquality_data_path = os.path.join(downloads_folder, 'cleaned_aggregated_data.csv')\n\n    if os.path.exists(cancer_data_path) and os.path.exists(airquality_data_path):\n        try:\n            # Read the cancer and air quality data\n            cancer_data = pd.read_csv(cancer_data_path)\n            airquality_data = pd.read_csv(airquality_data_path)\n            \n            # Extract 'County' and 'State' from the 'County' column in cancer data\n            cancer_data[['County Extract', 'State Extract']] = cancer_data['County'].str.extract(r'([a-zA-Z\\s]+) County, ([a-zA-Z]+)')\n            cancer_data['County Extract'] = cancer_data['County Extract'].str.strip()\n            cancer_data['State Extract'] = cancer_data['State Extract'].str.strip()\n\n            # Clean up the 'County' column and rename extracted columns\n            cancer_data_cleaned = cancer_data.drop(columns=['County']).rename(\n                columns={'County Extract': 'County', 'State Extract': 'State'}\n            )\n\n            # Merge cancer data and air quality data based on 'County' and 'State'\n            merged_data = pd.merge(\n                cancer_data_cleaned, \n                airquality_data, \n                on=['County', 'State'], \n                how='inner'\n            )\n\n            # Define the output file path for the merged data\n            output_file_path = os.path.join(downloads_folder, 'merged_cancer_airquality_data.csv')\n\n            # Save the merged data to a new CSV file\n            merged_data.to_csv(output_file_path, index=False)\n            print(f\"\\nMerged data saved to {output_file_path}\")\n            \n            # Return the output file path for further use\n            return output_file_path\n\n        except Exception as e:\n            print(f\"Error processing the data: {e}\")\n            return None\n    else:\n        print(f\"Error: One or both input files do not exist.\")\n        return None\n\n# Call the function to merge the data and save it\noutput_file = merge_cancer_airquality_data()\n",
+  "history_output" : "Merged data saved to /Users/jyoshmithareddypaturi/Downloads/merged_cancer_airquality_data.csv\n",
+  "history_begin_time" : 1740625528138,
+  "history_end_time" : 1740625528907,
+  "history_notes" : null,
+  "history_process" : "162xiz",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "uIN1Kn24ie6x",
+  "history_input" : "import pandas as pd\nimport os\n\ndef merge_cancer_airquality_data():\n    # Get the path to the Downloads folder or GeoWeaver workspace\n    downloads_folder = os.path.expanduser('~') + '/Downloads'\n    \n    # Paths to the input CSV files\n    cancer_data_path = os.path.join(downloads_folder, 'cleaned_dataset.csv')\n    airquality_data_path = os.path.join(downloads_folder, 'cleaned_aggregated_data.csv')\n\n    if os.path.exists(cancer_data_path) and os.path.exists(airquality_data_path):\n        try:\n            # Read the cancer and air quality data\n            cancer_data = pd.read_csv(cancer_data_path)\n            airquality_data = pd.read_csv(airquality_data_path)\n            \n            # Extract 'County' and 'State' from the 'County' column in cancer data\n            cancer_data[['County Extract', 'State Extract']] = cancer_data['County'].str.extract(r'([a-zA-Z\\s]+) County, ([a-zA-Z]+)')\n            cancer_data['County Extract'] = cancer_data['County Extract'].str.strip()\n            cancer_data['State Extract'] = cancer_data['State Extract'].str.strip()\n\n            # Clean up the 'County' column and rename extracted columns\n            cancer_data_cleaned = cancer_data.drop(columns=['County']).rename(\n                columns={'County Extract': 'County', 'State Extract': 'State'}\n            )\n\n            # Merge cancer data and air quality data based on 'County' and 'State'\n            merged_data = pd.merge(\n                cancer_data_cleaned, \n                airquality_data, \n                on=['County', 'State'], \n                how='inner'\n            )\n\n            # Define the output file path for the merged data\n            output_file_path = os.path.join(downloads_folder, 'merged_cancer_airquality_data.csv')\n\n            # Save the merged data to a new CSV file\n            merged_data.to_csv(output_file_path, index=False)\n            print(f\"\\nMerged data saved to {output_file_path}\")\n            \n            # Return the output file path for further use\n            return output_file_path\n\n        except Exception as e:\n            print(f\"Error processing the data: {e}\")\n            return None\n    else:\n        print(f\"Error: One or both input files do not exist.\")\n        return None\n\n# Call the function to merge the data and save it\noutput_file = merge_cancer_airquality_data()\n",
+  "history_output" : "Merged data saved to /Users/jyoshmithareddypaturi/Downloads/merged_cancer_airquality_data.csv\n",
+  "history_begin_time" : 1739427366286,
+  "history_end_time" : 1739427367057,
+  "history_notes" : null,
+  "history_process" : "162xiz",
+  "host_id" : null,
+  "indicator" : "Done"
+},{
+  "history_id" : "nqpgk3gwv0j",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740625254812,
+  "history_notes" : null,
+  "history_process" : "162xiz",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "mo0234fzksp",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740629008017,
+  "history_notes" : null,
+  "history_process" : "162xiz",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "ox82evh8g5o",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740629860959,
+  "history_notes" : null,
+  "history_process" : "162xiz",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "itt0a0lmdpq",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1739427569854,
+  "history_notes" : null,
+  "history_process" : "162xiz",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "zrygz9u224a",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740625279528,
+  "history_notes" : null,
+  "history_process" : "162xiz",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "g3u5vbluxow",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740628647099,
+  "history_notes" : null,
+  "history_process" : "162xiz",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "7qsmcjz8xko",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740629989078,
+  "history_notes" : null,
+  "history_process" : "162xiz",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},{
+  "history_id" : "otnh6yxkrhp",
+  "history_input" : null,
+  "history_output" : null,
+  "history_begin_time" : null,
+  "history_end_time" : 1740630100145,
+  "history_notes" : null,
+  "history_process" : "162xiz",
+  "host_id" : "100001",
+  "indicator" : "Stopped"
+},]
